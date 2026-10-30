@@ -17,9 +17,53 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import logo from '@/assets/event_logo.png'
 import Image from 'next/image'
+import { validateEmail } from './validateEmail'
+import { validatePassword } from './ValidatePassword'
+import { authClient } from '@/lib/auth-client'
+import { toast } from 'sonner'
+import { useRouter } from 'next/navigation'
+
+//Todo: user data type
+
+type TUserDataProps = {
+  name: string
+  email: string
+  password: string
+  image: string
+}
 
 const RegisterForm = () => {
   const [showPassword, setShowPassword] = useState(false)
+  const router = useRouter()
+  //Todo: email and password validation state
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [loading, setLoading] = useState(false)
+
+  //Todo: submit handler
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    if (!validateEmail(email)) return
+    if (!validatePassword(password)) return
+
+    const formData = new FormData(e.currentTarget)
+    const userData = Object.fromEntries(formData.entries()) as TUserDataProps
+
+    const { data, error } = await authClient.signUp.email({
+      name: userData.name,
+      email: userData.email,
+      password: userData.password,
+      image: userData.image,
+    })
+
+    if (error) {
+      toast.error(error.message)
+      return
+    }
+    toast.success('Account created successfully!')
+    router.push('/login')
+    console.log(data)
+  }
 
   return (
     <main className='flex min-h-[calc(100vh-80px)] items-center justify-center bg-background px-4 py-12'>
@@ -41,7 +85,7 @@ const RegisterForm = () => {
           </div>
 
           {/* Register Form */}
-          <form className='space-y-5'>
+          <form className='space-y-5' onSubmit={onSubmit}>
             {/* Full Name */}
             <div className='space-y-2'>
               <Label htmlFor='name'>Full Name</Label>
@@ -51,6 +95,7 @@ const RegisterForm = () => {
 
                 <Input
                   id='name'
+                  name='name'
                   type='text'
                   placeholder='Enter your full name'
                   className='h-11 pl-10 bg-[#F8FAFC] shadow'
@@ -68,7 +113,10 @@ const RegisterForm = () => {
 
                 <Input
                   id='email'
+                  name='email'
                   type='email'
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   placeholder='Enter your email'
                   className='h-11 pl-10 bg-[#F8FAFC] shadow'
                   required
@@ -85,6 +133,7 @@ const RegisterForm = () => {
 
                 <Input
                   id='photoURL'
+                  name='image'
                   type='url'
                   placeholder='https://example.com/photo.jpg'
                   className='h-11 pl-10 bg-[#F8FAFC] shadow'
@@ -102,7 +151,10 @@ const RegisterForm = () => {
 
                 <Input
                   id='password'
+                  name='password'
                   type={showPassword ? 'text' : 'password'}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   placeholder='Create a password'
                   className='h-11 px-10 bg-[#F8FAFC] shadow'
                   required
