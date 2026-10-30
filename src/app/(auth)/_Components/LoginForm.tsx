@@ -30,6 +30,8 @@ const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false)
   const router = useRouter()
   const [loading, setLoading] = useState(false)
+
+  //Todo: email and password login
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
@@ -57,6 +59,23 @@ const LoginForm = () => {
       toast.error('Something went wrong!')
     } finally {
       setLoading(false)
+    }
+  }
+
+  //Todo: Google login
+  const signInWithGoogle = async () => {
+    try {
+      const { error } = await authClient.signIn.social({
+        provider: 'google',
+        callbackURL: '/upcoming-events?login=success',
+      })
+
+      if (error) {
+        toast.error(error.message)
+      }
+      // toast.success('Login with google successfully')
+    } catch {
+      toast.error('Something went wrong!')
     }
   }
 
@@ -164,9 +183,10 @@ const LoginForm = () => {
 
           {/* Google Login */}
           <Button
-            type='button'
+            type='submit'
             variant='outline'
-            className='h-11 w-full gap-3 font-medium transition-colors hover:bg-muted shadow'
+            onClick={signInWithGoogle}
+            className='h-11 w-full gap-3 cursor-pointer font-medium transition-colors hover:bg-muted shadow'
           >
             {/* Google Logo */}
             <svg
