@@ -4,8 +4,7 @@ import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import eventLogo from '@/assets/event_logo.png'
-import { buttonVariants } from '../ui/button'
-import { LogIn, Menu, X } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/utils'
 
@@ -16,6 +15,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet'
+import NavbarAuth from '../user/NavbarAuth'
 
 const Navbar = () => {
   const pathname = usePathname()
@@ -35,7 +35,7 @@ const Navbar = () => {
     <header className='sticky top-0 z-50 border-b bg-background/95 backdrop-blur-md'>
       <nav
         aria-label='Main navigation'
-        className='mx-auto flex w-full max-w-7xl items-center justify-between gap-3 px-3 py-3 sm:px-6 lg:px-8'
+        className='relative mx-auto flex w-full max-w-7xl items-center justify-between gap-3 px-3 py-3 sm:px-6 lg:px-8'
       >
         {/* Logo */}
         <Link
@@ -78,32 +78,23 @@ const Navbar = () => {
         </div>
 
         {/* Desktop Login */}
-        <div className='hidden md:flex items-center gap-4'>
-          <div>Profile</div>
-          <Link
-            href='/login'
-            className={cn(
-              buttonVariants({ variant: 'default', size: 'lg' }),
-              'flex items-center gap-2'
-            )}
-          >
-            <LogIn className='size-4' />
-            Login
-          </Link>
-        </div>
+        <NavbarAuth />
 
         {/* Mobile Navigation */}
         <div className='md:hidden'>
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger
               type='button'
-              aria-label='Open navigation menu'
+              aria-label={open ? 'Close navigation menu' : 'Open navigation menu'}
               className='flex size-10 items-center justify-center rounded-lg border bg-background transition-colors hover:bg-accent'
             >
               {open ? <X className='size-5' /> : <Menu className='size-5' />}
             </SheetTrigger>
 
-            <SheetContent side='right' className='w-70 sm:w-[320px] px-4'>
+            <SheetContent
+              side='right'
+              className='w-[min(18rem,calc(100vw-2rem))] overflow-y-auto px-4 sm:w-[320px]'
+            >
               <SheetHeader className='border-b pb-5 text-left'>
                 <SheetTitle className='flex items-center gap-2'>
                   <Image
@@ -118,7 +109,7 @@ const Navbar = () => {
                 </SheetTitle>
               </SheetHeader>
 
-              <div className=' flex flex-col gap-3'>
+              <div className='flex flex-col gap-3'>
                 {/* Upcoming Events */}
                 <Link
                   href='/upcoming-events'
@@ -129,21 +120,11 @@ const Navbar = () => {
                   Upcoming Events
                 </Link>
 
-                {/* Login */}
-                <Link
-                  href='/login'
-                  onClick={() => setOpen(false)}
-                  className={cn(
-                    buttonVariants({ variant: 'default', size: 'lg' }),
-                    'mt-2 flex w-full items-center justify-center gap-2'
-                  )}
-                >
-                  <LogIn className='size-4' />
-                  Login
-                </Link>
+                {/* Account actions */}
+                <NavbarAuth mobile onNavigate={() => setOpen(false)} />
               </div>
 
-              <div className='absolute right-6 bottom-6 left-6 border-t pt-4'>
+              <div className='mt-auto border-t pt-4'>
                 <p className='text-center text-xs text-muted-foreground'>
                   Together for a Better Tomorrow
                 </p>
