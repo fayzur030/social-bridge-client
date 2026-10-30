@@ -78,7 +78,8 @@ const Navbar = () => {
         </div>
 
         {/* Desktop Login */}
-        <div className='hidden md:block'>
+        <div className='hidden md:flex items-center gap-4'>
+          <div>Profile</div>
           <Link
             href='/login'
             className={cn(
@@ -102,7 +103,7 @@ const Navbar = () => {
               {open ? <X className='size-5' /> : <Menu className='size-5' />}
             </SheetTrigger>
 
-            <SheetContent side='right' className='w-[280px] sm:w-[320px] px-4'>
+            <SheetContent side='right' className='w-70 sm:w-[320px] px-4'>
               <SheetHeader className='border-b pb-5 text-left'>
                 <SheetTitle className='flex items-center gap-2'>
                   <Image

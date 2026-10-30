@@ -16,9 +16,49 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import logo from '@/assets/event_logo.png'
 import Image from 'next/image'
+import { authClient } from '@/lib/auth-client'
+import { useRouter } from 'next/navigation'
+import { toast } from 'sonner'
+import { Spinner } from '@/components/ui/spinner'
+
+type TUserDataLoginProps = {
+  email: string
+  password: string
+}
 
 const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false)
+  const router = useRouter()
+  const [loading, setLoading] = useState(false)
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+
+    setLoading(true)
+
+    try {
+      const formData = new FormData(e.currentTarget)
+      const userData = Object.fromEntries(
+        formData.entries()
+      ) as TUserDataLoginProps
+
+      const { data, error } = await authClient.signIn.email({
+        email: userData.email,
+        password: userData.password,
+      })
+
+      if (error) {
+        toast.error(error.message)
+        return
+      }
+
+      toast.success(`Welcome back, ${data.user.name}!`)
+      router.push('/upcoming-events')
+    } catch {
+      toast.error('Something went wrong!')
+    } finally {
+      setLoading(false)
+    }
+  }
 
   return (
     <main className='flex min-h-[calc(100vh-80px)] items-center justify-center bg-background px-4 py-12'>
@@ -40,7 +80,7 @@ const LoginForm = () => {
           </div>
 
           {/* Login Form */}
-          <form className='space-y-5'>
+          <form className='space-y-5' onSubmit={onSubmit}>
             {/* Email */}
             <div className='space-y-2'>
               <Label htmlFor='email'>Email</Label>
@@ -50,6 +90,7 @@ const LoginForm = () => {
 
                 <Input
                   id='email'
+                  name='email'
                   type='email'
                   placeholder='Enter your email'
                   className='h-11 pl-10 bg-[#F8FAFC] shadow'
@@ -67,6 +108,7 @@ const LoginForm = () => {
 
                 <Input
                   id='password'
+                  name='password'
                   type={showPassword ? 'text' : 'password'}
                   placeholder='Enter your password'
                   className='h-11 px-10 bg-[#F8FAFC] shadow'
@@ -91,9 +133,19 @@ const LoginForm = () => {
             {/* Login Button */}
             <Button
               type='submit'
-              className='h-11 w-full bg-gradient-to-r from-[#087F5B] to-[#20B981] font-semibold text-white transition-all duration-300 hover:from-[#066B4D] hover:to-[#10B981]'
+              disabled={loading}
+              className='h-11 w-full bg-linear-to-r from-[#087F5B] to-[#20B981] font-semibold text-white transition-all duration-300 hover:from-[#066B4D] hover:to-[#10B981] disabled:cursor-not-allowed disabled:opacity-70'
             >
-              Sign In <ArrowRight />
+              {loading ? (
+                <>
+                  <Spinner className='size-4 animate-spin' />
+                  Logging in...
+                </>
+              ) : (
+                <>
+                  Login <ArrowRight className='size-4' />
+                </>
+              )}
             </Button>
           </form>
 

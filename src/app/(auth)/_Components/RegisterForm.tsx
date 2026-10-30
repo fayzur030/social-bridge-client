@@ -22,6 +22,7 @@ import { validatePassword } from './ValidatePassword'
 import { authClient } from '@/lib/auth-client'
 import { toast } from 'sonner'
 import { useRouter } from 'next/navigation'
+import { Spinner } from '@/components/ui/spinner'
 
 //Todo: user data type
 
@@ -34,6 +35,7 @@ type TUserDataProps = {
 
 const RegisterForm = () => {
   const [showPassword, setShowPassword] = useState(false)
+
   const router = useRouter()
   //Todo: email and password validation state
   const [email, setEmail] = useState('')
@@ -43,26 +45,35 @@ const RegisterForm = () => {
   //Todo: submit handler
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+
     if (!validateEmail(email)) return
     if (!validatePassword(password)) return
 
-    const formData = new FormData(e.currentTarget)
-    const userData = Object.fromEntries(formData.entries()) as TUserDataProps
+    setLoading(true)
 
-    const { data, error } = await authClient.signUp.email({
-      name: userData.name,
-      email: userData.email,
-      password: userData.password,
-      image: userData.image,
-    })
+    try {
+      const formData = new FormData(e.currentTarget)
+      const userData = Object.fromEntries(formData.entries()) as TUserDataProps
 
-    if (error) {
-      toast.error(error.message)
-      return
+      const { error } = await authClient.signUp.email({
+        name: userData.name,
+        email: userData.email,
+        password: userData.password,
+        image: userData.image,
+      })
+
+      if (error) {
+        toast.error(error.message)
+        return
+      }
+
+      toast.success('Account created successfully!')
+      router.push('/login')
+    } catch {
+      toast.error('Something went wrong!')
+    } finally {
+      setLoading(false)
     }
-    toast.success('Account created successfully!')
-    router.push('/login')
-    console.log(data)
   }
 
   return (
@@ -182,9 +193,17 @@ const RegisterForm = () => {
             {/* Register Button */}
             <Button
               type='submit'
-              className='h-11 w-full bg-gradient-to-r from-[#087F5B] to-[#20B981] font-semibold text-white transition-all duration-300 hover:from-[#066B4D] hover:to-[#10B981]'
+              disabled={loading}
+              className='h-11 w-full bg-linear-to-r from-[#087F5B] to-[#20B981] font-semibold text-white transition-all duration-300 hover:from-[#066B4D] hover:to-[#10B981] disabled:cursor-not-allowed disabled:opacity-70'
             >
-              Create Account
+              {loading ? (
+                <>
+                  <Spinner className='size-4 animate-spin' />
+                  Creating Account...
+                </>
+              ) : (
+                'Create Account'
+              )}
             </Button>
           </form>
 
