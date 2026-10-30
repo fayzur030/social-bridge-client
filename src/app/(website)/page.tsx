@@ -1,5 +1,7 @@
+import Banner from '@/components/home/Banner'
+
 const Home = () => {
-  return <div className='font-heading text-4xl'>Home</div>
+  return <Banner />
 }
 
 export default Home

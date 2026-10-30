@@ -41,5 +41,5 @@ Next.js 16.4 App Router frontend for ImpactHub (community events site). React 19
 - Base UI composition uses the `render` prop; `asChild` does not exist in this setup.
 - Add primitives with the locally pinned CLI, `npx shadcn add <name>` (not `@latest`), so output matches `components.json`; files land in `src/components/ui`.
 - Brand colors are hardcoded hex in components (`#087F5B` primary, `#066B4D` hover, gradient `#23AD56` → `#1C87ED`); shadcn CSS variables are still neutral. Reuse these hexes instead of inventing new colors.
-- Gotcha: `globals.css` re-declares `--font-heading: var(--font-sans)` after `--font-heading: var(--font-heading)`, so the `font-heading` utility renders the system stack, not Plus Jakarta from `src/app/layout.tsx`. Fix the `@theme` block, not the layout, if headings look wrong.
+- `font-heading` resolves to Plus Jakarta Sans (`--font-heading` set in `src/app/layout.tsx`); body text is Inter applied on `<html>`. Don't re-add a `--font-heading: var(--font-sans)` override in `@theme` — it silently swaps headings to the system stack.
 - Hand-written app code uses single quotes and no semicolons; generated `ui/` files use double quotes and semicolons. Static images live in `src/assets` and are imported, then passed to `next/image`.
