@@ -7,6 +7,7 @@ import {
   ArrowRight,
   Eye,
   EyeOff,
+  HeartPlus,
   LockKeyhole,
   Mail,
 } from 'lucide-react'
@@ -14,8 +15,8 @@ import {
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import logo from '@/assets/event_logo.png'
-import Image from 'next/image'
+// import logo from '@/assets/event_logo.png'
+// import Image from 'next/image'
 import { authClient } from '@/lib/auth-client'
 import { useRouter } from 'next/navigation'
 import { toast } from 'sonner'
@@ -85,8 +86,11 @@ const LoginForm = () => {
         <div className='rounded-2xl border bg-card p-6 shadow-lg shadow-black/5 sm:p-8'>
           {/* Heading */}
           <div className='mb-8 text-center'>
-            <div className='mx-auto mb-4 flex size-14 items-center justify-center rounded-2xl bg-primary/10 text-primary'>
+            {/* <div className='mx-auto mb-4 flex size-14 items-center justify-center rounded-2xl bg-primary/10 text-primary'>
               <Image src={logo} alt='logo' />
+            </div> */}
+            <div className='flex mx-auto mb-5 size-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[#A78BFA] to-[#7C3AED] shadow-[0_0_18px_rgba(124,58,237,0.25)]'>
+              <HeartPlus className='size-5 text-white' strokeWidth={2.5} />
             </div>
 
             <h1 className='text-2xl font-bold tracking-tight sm:text-3xl'>
@@ -112,7 +116,7 @@ const LoginForm = () => {
                   name='email'
                   type='email'
                   placeholder='Enter your email'
-                  className='h-11 pl-10 bg-[#F8FAFC] shadow'
+                  className='h-11 pl-10 bg-[#F8FAFC] shadow focus-visible:ring-[#7C3AED]'
                   required
                 />
               </div>
@@ -130,7 +134,7 @@ const LoginForm = () => {
                   name='password'
                   type={showPassword ? 'text' : 'password'}
                   placeholder='Enter your password'
-                  className='h-11 px-10 bg-[#F8FAFC] shadow'
+                  className='h-11 px-10 bg-[#F8FAFC] shadow focus-visible:ring-[#7C3AED]'
                   required
                 />
 
@@ -138,7 +142,7 @@ const LoginForm = () => {
                   type='button'
                   onClick={() => setShowPassword(!showPassword)}
                   aria-label={showPassword ? 'Hide password' : 'Show password'}
-                  className='absolute top-1/2 right-3 -translate-y-1/2 text-muted-foreground transition-colors hover:text-foreground'
+                  className='absolute top-1/2 right-3 -translate-y-1/2 text-muted-foreground transition-colors hover:text-[#7C3AED]'
                 >
                   {showPassword ? (
                     <EyeOff className='size-4' />
@@ -153,7 +157,7 @@ const LoginForm = () => {
             <Button
               type='submit'
               disabled={loading}
-              className='h-11 w-full bg-linear-to-r from-[#087F5B] to-[#20B981] font-semibold text-white transition-all duration-300 hover:from-[#066B4D] hover:to-[#10B981] disabled:cursor-not-allowed disabled:opacity-70'
+              className='h-11 w-full bg-linear-to-r from-[#7C3AED] to-[#4C1D95] font-semibold text-white transition-all duration-300 hover:from-[#6D28D9] hover:to-[#3B0764] disabled:cursor-not-allowed disabled:opacity-70'
             >
               {loading ? (
                 <>
@@ -220,7 +224,7 @@ const LoginForm = () => {
             Don&apos;t have an account?{' '}
             <Link
               href='/register'
-              className='font-semibold  transition-colors hover:underline text-[#066B4D]'
+              className='font-semibold transition-colors text-[#7C3AED] hover:text-[#4C1D95] hover:underline'
             >
               Register here
             </Link>

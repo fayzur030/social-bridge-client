@@ -3,7 +3,14 @@
 import { cn } from '@/lib/utils'
 import Link from 'next/link'
 import { Button, buttonVariants } from '../ui/button'
-import { CalendarPlus, CirclePlus, LogIn, LogOut } from 'lucide-react'
+import {
+  CalendarPlus,
+  CircleCheck,
+  CirclePlus,
+  LogIn,
+  LogOut,
+  Settings,
+} from 'lucide-react'
 import { authClient } from '@/lib/auth-client'
 import {
   DropdownMenu,
@@ -121,8 +128,15 @@ const NavbarAuth = ({ mobile = false, onNavigate }: NavbarAuthProps) => {
                 render={<Link href='/create-event' />}
                 className='cursor-pointer gap-2.5 rounded-lg px-2.5 py-2 text-sm text-neutral-700 focus:bg-[#15A1BF]/10 focus:text-[#1289a2]'
               >
-                <CirclePlus className='size-4 text-[#23AD56] hover:text-[#23AD56]' />
+                <Settings className='size-4 text-[#7C3AED] hover:text-[#23AD56]' />
                 Manage Events
+              </DropdownMenuItem>
+              <DropdownMenuItem
+                render={<Link href='/create-event' />}
+                className='cursor-pointer gap-2.5 rounded-lg px-2.5 py-2 text-sm text-neutral-700 focus:bg-[#15A1BF]/10 focus:text-[#1289a2]'
+              >
+                <CircleCheck className='size-4 text-[#23AD56] hover:text-[#23AD56]' />
+                Joined Events
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>

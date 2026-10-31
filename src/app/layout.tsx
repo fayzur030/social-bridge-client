@@ -16,7 +16,7 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'ImpactHub',
+  title: 'SocialBridge',
   description: 'Building stronger communities together.',
 }
 

@@ -4,7 +4,7 @@ import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import eventLogo from '@/assets/event_logo.png'
-import { Menu, X } from 'lucide-react'
+import { HeartPlus, Menu, X } from 'lucide-react'
 import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/utils'
 
@@ -40,23 +40,22 @@ const Navbar = () => {
         {/* Logo */}
         <Link
           href='/'
-          aria-label='ImpactHub home'
-          className='flex min-w-0 shrink items-center gap-2'
+          aria-label='SocialBridge home'
+          className='flex min-w-0 shrink items-center gap-2.5'
         >
-          <Image
-            src={eventLogo}
-            alt='ImpactHub logo'
-            priority
-            className='size-12 shrink-0 object-contain sm:size-10'
-          />
+          {/* Logo Icon */}
+          <div className='flex size-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[#A78BFA] to-[#7C3AED] shadow-[0_0_18px_rgba(124,58,237,0.25)]'>
+            <HeartPlus className='size-5 text-white' strokeWidth={2.5} />
+          </div>
 
-          <div className='hidden min-w-0 flex-col md:flex'>
-            <h1 className='bg-linear-to-r from-[#23AD56] to-[#1C87ED] bg-clip-text text-xl leading-tight font-bold text-transparent sm:text-2xl'>
-              ImpactHub
+          {/* Brand Name */}
+          <div className='flex min-w-0 flex-col'>
+            <h1 className='bg-gradient-to-r from-[#7C3AED] to-[#4C1D95] bg-clip-text text-lg font-extrabold tracking-tight text-transparent'>
+              SocialBridge
             </h1>
 
             <p className='hidden text-[11px] leading-tight text-muted-foreground sm:block'>
-              Together for a Better Tomorrow
+              Connecting communities
             </p>
           </div>
         </Link>
@@ -67,9 +66,9 @@ const Navbar = () => {
             href='/upcoming-events'
             aria-current={isUpcomingActive ? 'page' : undefined}
             className={cn(
-              'shrink-0 px-3 py-2 text-sm font-medium transition-colors',
+              'shrink-0 px-3 py-2 text-sm font-body transition-colors',
               isUpcomingActive
-                ? 'text-[#23AD56] '
+                ? 'text-[#06B6D4] '
                 : 'text-gray-600 hover:text-[#1C87ED]'
             )}
           >
@@ -85,7 +84,9 @@ const Navbar = () => {
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger
               type='button'
-              aria-label={open ? 'Close navigation menu' : 'Open navigation menu'}
+              aria-label={
+                open ? 'Close navigation menu' : 'Open navigation menu'
+              }
               className='flex size-10 items-center justify-center rounded-lg border bg-background transition-colors hover:bg-accent'
             >
               {open ? <X className='size-5' /> : <Menu className='size-5' />}
