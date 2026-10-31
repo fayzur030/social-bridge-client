@@ -24,25 +24,25 @@ const links = [
     matches: (pathname: string) => pathname === '/',
   },
   {
-    label: 'Events',
+    label: 'Upcoming Events',
     href: '/upcoming-events',
     matches: (pathname: string) => pathname.startsWith('/upcoming-events'),
   },
-  {
-    label: 'About',
-    href: '/#about',
-    matches: () => false,
-  },
-  {
-    label: 'Impact',
-    href: '/#impact',
-    matches: () => false,
-  },
-  {
-    label: 'Contact',
-    href: '/#contact',
-    matches: () => false,
-  },
+  // {
+  //   label: 'About',
+  //   href: '/#about',
+  //   matches: () => false,
+  // },
+  // {
+  //   label: 'Impact',
+  //   href: '/#impact',
+  //   matches: () => false,
+  // },
+  // {
+  //   label: 'Contact',
+  //   href: '/#contact',
+  //   matches: () => false,
+  // },
 ]
 
 const Navbar = () => {

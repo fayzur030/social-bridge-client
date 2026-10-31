@@ -241,6 +241,8 @@ const CreateEventForms = () => {
                   <Input
                     type='email'
                     name='email'
+                    defaultValue={user?.email}
+                    readOnly
                     placeholder='organizer@example.com'
                     className='h-12 rounded-xl border-input bg-background px-3 pl-10 text-foreground shadow-sm placeholder:text-muted-foreground'
                   />
