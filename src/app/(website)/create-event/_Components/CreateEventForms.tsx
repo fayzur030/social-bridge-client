@@ -1,8 +1,11 @@
+'use client'
 import { ArrowLeft, ImageIcon, Mail, MapPin, Sparkles, Tag } from 'lucide-react'
-
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
+import { toast } from 'sonner'
+import { authClient } from '@/lib/auth-client'
+import { useRouter } from 'next/navigation'
 
 const eventCategories = [
   'Donation',
@@ -25,7 +28,53 @@ const eventCategories = [
   'Charity',
 ]
 
+// todo: date validation
+const tomorrow = new Date()
+tomorrow.setDate(tomorrow.getDate() + 1)
+
+const minDate = `${tomorrow.getFullYear()}-${String(
+  tomorrow.getMonth() + 1
+).padStart(2, '0')}-${String(tomorrow.getDate()).padStart(2, '0')}`
+
 const CreateEventForms = () => {
+  const router = useRouter()
+  const { data: session } = authClient.useSession()
+  const user = session?.user
+
+  // todo: create event
+  const handleCreateEvent = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+
+    const form = e.currentTarget
+    const formData = new FormData(form)
+
+    const eventData = {
+      ...Object.fromEntries(formData.entries()),
+      email: user?.email,
+    }
+
+    try {
+      const res = await fetch('http://localhost:5000/create-events', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(eventData),
+      })
+
+      if (!res.ok) {
+        throw new Error('Failed to create event')
+      }
+
+      form.reset()
+      toast.success('Event created successfully!')
+      router.push('/upcoming-events')
+    } catch (error) {
+      console.error(error)
+      toast.error('Something went wrong!')
+    }
+  }
+
   return (
     <div className='min-h-screen bg-background px-4 py-8 text-foreground sm:px-6 lg:px-8'>
       <div className='mx-auto max-w-4xl'>
@@ -39,7 +88,10 @@ const CreateEventForms = () => {
         </button>
 
         {/* Form Card */}
-        <div className='rounded-[28px] border border-border bg-card p-5 shadow-[0_20px_60px_rgba(15,23,42,0.07)] sm:p-8'>
+        <form
+          onSubmit={handleCreateEvent}
+          className='rounded-[28px] border border-border bg-card p-5 shadow-[0_20px_60px_rgba(15,23,42,0.07)] sm:p-8'
+        >
           {/* Header */}
           <div className='mb-8 flex items-start gap-4'>
             <div className='flex size-11 shrink-0 items-center justify-center rounded-2xl bg-primary/10 text-primary'>
@@ -70,8 +122,9 @@ const CreateEventForms = () => {
               </label>
 
               <Input
+                name='title'
                 type='text'
-                placeholder='Clean Water Distribution - Mirpur 10, Dhaka'
+                placeholder='Enter event title'
                 className='h-12 rounded-xl border-input bg-background px-3 text-foreground shadow-sm placeholder:text-muted-foreground focus-visible:border-primary focus-visible:ring-primary/20'
               />
             </div>
@@ -87,6 +140,7 @@ const CreateEventForms = () => {
                   <select
                     aria-label='Event type'
                     defaultValue='Donation'
+                    name='eventType'
                     className='h-12 w-full appearance-none rounded-xl border border-input bg-background px-3 pr-10 text-base text-foreground shadow-sm outline-none transition focus:border-primary focus:ring-4 focus:ring-primary/10'
                   >
                     {eventCategories.map((category) => (
@@ -114,8 +168,9 @@ const CreateEventForms = () => {
                 </label>
 
                 <Input
+                  name='eventDate'
                   type='date'
-                  min={new Date().toISOString().split('T')[0]}
+                  min={minDate}
                   className='h-12 rounded-xl border-input bg-background px-3 pr-10 text-foreground shadow-sm focus-visible:border-primary focus-visible:ring-primary/20'
                 />
               </div>
@@ -130,6 +185,7 @@ const CreateEventForms = () => {
               <div className='relative'>
                 <Input
                   type='text'
+                  name='location'
                   placeholder='Mohammadpur Town Hall, Dhaka'
                   className='h-12 rounded-xl border-input bg-background px-3 pl-10 text-foreground shadow-sm placeholder:text-muted-foreground'
                 />
@@ -147,6 +203,7 @@ const CreateEventForms = () => {
               <div className='relative'>
                 <Input
                   type='url'
+                  name='thumbnail'
                   placeholder='https://images.unsplash.com/photo-...'
                   className='h-12 rounded-xl border-input bg-background px-3 pl-10 text-foreground shadow-sm placeholder:text-muted-foreground'
                 />
@@ -167,6 +224,7 @@ const CreateEventForms = () => {
               </label>
 
               <Textarea
+                name='description'
                 placeholder='Explain the purpose of the drive, volunteers required, items being distributed or tasks to complete.'
                 className='min-h-[120px] rounded-xl border-input bg-background px-3 py-3 text-foreground shadow-sm placeholder:text-muted-foreground focus-visible:border-primary focus-visible:ring-primary/20'
               />
@@ -182,6 +240,7 @@ const CreateEventForms = () => {
                 <div className='relative'>
                   <Input
                     type='email'
+                    name='email'
                     placeholder='organizer@example.com'
                     className='h-12 rounded-xl border-input bg-background px-3 pl-10 text-foreground shadow-sm placeholder:text-muted-foreground'
                   />
@@ -198,6 +257,7 @@ const CreateEventForms = () => {
                 <div className='relative'>
                   <Input
                     type='text'
+                    name='tags'
                     placeholder='Community, Relief, Donation'
                     className='h-12 rounded-xl border-input bg-background px-3 pl-10 text-foreground shadow-sm placeholder:text-muted-foreground'
                   />
@@ -210,12 +270,12 @@ const CreateEventForms = () => {
 
           {/* Publish Button */}
           <Button
-            type='button'
+            type='submit'
             className='mt-7 h-12 w-full rounded-xl bg-primary text-base font-semibold text-primary-foreground shadow-[0_10px_24px_rgba(22,163,74,0.2)] transition-colors hover:bg-primary/90'
           >
             Publish Event
           </Button>
-        </div>
+        </form>
       </div>
     </div>
   )
