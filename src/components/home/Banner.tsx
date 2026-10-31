@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import Link from 'next/link'
 import { Caveat } from 'next/font/google'
 import {
   ArrowRight,
@@ -24,77 +23,74 @@ const features = [
     icon: Users,
     title: 'Discover Events',
     description: 'Find and join local and global events.',
-    iconClassName: 'bg-[#7C3AED]/10 text-[#7C3AED]',
+    iconClassName: 'bg-primary/10 text-primary',
   },
   {
     icon: Heart,
     title: 'Support Causes',
     description: 'Contribute to verified causes and make a real difference.',
-    iconClassName: 'bg-[#06B6D4]/10 text-[#06B6D4]',
+    iconClassName: 'bg-[#047857]/10 text-[#047857]',
   },
   {
     icon: CalendarDays,
     title: 'Connect Community',
     description: 'Collaborate with NGOs, volunteers and changemakers.',
-    iconClassName: 'bg-[#7C3AED]/10 text-[#7C3AED]',
+    iconClassName: 'bg-primary/10 text-primary',
   },
   {
     icon: Leaf,
     title: 'Track Impact',
     description: 'See the real impact of your participation.',
-    iconClassName: 'bg-[#06B6D4]/10 text-[#06B6D4]',
+    iconClassName: 'bg-[#047857]/10 text-[#047857]',
   },
 ]
 
 const Banner = () => {
   return (
-    <section className='relative isolate overflow-hidden bg-white'>
+    <section className='relative isolate overflow-hidden bg-background'>
       {/* Soft background washes */}
       <div
         aria-hidden='true'
-        className='pointer-events-none absolute -top-24 -right-24 size-72 rounded-full bg-[#7C3AED]/10 blur-3xl'
+        className='pointer-events-none absolute -top-24 -right-24 size-72 rounded-full bg-primary/10 blur-3xl'
       />
       <div
         aria-hidden='true'
-        className='pointer-events-none absolute -bottom-32 -left-24 size-80 rounded-full bg-[#06B6D4]/10 blur-3xl'
+        className='pointer-events-none absolute -bottom-32 -left-24 size-80 rounded-full bg-[#047857]/10 blur-3xl'
       />
 
       <div className='relative mx-auto w-full max-w-7xl px-4 py-12 sm:px-6 sm:py-14 lg:px-8 lg:py-10'>
         <div className='grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-8'>
           {/* Copy */}
           <div className='text-center lg:text-left'>
-            <span className='inline-flex items-center gap-2 rounded-full bg-[#7C3AED]/10 px-4 py-1.5 text-xs font-semibold text-[#7C3AED] sm:text-xs'>
+            <span className='inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-xs font-semibold text-primary sm:text-xs'>
               <Leaf className='size-4 shrink-0' />
               Social Development Events Platform
             </span>
 
-            <h1 className='font-heading mt-4 text-4xl leading-[1.06] font-bold tracking-tight text-[#0F172A] sm:text-5xl lg:text-[3.3rem]'>
+            <h1 className='font-heading mt-4 text-4xl leading-[1.06] font-bold tracking-tight text-foreground sm:text-5xl lg:text-[3.3rem]'>
               Small Actions
               <br />
-              Create <span className='text-[#7C3AED]'>Big</span>{' '}
-              <span className='text-[#06B6D4]'>Change</span>
+              Create <span className='text-primary'>Big</span>{' '}
+              <span className='text-[#047857]'>Change</span>
             </h1>
 
-            <p className='mx-auto mt-4 max-w-lg text-xs leading-relaxed text-slate-600 md:text-base lg:mx-0 '>
+            <p className='mx-auto mt-4 max-w-lg text-xs leading-relaxed text-muted-foreground md:text-base lg:mx-0'>
               Join events, support causes, and be part of a community that works
               together for a better, more inclusive and sustainable tomorrow.
             </p>
 
             <div className='mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center lg:mt-5 lg:justify-start'>
-              <Button
-                variant={'default'}
-                size='lg'
-                className='w-full sm:w-auto'
-              >
+              <Button variant='default' size='lg' className='w-full sm:w-auto'>
                 Explore Events
                 <ArrowRight className='size-4' />
               </Button>
+
               <Button
                 variant='outline'
                 size='lg'
-                className='w-full sm:w-auto cursor-pointer font-semibold text-gray-700'
+                className='w-full cursor-pointer font-semibold text-foreground sm:w-auto'
               >
-                <CalendarPlus className='size-5 text-gray-600' />
+                <CalendarPlus className='size-5 text-primary' />
                 Create An Event
               </Button>
             </div>
@@ -112,10 +108,12 @@ const Banner = () => {
                     >
                       <Icon className='size-5' />
                     </span>
-                    <h2 className='text-sm font-semibold text-[#0F172A]'>
+
+                    <h2 className='text-sm font-semibold text-foreground'>
                       {title}
                     </h2>
-                    <p className='text-xs leading-snug text-slate-500 lg:text-[11px] lg:leading-tight'>
+
+                    <p className='text-xs leading-snug text-muted-foreground lg:text-[11px] lg:leading-tight'>
                       {description}
                     </p>
                   </li>
@@ -128,14 +126,15 @@ const Banner = () => {
           <div
             className={`${caveat.variable} relative mx-auto w-full max-w-md lg:max-w-none`}
           >
-            <div className='mb-2 text-right text-[#0F172A] sm:mb-4'>
+            <div className='mb-2 text-right text-foreground sm:mb-4'>
               <p
                 aria-hidden='true'
                 className='mb-1 flex justify-end gap-1.5 pr-2'
               >
-                <span className='h-1 w-4 rotate-12 rounded-full bg-[#7C3AED]' />
-                <span className='h-1 w-4 rotate-12 rounded-full bg-[#7C3AED]' />
+                <span className='h-1 w-4 rotate-12 rounded-full bg-primary' />
+                <span className='h-1 w-4 rotate-12 rounded-full bg-primary' />
               </p>
+
               <p
                 style={{ fontFamily: 'var(--font-script)' }}
                 className='text-2xl leading-[1.1] sm:text-3xl'
@@ -147,7 +146,7 @@ const Banner = () => {
                   <span className='relative z-10'>Tomorrow</span>
                   <span
                     aria-hidden='true'
-                    className='absolute inset-x-0 bottom-0 h-[3px] rounded-full bg-[#06B6D4]'
+                    className='absolute inset-x-0 bottom-0 h-[3px] rounded-full bg-[#047857]'
                   />
                 </span>
               </p>

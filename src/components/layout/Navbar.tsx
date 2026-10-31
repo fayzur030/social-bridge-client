@@ -27,8 +27,8 @@ const Navbar = () => {
     cn(
       'block rounded-lg px-4 py-3 text-sm font-medium transition-colors',
       active
-        ? 'bg-[#23AD56]/10 text-[#23AD56]'
-        : 'text-muted-foreground hover:bg-accent hover:text-[#1C87ED]'
+        ? 'bg-primary/10 text-primary'
+        : 'text-muted-foreground hover:bg-accent hover:text-primary'
     )
 
   return (
@@ -44,13 +44,13 @@ const Navbar = () => {
           className='flex min-w-0 shrink items-center gap-2.5'
         >
           {/* Logo Icon */}
-          <div className='flex size-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[#A78BFA] to-[#7C3AED] shadow-[0_0_18px_rgba(124,58,237,0.25)]'>
+          <div className='flex size-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[#86EFAC] to-[#16A34A] shadow-[0_0_18px_rgba(22,163,74,0.25)]'>
             <HeartPlus className='size-5 text-white' strokeWidth={2.5} />
           </div>
 
           {/* Brand Name */}
           <div className='flex min-w-0 flex-col'>
-            <h1 className='bg-gradient-to-r from-[#7C3AED] to-[#4C1D95] bg-clip-text text-lg font-extrabold tracking-tight text-transparent'>
+            <h1 className='bg-gradient-to-r from-[#16A34A] to-[#047857] bg-clip-text text-lg font-extrabold tracking-tight text-transparent'>
               SocialBridge
             </h1>
 
@@ -68,8 +68,8 @@ const Navbar = () => {
             className={cn(
               'shrink-0 px-3 py-2 text-sm font-body transition-colors',
               isUpcomingActive
-                ? 'text-[#06B6D4] '
-                : 'text-gray-600 hover:text-[#1C87ED]'
+                ? 'text-primary'
+                : 'text-muted-foreground hover:text-primary'
             )}
           >
             Upcoming Events
@@ -100,12 +100,12 @@ const Navbar = () => {
                 <SheetTitle className='flex items-center gap-2'>
                   <Image
                     src={eventLogo}
-                    alt='ImpactHub logo'
+                    alt='SocialBridge logo'
                     className='size-10 object-contain'
                   />
 
-                  <span className='bg-linear-to-r from-[#23AD56] to-[#1C87ED] bg-clip-text text-xl font-bold text-transparent'>
-                    ImpactHub
+                  <span className='bg-gradient-to-r from-[#16A34A] to-[#047857] bg-clip-text text-xl font-bold text-transparent'>
+                    SocialBridge
                   </span>
                 </SheetTitle>
               </SheetHeader>
@@ -121,7 +121,7 @@ const Navbar = () => {
                   Upcoming Events
                 </Link>
 
-                {/* Account actions */}
+                {/* Account Actions */}
                 <NavbarAuth mobile onNavigate={() => setOpen(false)} />
               </div>
 
