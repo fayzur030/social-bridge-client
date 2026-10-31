@@ -49,10 +49,10 @@ const features = [
 
 const FeatureSection = () => {
   return (
-    <section className='bg-slate-50 py-20 sm:py-24'>
+    <section className=' py-20 sm:py-24'>
       <div className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
         <div className='mx-auto mb-12 max-w-2xl text-center'>
-          <div className='mb-4 inline-flex items-center gap-2 rounded-full border border-[#23AD56]/15 bg-white px-3 py-1.5 text-xs font-semibold tracking-[0.2em] text-[#23AD56] uppercase shadow-sm'>
+          <div className='mb-4 inline-flex items-center gap-2 rounded-full border border-[#23AD56]/15  px-3 py-1.5 text-xs font-semibold tracking-[0.2em] text-[#23AD56] uppercase shadow-sm'>
             <Sparkles className='size-3.5' />
             Features
           </div>
@@ -71,7 +71,7 @@ const FeatureSection = () => {
           {features.map(({ icon: Icon, title, description, accent }) => (
             <Card
               key={title}
-              className='group relative overflow-hidden border border-slate-200/80 bg-white shadow-[0_12px_35px_rgba(15,23,42,0.04)] transition-all duration-300 hover:-translate-y-1 hover:border-[#23AD56]/30 hover:shadow-[0_18px_42px_rgba(35,173,86,0.12)]'
+              className='group relative overflow-hidden border transition-all duration-300 hover:-translate-y-1 hover:border-[#23AD56]/30 hover:shadow-[0_18px_42px_rgba(35,173,86,0.12)]'
             >
               <div className='absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#23AD56] to-[#1C87ED]' />
 

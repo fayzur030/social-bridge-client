@@ -1,165 +1,88 @@
 import Image from 'next/image'
-import { Caveat } from 'next/font/google'
-import {
-  ArrowRight,
-  CalendarDays,
-  Heart,
-  Leaf,
-  Users,
-  CalendarPlus,
-} from 'lucide-react'
+import Link from 'next/link'
+import { ArrowRight, Leaf } from 'lucide-react'
+
 import heroImage from '@/assets/hero.png'
-import { Button } from '@/components/ui/button'
-
-const caveat = Caveat({
-  subsets: ['latin'],
-  weight: '600',
-  variable: '--font-script',
-  display: 'swap',
-})
-
-const features = [
-  {
-    icon: Users,
-    title: 'Discover Events',
-    description: 'Find and join local and global events.',
-    iconClassName: 'bg-primary/10 text-primary',
-  },
-  {
-    icon: Heart,
-    title: 'Support Causes',
-    description: 'Contribute to verified causes and make a real difference.',
-    iconClassName: 'bg-[#047857]/10 text-[#047857]',
-  },
-  {
-    icon: CalendarDays,
-    title: 'Connect Community',
-    description: 'Collaborate with NGOs, volunteers and changemakers.',
-    iconClassName: 'bg-primary/10 text-primary',
-  },
-  {
-    icon: Leaf,
-    title: 'Track Impact',
-    description: 'See the real impact of your participation.',
-    iconClassName: 'bg-[#047857]/10 text-[#047857]',
-  },
-]
 
 const Banner = () => {
   return (
-    <section className='relative isolate overflow-hidden bg-background'>
-      {/* Soft background washes */}
+    <section
+      id='about'
+      className='relative isolate overflow-hidden border-b border-border bg-background text-foreground'
+    >
+      {/* Background Gradient */}
       <div
         aria-hidden='true'
-        className='pointer-events-none absolute -top-24 -right-24 size-72 rounded-full bg-primary/10 blur-3xl'
+        className='pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_78%_48%,rgba(73,177,47,0.15),transparent_38%),linear-gradient(105deg,var(--background)_0%,var(--background)_55%,var(--accent)_100%)]'
       />
+
+      {/* Background Glow */}
       <div
         aria-hidden='true'
-        className='pointer-events-none absolute -bottom-32 -left-24 size-80 rounded-full bg-[#047857]/10 blur-3xl'
+        className='pointer-events-none absolute -right-32 bottom-[-18rem] size-[34rem] rounded-full bg-primary/15 blur-[100px]'
       />
 
-      <div className='relative mx-auto w-full max-w-7xl px-4 py-12 sm:px-6 sm:py-14 lg:px-8 lg:py-10'>
-        <div className='grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-8'>
-          {/* Copy */}
-          <div className='text-center lg:text-left'>
-            <span className='inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-xs font-semibold text-primary sm:text-xs'>
-              <Leaf className='size-4 shrink-0' />
-              Social Development Events Platform
-            </span>
+      <div className='relative mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-8 px-6 py-10 sm:min-h-[280px] sm:grid-cols-[1fr_1fr] sm:gap-0 sm:py-7 lg:min-h-screen lg:px-8'>
+        {/* Content */}
+        <div className='relative z-10'>
+          {/* Badge */}
+          <span className='inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-3 py-1.5 text-[11px] font-medium leading-none text-primary'>
+            <Leaf className='size-3.5 shrink-0 fill-primary text-primary' />
+            Together for a Better Tomorrow
+          </span>
 
-            <h1 className='font-heading mt-4 text-4xl leading-[1.06] font-bold tracking-tight text-foreground sm:text-5xl lg:text-[3.3rem]'>
-              Small Actions
-              <br />
-              Create <span className='text-primary'>Big</span>{' '}
-              <span className='text-[#047857]'>Change</span>
-            </h1>
+          {/* Heading */}
+          <h1 className='mt-3 text-[clamp(2.15rem,5.25vw,4rem)] leading-[1.02] font-extrabold tracking-[-0.045em] text-foreground'>
+            Join Events.
+            <br />
+            <span className='text-primary'>Create Impact.</span>
+          </h1>
 
-            <p className='mx-auto mt-4 max-w-lg text-xs leading-relaxed text-muted-foreground md:text-base lg:mx-0'>
-              Join events, support causes, and be part of a community that works
-              together for a better, more inclusive and sustainable tomorrow.
-            </p>
+          {/* Description */}
+          <p className='mt-3 max-w-[365px] text-[13px] leading-[1.45] text-muted-foreground sm:text-[13.5px]'>
+            SocialBridge connects people with meaningful events to build a more
+            inclusive, active and developed society.
+          </p>
 
-            <div className='mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center lg:mt-5 lg:justify-start'>
-              <Button variant='default' size='lg' className='w-full sm:w-auto'>
-                Explore Events
-                <ArrowRight className='size-4' />
-              </Button>
-
-              <Button
-                variant='outline'
-                size='lg'
-                className='w-full cursor-pointer font-semibold text-foreground sm:w-auto'
-              >
-                <CalendarPlus className='size-5 text-primary' />
-                Create An Event
-              </Button>
-            </div>
-
-            {/* Feature cards */}
-            <ul
-              id='features'
-              className='mt-8 grid scroll-mt-24 grid-cols-2 gap-x-4 gap-y-6 text-left sm:gap-x-6 lg:mt-7 lg:grid-cols-4 lg:gap-x-4'
+          {/* Buttons */}
+          <div className='mt-4 flex flex-wrap items-center gap-2'>
+            <Link
+              href='/upcoming-events'
+              className='inline-flex h-9 items-center justify-center gap-2 rounded-full bg-primary px-4 text-xs font-bold text-primary-foreground shadow-sm shadow-primary/20 transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background'
             >
-              {features.map(
-                ({ icon: Icon, title, description, iconClassName }) => (
-                  <li key={title} className='flex flex-col gap-2'>
-                    <span
-                      className={`flex size-9 shrink-0 items-center justify-center rounded-xl sm:size-10 ${iconClassName}`}
-                    >
-                      <Icon className='size-5' />
-                    </span>
+              Explore Events
+              <ArrowRight className='size-4' />
+            </Link>
 
-                    <h2 className='text-sm font-semibold text-foreground'>
-                      {title}
-                    </h2>
-
-                    <p className='text-xs leading-snug text-muted-foreground lg:text-[11px] lg:leading-tight'>
-                      {description}
-                    </p>
-                  </li>
-                )
-              )}
-            </ul>
+            <Link
+              href='/create-event'
+              className='inline-flex h-9 items-center justify-center rounded-full border border-border bg-card/70 px-4 text-xs font-semibold text-foreground transition-colors hover:border-primary/50 hover:bg-accent hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background'
+            >
+              Create Event
+            </Link>
           </div>
+        </div>
 
-          {/* Imagery */}
+        {/* Hero Image */}
+        <div className='relative mx-auto h-56 w-full max-w-xl overflow-hidden rounded-[2rem] sm:absolute sm:inset-y-0 sm:right-0 sm:mx-0 sm:h-full sm:w-[53%] sm:max-w-none sm:rounded-none'>
+          <Image
+            src={heroImage}
+            alt='Volunteers planting a tree together'
+            priority
+            sizes='(min-width: 640px) 53vw, 100vw'
+            className='absolute inset-0 size-full scale-[1.25] object-cover object-[82%_75%]'
+          />
+
+          {/* Image Overlay */}
           <div
-            className={`${caveat.variable} relative mx-auto w-full max-w-md lg:max-w-none`}
-          >
-            <div className='mb-2 text-right text-foreground sm:mb-4'>
-              <p
-                aria-hidden='true'
-                className='mb-1 flex justify-end gap-1.5 pr-2'
-              >
-                <span className='h-1 w-4 rotate-12 rounded-full bg-primary' />
-                <span className='h-1 w-4 rotate-12 rounded-full bg-primary' />
-              </p>
+            aria-hidden='true'
+            className='absolute inset-0 bg-gradient-to-r from-background via-background/25 to-transparent sm:from-background sm:via-background/15'
+          />
 
-              <p
-                style={{ fontFamily: 'var(--font-script)' }}
-                className='text-2xl leading-[1.1] sm:text-3xl'
-              >
-                Better Communities
-                <br />
-                Stronger{' '}
-                <span className='relative inline-block'>
-                  <span className='relative z-10'>Tomorrow</span>
-                  <span
-                    aria-hidden='true'
-                    className='absolute inset-x-0 bottom-0 h-[3px] rounded-full bg-[#047857]'
-                  />
-                </span>
-              </p>
-            </div>
-
-            <Image
-              src={heroImage}
-              alt='Volunteers planting a tree together'
-              priority
-              sizes='(min-width: 1024px) 42vw, (min-width: 640px) 28rem, 100vw'
-              className='h-auto w-full'
-            />
-          </div>
+          <div
+            aria-hidden='true'
+            className='absolute inset-0 bg-gradient-to-t from-background/30 via-transparent to-background/10'
+          />
         </div>
       </div>
     </section>

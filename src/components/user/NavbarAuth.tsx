@@ -64,7 +64,7 @@ const NavbarAuth = ({ mobile = false, onNavigate }: NavbarAuthProps) => {
     <div
       className={cn(
         'flex items-center gap-4',
-        mobile ? 'w-full flex-col' : 'hidden md:flex'
+        mobile ? 'w-full flex-col' : 'hidden sm:flex'
       )}
     >
       {!mobile && user && (
@@ -74,28 +74,29 @@ const NavbarAuth = ({ mobile = false, onNavigate }: NavbarAuthProps) => {
               <TooltipTrigger
                 render={
                   <DropdownMenuTrigger
-                    className='group flex items-center rounded-full border border-neutral-200 bg-white transition-all duration-200 hover:border-[#15A1BF]/40 hover:bg-[#15A1BF]/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#15A1BF]/30'
+                    className='group flex items-center rounded-full border border-border bg-card transition-all duration-200 hover:border-primary/40 hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30'
                     aria-label='Open user menu'
                   />
                 }
               >
-                <Avatar className='size-10 border border-amber-900 ring-2 ring-white'>
+                <Avatar className='size-10 border border-border ring-2 ring-background'>
                   <AvatarImage
                     src={user.image ?? undefined}
                     alt={user.name ?? 'User avatar'}
                   />
-                  <AvatarFallback className='bg-[#15A1BF]/10 text-xs font-semibold text-[#1289a2]'>
+                  <AvatarFallback className='bg-primary/10 text-xs font-semibold text-primary'>
                     {initials}
                   </AvatarFallback>
-                  <AvatarBadge className='border-2 border-white bg-emerald-500' />
+                  <AvatarBadge className='border-2 border-background bg-emerald-500' />
                 </Avatar>
               </TooltipTrigger>
               <TooltipContent>{user.name ?? 'User'}</TooltipContent>
             </Tooltip>
+
             <DropdownMenuContent
               align='end'
               sideOffset={10}
-              className='w-56 rounded-xl border border-neutral-200 bg-white p-1.5 shadow-lg shadow-neutral-900/5'
+              className='w-56 rounded-xl border border-border bg-popover p-1.5 shadow-lg shadow-black/5'
             >
               <div className='flex items-center gap-3 px-2.5 py-3'>
                 <Avatar className='size-10'>
@@ -103,39 +104,42 @@ const NavbarAuth = ({ mobile = false, onNavigate }: NavbarAuthProps) => {
                     src={user.image ?? undefined}
                     alt={user.name ?? 'User avatar'}
                   />
-                  <AvatarFallback className='bg-[#15A1BF]/10 text-sm font-semibold text-[#1289a2]'>
+                  <AvatarFallback className='bg-primary/10 text-sm font-semibold text-primary'>
                     {initials}
                   </AvatarFallback>
                 </Avatar>
 
                 <div className='min-w-0 flex-1'>
-                  <p className='truncate text-sm font-semibold text-neutral-900'>
+                  <p className='truncate text-sm font-semibold text-popover-foreground'>
                     {user.name}
                   </p>
-                  <p className='truncate text-xs text-neutral-500'>
+                  <p className='truncate text-xs text-muted-foreground'>
                     {user.email}
                   </p>
                 </div>
               </div>
+
               <DropdownMenuItem
                 render={<Link href='/create-event' />}
-                className='cursor-pointer gap-2.5 rounded-lg px-2.5 py-2 text-sm text-neutral-700 focus:bg-[#15A1BF]/10 focus:text-[#1289a2]'
+                className='cursor-pointer gap-2.5 rounded-lg px-2.5 py-2 text-sm text-popover-foreground focus:bg-accent focus:text-primary'
               >
-                <CirclePlus className='size-4 text-[#23AD56] hover:text-[#23AD56]' />
+                <CirclePlus className='size-4 text-primary' />
                 Create Event
               </DropdownMenuItem>
+
               <DropdownMenuItem
                 render={<Link href='/create-event' />}
-                className='cursor-pointer gap-2.5 rounded-lg px-2.5 py-2 text-sm text-neutral-700 focus:bg-[#15A1BF]/10 focus:text-[#1289a2]'
+                className='cursor-pointer gap-2.5 rounded-lg px-2.5 py-2 text-sm text-popover-foreground focus:bg-accent focus:text-primary'
               >
-                <Settings className='size-4 text-[#7C3AED] hover:text-[#23AD56]' />
+                <Settings className='size-4 text-[#047857]' />
                 Manage Events
               </DropdownMenuItem>
+
               <DropdownMenuItem
                 render={<Link href='/create-event' />}
-                className='cursor-pointer gap-2.5 rounded-lg px-2.5 py-2 text-sm text-neutral-700 focus:bg-[#15A1BF]/10 focus:text-[#1289a2]'
+                className='cursor-pointer gap-2.5 rounded-lg px-2.5 py-2 text-sm text-popover-foreground focus:bg-accent focus:text-primary'
               >
-                <CircleCheck className='size-4 text-[#23AD56] hover:text-[#23AD56]' />
+                <CircleCheck className='size-4 text-emerald-600' />
                 Joined Events
               </DropdownMenuItem>
             </DropdownMenuContent>
@@ -144,17 +148,18 @@ const NavbarAuth = ({ mobile = false, onNavigate }: NavbarAuthProps) => {
       )}
 
       {mobile && user && (
-        <div className='w-full border-b pb-3'>
+        <div className='w-full border-b border-border pb-3'>
           <div className='flex items-center gap-3 px-1 py-2'>
             <Avatar className='size-10'>
               <AvatarImage
                 src={user.image ?? undefined}
                 alt={user.name ?? 'User avatar'}
               />
-              <AvatarFallback className='bg-[#15A1BF]/10 text-sm font-semibold text-[#1289a2]'>
+              <AvatarFallback className='bg-primary/10 text-sm font-semibold text-primary'>
                 {initials}
               </AvatarFallback>
             </Avatar>
+
             <div className='min-w-0'>
               <p className='truncate text-sm font-semibold'>{user.name}</p>
               <p className='truncate text-xs text-muted-foreground'>
@@ -162,12 +167,13 @@ const NavbarAuth = ({ mobile = false, onNavigate }: NavbarAuthProps) => {
               </p>
             </div>
           </div>
+
           <Link
             href='/create-event'
             onClick={onNavigate}
-            className='flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent'
+            className='flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent hover:text-primary'
           >
-            <CalendarPlus className='size-4' />
+            <CalendarPlus className='size-4 text-primary' />
             Create Event
           </Link>
         </div>
