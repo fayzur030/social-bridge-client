@@ -8,4 +8,6 @@ export interface IEvents {
   description: string
   email: string
   tags: string
+  image: string
+  name: string
 }

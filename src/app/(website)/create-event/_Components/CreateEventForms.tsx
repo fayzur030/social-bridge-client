@@ -51,6 +51,8 @@ const CreateEventForms = () => {
     const eventData = {
       ...Object.fromEntries(formData.entries()),
       email: user?.email,
+      name: user?.name,
+      image: user?.image,
     }
 
     try {

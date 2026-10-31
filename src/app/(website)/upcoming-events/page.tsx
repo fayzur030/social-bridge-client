@@ -18,7 +18,7 @@ const getUpcomingEvents = async (): Promise<IEvents[]> => {
 
 const UpcomingEvents = async () => {
   const events = await getUpcomingEvents()
-  console.log(events)
+
   return (
     <section className='mx-auto grid max-w-7xl grid-cols-1 gap-5 px-4 py-10 sm:px-6 lg:grid-cols-3 lg:gap-6 lg:px-8'>
       {events.map((event) => (
