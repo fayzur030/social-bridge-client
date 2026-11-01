@@ -7,6 +7,7 @@ import { toast } from 'sonner'
 import { authClient } from '@/lib/auth-client'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
+import { getTokenFromClient } from '@/lib/getTokenFromClient'
 
 const eventCategories = [
   'Donation',
@@ -42,7 +43,7 @@ const CreateEventForms = () => {
   const router = useRouter()
   const { data: session } = authClient.useSession()
   const user = session?.user
-  console.log(user)
+
   // todo: create event
   const handleCreateEvent = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -58,10 +59,14 @@ const CreateEventForms = () => {
     }
 
     try {
+      // todo : Get JWT token from Better Auth
+      const jwtToken = await getTokenFromClient()
+
       const res = await fetch('http://localhost:5000/create-events', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          Authorization: `Bearer ${jwtToken}`,
         },
         body: JSON.stringify(eventData),
       })
@@ -281,7 +286,7 @@ const CreateEventForms = () => {
           <Button
             type='submit'
             className='mt-7 h-12 w-full rounded-xl bg-primary text-base font-semibold text-primary-foreground shadow-[0_10px_24px_rgba(22,163,74,0.2)] transition-colors hover:bg-primary/90'
-          >  
+          >
             Publish Event
           </Button>
         </form>

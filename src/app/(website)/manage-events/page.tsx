@@ -7,6 +7,7 @@ import { Plus } from 'lucide-react'
 import { headers } from 'next/headers'
 import Link from 'next/link'
 import ManageEventCard from './_Components/ManageEventCard'
+import { getTokenFromServer } from '@/lib/getTokenFromServer'
 
 const getManageEvents = async (): Promise<IEvents[]> => {
   const session = await auth.api.getSession({
@@ -15,8 +16,16 @@ const getManageEvents = async (): Promise<IEvents[]> => {
   const user = session?.user
 
   try {
+    const jwtToken = await getTokenFromServer()
+
     const res = await fetch(
-      `http://localhost:5000/manage-events/${user?.email}`
+      `http://localhost:5000/manage-events/${user?.email}`,
+      {
+        cache: 'no-store',
+        headers: {
+          Authorization: `Bearer ${jwtToken}`,
+        },
+      }
     )
     if (!res.ok) {
       throw new Error('Fetch to Failed manage events data')
@@ -34,7 +43,7 @@ const ManageEvents = async () => {
   const sortedManageEvents = [...manageEvents].sort((a, b) =>
     b._id.localeCompare(a._id)
   )
-
+  console.log(sortedManageEvents)
   return (
     <section className='px-4 py-10 sm:px-6 lg:px-8'>
       <div className='mx-auto max-w-7xl'>

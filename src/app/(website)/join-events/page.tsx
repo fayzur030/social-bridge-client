@@ -3,6 +3,7 @@ import { headers } from 'next/headers'
 import EventCardGrid from '../upcoming-events/_Components/EventCardGrid'
 import { JoinEventType } from '@/types/joinEvent.type'
 import JoinEventBanner from './_Components/JoinEventBanner'
+import { getTokenFromServer } from '@/lib/getTokenFromServer'
 
 const getJoinEvent = async (): Promise<JoinEventType[]> => {
   // Get current user session
@@ -18,8 +19,15 @@ const getJoinEvent = async (): Promise<JoinEventType[]> => {
 
   // Fetch joined event data
   try {
+    const jwtToken = await getTokenFromServer()
     const res = await fetch(
-      `http://localhost:5000/joined-events/${encodeURIComponent(user.email)}`
+      `http://localhost:5000/joined-events/${encodeURIComponent(user.email)}`,
+      {
+        cache: 'no-cache',
+        headers: {
+          Authorization: `Bearer ${jwtToken}`,
+        },
+      }
     )
 
     if (!res.ok) {
