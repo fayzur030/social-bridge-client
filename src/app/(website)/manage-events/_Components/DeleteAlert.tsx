@@ -1,0 +1,96 @@
+'use client'
+import { Loader2, Trash2, Trash2Icon } from 'lucide-react'
+
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogMedia,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from '@/components/ui/alert-dialog'
+import { Button } from '@/components/ui/button'
+import { useRouter } from 'next/navigation'
+import { toast } from 'sonner'
+import { IEvents } from '@/types/event.types'
+import { useState } from 'react'
+
+interface IEventProps {
+  event: IEvents
+}
+
+export function DeleteAlert({ event }: IEventProps) {
+  const [isLoading, setIsLoading] = useState(false)
+  const router = useRouter()
+  const handleDeleteEvent = async (id: string) => {
+    setIsLoading(true)
+    try {
+      const res = await fetch(
+        `http://localhost:5000/delete-manage-events/${id}`,
+        {
+          cache: 'no-store',
+          method: 'DELETE',
+        }
+      )
+      if (!res.ok) {
+        console.log('Failed to delete booking')
+      }
+
+      toast.success(`Delete ${event.title} successfully`)
+      router.refresh()
+    } catch (error) {
+      console.log(error)
+      toast.error('Something went wrong!')
+    } finally {
+      setIsLoading(false)
+    }
+  }
+  return (
+    <AlertDialog>
+      <AlertDialogTrigger
+        render={
+          <Button variant='destructive'>
+            <Trash2 aria-hidden='true' /> Delete{' '}
+          </Button>
+        }
+      />
+      <AlertDialogContent size='md'>
+        <AlertDialogHeader>
+          <AlertDialogMedia className='bg-destructive/10 text-destructive dark:bg-destructive/20 dark:text-destructive'>
+            <Trash2Icon />
+          </AlertDialogMedia>
+
+          <AlertDialogTitle>Delete Event?</AlertDialogTitle>
+
+          <AlertDialogDescription>
+            Are you sure you want to delete this event? This action cannot be
+            undone, and all event information will be permanently removed.
+          </AlertDialogDescription>
+        </AlertDialogHeader>
+
+        <AlertDialogFooter>
+          <AlertDialogCancel variant='outline'>Cancel</AlertDialogCancel>
+
+          <AlertDialogAction
+            onClick={() => handleDeleteEvent(event._id)}
+            variant='destructive'
+            disabled={isLoading}
+          >
+            {isLoading ? (
+              <>
+                <Loader2 className='size-4 animate-spin' />
+                Deleting...
+              </>
+            ) : (
+              'Delete Event'
+            )}
+          </AlertDialogAction>
+        </AlertDialogFooter>
+      </AlertDialogContent>
+    </AlertDialog>
+  )
+}

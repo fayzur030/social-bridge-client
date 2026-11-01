@@ -6,6 +6,7 @@ import { Textarea } from '@/components/ui/textarea'
 import { toast } from 'sonner'
 import { authClient } from '@/lib/auth-client'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 
 const eventCategories = [
   'Donation',
@@ -81,13 +82,15 @@ const CreateEventForms = () => {
     <div className='min-h-screen bg-background px-4 py-8 text-foreground sm:px-6 lg:px-8'>
       <div className='mx-auto max-w-4xl'>
         {/* Back Button */}
-        <button
-          type='button'
-          className='mb-5 inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-2 text-sm font-medium text-muted-foreground shadow-sm transition hover:border-primary/40 hover:bg-accent hover:text-primary'
-        >
-          <ArrowLeft className='size-4' />
-          Back to Upcoming Events
-        </button>
+        <Link href={'/upcoming-events'}>
+          <button
+            type='button'
+            className='mb-5 inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-2 text-sm font-medium text-muted-foreground shadow-sm transition hover:border-primary/40 hover:bg-accent hover:text-primary'
+          >
+            <ArrowLeft className='size-4' />
+            Back to Upcoming Events
+          </button>
+        </Link>
 
         {/* Form Card */}
         <form
