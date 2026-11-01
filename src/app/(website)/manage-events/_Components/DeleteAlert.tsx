@@ -1,6 +1,6 @@
 'use client'
-import { Loader2, Trash2, Trash2Icon } from 'lucide-react'
 
+import { Loader2, Trash2, Trash2Icon } from 'lucide-react'
 import {
   AlertDialog,
   AlertDialogAction,
@@ -26,38 +26,48 @@ interface IEventProps {
 export function DeleteAlert({ event }: IEventProps) {
   const [isLoading, setIsLoading] = useState(false)
   const router = useRouter()
+
   const handleDeleteEvent = async (id: string) => {
     setIsLoading(true)
+
     try {
       const res = await fetch(
         `http://localhost:5000/delete-manage-events/${id}`,
         {
-          cache: 'no-store',
           method: 'DELETE',
         }
       )
+
       if (!res.ok) {
-        console.log('Failed to delete booking')
+        throw new Error('Failed to delete event')
       }
 
-      toast.success(`Delete ${event.title} successfully`)
+      toast.success(`${event.title} deleted successfully`)
       router.refresh()
     } catch (error) {
       console.log(error)
-      toast.error('Something went wrong!')
+
+      if (error instanceof Error) {
+        toast.error(error.message)
+      } else {
+        toast.error('Something went wrong!')
+      }
     } finally {
       setIsLoading(false)
     }
   }
+
   return (
     <AlertDialog>
       <AlertDialogTrigger
         render={
-          <Button variant='destructive'>
-            <Trash2 aria-hidden='true' /> Delete{' '}
+          <Button variant='destructive' disabled={isLoading}>
+            <Trash2 aria-hidden='true' />
+            Delete
           </Button>
         }
       />
+
       <AlertDialogContent size='md'>
         <AlertDialogHeader>
           <AlertDialogMedia className='bg-destructive/10 text-destructive dark:bg-destructive/20 dark:text-destructive'>
@@ -73,10 +83,15 @@ export function DeleteAlert({ event }: IEventProps) {
         </AlertDialogHeader>
 
         <AlertDialogFooter>
-          <AlertDialogCancel variant='outline'>Cancel</AlertDialogCancel>
+          <AlertDialogCancel variant='outline' disabled={isLoading}>
+            Cancel
+          </AlertDialogCancel>
 
           <AlertDialogAction
-            onClick={() => handleDeleteEvent(event._id)}
+            onClick={(e) => {
+              e.preventDefault()
+              handleDeleteEvent(event._id)
+            }}
             variant='destructive'
             disabled={isLoading}
           >

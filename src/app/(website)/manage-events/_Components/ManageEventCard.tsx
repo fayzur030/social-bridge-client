@@ -1,11 +1,12 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { CalendarDays, Eye, MapPin, Pencil, Sparkles } from 'lucide-react'
+import { CalendarDays, Eye, MapPin, Sparkles } from 'lucide-react'
 
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { IEvents } from '@/types/event.types'
 import { DeleteAlert } from './DeleteAlert'
+import { EditModal } from './EditModal'
 
 interface IEventProps {
   event: IEvents
@@ -114,15 +115,12 @@ const ManageEventCard = ({ event }: IEventProps) => {
 
         <div className='mt-auto grid grid-cols-3 gap-2 border-t border-slate-100 pt-4 dark:border-slate-800'>
           <Link href={`/upcoming-events/${event._id}`}>
-            <Button variant='outline' size='sm' className='w-full'>
+            <Button variant='outline' size='sm' className='w-full mt-0.5'>
               <Eye aria-hidden='true' />
               View
             </Button>
           </Link>
-          <Button variant='outline' size='sm' className='w-full' type='button'>
-            <Pencil aria-hidden='true' />
-            Edit
-          </Button>
+          <EditModal event={event} />
           <DeleteAlert event={event} />
         </div>
       </div>
