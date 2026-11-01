@@ -3,9 +3,10 @@ import { Button } from '@/components/ui/button'
 import { Spinner } from '@/components/ui/spinner'
 import { authClient } from '@/lib/auth-client'
 import { IEvents } from '@/types/event.types'
+import { JoinEventType } from '@/types/joinEvent.type'
 import { ArrowUpRight, CheckCircle2, Mail, UserRound } from 'lucide-react'
 import Image from 'next/image'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { toast } from 'sonner'
 
 interface IDetailsEventProps {
@@ -19,47 +20,100 @@ const AddJoinEvents = ({ eventDetails }: IDetailsEventProps) => {
   const { data: session } = authClient.useSession()
   const user = session?.user
 
+  //todo: Check if the current user has already joined this event
+  useEffect(() => {
+    const checkJoinedStatus = async () => {
+      if (!user?.email) return
+
+      try {
+        const res = await fetch(
+          `http://localhost:5000/joined-events/${encodeURIComponent(user.email)}`
+        )
+
+        if (!res.ok) {
+          throw new Error('Failed to fetch joined events')
+        }
+
+        const data = await res.json()
+        const isEventJoined = data.data.some(
+          (event: JoinEventType) => event.eventId === eventDetails._id
+        )
+
+        setIsJoined(isEventJoined)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    checkJoinedStatus()
+  }, [user?.email, eventDetails._id])
+
+  //todo: handleJoinEvent function
+
   const handleJoinEvent = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+
     if (!user) {
       toast.error('Please login to join this event!')
       return
     }
+
     setLoading(true)
 
-    const joinUserData = {
-      ...eventDetails,
-      eventId: eventDetails._id,
-      participant: {
-        email: user?.email,
-        name: user?.name,
-        image: user?.image,
-      },
-    }
     try {
-      const res = await fetch('http://localhost:5000/joined-events', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(joinUserData),
-      })
+      if (isJoined) {
+        // Leave Event
 
-      const data = await res.json()
+        const res = await fetch(
+          `http://localhost:5000/leave-joined-events/${eventDetails._id}/${encodeURIComponent(user.email)}`,
+          {
+            method: 'DELETE',
+          }
+        )
 
-      if (!res.ok) {
+        if (!res.ok) {
+          throw new Error('Failed to leave event')
+        }
+
+        setIsJoined(false)
+
+        toast.success('You have successfully left this event!')
+      } else {
+        // Join Event
+
+        const joinUserData = {
+          ...eventDetails,
+          eventId: eventDetails._id,
+          participant: {
+            email: user.email,
+            name: user.name,
+            image: user.image,
+          },
+        }
+
+        const res = await fetch('http://localhost:5000/joined-events', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(joinUserData),
+        })
+
         if (res.status === 409) {
-          toast.error('You have already joined this event!')
           setIsJoined(true)
+          toast.info('You have already joined this event!')
           return
         }
-        throw new Error(data.message || 'Failed to join event')
-      }
 
-      toast.success('You have successfully joined this event!')
-      setIsJoined(true)
+        if (!res.ok) {
+          throw new Error('Failed to join event')
+        }
+
+        setIsJoined(true)
+
+        toast.success('You have successfully joined this event!')
+      }
     } catch (error) {
-      console.error(error)
+      console.log(error)
       toast.error('Something went wrong!')
     } finally {
       setLoading(false)
@@ -84,6 +138,7 @@ const AddJoinEvents = ({ eventDetails }: IDetailsEventProps) => {
         <Button
           type='submit'
           variant={'default'}
+          disabled={loading}
           className='mt-5 inline-flex h-11 w-full items-center justify-center gap-2 rounded-xl px-4 text-sm font-semibold '
           aria-describedby='join-event-unavailable'
         >
@@ -94,13 +149,13 @@ const AddJoinEvents = ({ eventDetails }: IDetailsEventProps) => {
             </>
           ) : isJoined ? (
             <>
-              <CheckCircle2 aria-hidden='true' className='size-4' />
-              Joined (Click to Leave)
+              <CheckCircle2 className='size-4' />
+              Leave Event
             </>
           ) : (
             <>
               Join Event
-              <ArrowUpRight aria-hidden='true' className='size-4' />
+              <ArrowUpRight className='size-4' />
             </>
           )}
         </Button>

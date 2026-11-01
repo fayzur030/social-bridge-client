@@ -6,5 +6,6 @@ export interface Participant {
 }
 
 export interface JoinEventType extends IEvents {
+  eventId: string
   participant: Participant
 }

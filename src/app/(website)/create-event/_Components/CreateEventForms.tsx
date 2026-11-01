@@ -11,6 +11,7 @@ import Link from 'next/link'
 const eventCategories = [
   'Donation',
   'Plantation',
+  'sports',
   'Volunteer',
   'Workshop',
   'Cleanup',
@@ -248,6 +249,7 @@ const CreateEventForms = () => {
                     name='email'
                     defaultValue={user?.email}
                     readOnly
+                    disabled
                     placeholder='organizer@example.com'
                     className='h-12 rounded-xl border-input bg-background px-3 pl-10 text-foreground shadow-sm placeholder:text-muted-foreground'
                   />
@@ -279,7 +281,7 @@ const CreateEventForms = () => {
           <Button
             type='submit'
             className='mt-7 h-12 w-full rounded-xl bg-primary text-base font-semibold text-primary-foreground shadow-[0_10px_24px_rgba(22,163,74,0.2)] transition-colors hover:bg-primary/90'
-          >
+          >  
             Publish Event
           </Button>
         </form>
