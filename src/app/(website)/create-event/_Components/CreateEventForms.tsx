@@ -40,7 +40,7 @@ const CreateEventForms = () => {
   const router = useRouter()
   const { data: session } = authClient.useSession()
   const user = session?.user
-
+  console.log(user)
   // todo: create event
   const handleCreateEvent = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()

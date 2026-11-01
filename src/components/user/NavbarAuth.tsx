@@ -136,7 +136,7 @@ const NavbarAuth = ({ mobile = false, onNavigate }: NavbarAuthProps) => {
               </DropdownMenuItem>
 
               <DropdownMenuItem
-                render={<Link href='/create-event' />}
+                render={<Link href='/join-events' />}
                 className='cursor-pointer gap-2.5 rounded-lg px-2.5 py-2 text-sm text-popover-foreground focus:bg-accent focus:text-primary'
               >
                 <CircleCheck className='size-4 text-emerald-600' />
