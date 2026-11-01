@@ -1,9 +1,9 @@
 import { auth } from '@/lib/auth'
 import { headers } from 'next/headers'
 import EventCardGrid from '../upcoming-events/_Components/EventCardGrid'
-import { IJoinEvent } from '@/types/joinEvent.type'
+import { JoinEventType } from '@/types/joinEvent.type'
 
-const getJoinEvent = async (): Promise<IJoinEvent[]> => {
+const getJoinEvent = async (): Promise<JoinEventType[]> => {
   // Get current user session
   const session = await auth.api.getSession({
     headers: await headers(),
@@ -37,8 +37,8 @@ const getJoinEvent = async (): Promise<IJoinEvent[]> => {
 const JoinEventPage = async () => {
   const joinUserData = await getJoinEvent()
   const events = joinUserData.map((item) => ({
-    ...item.eventDetails,
-    _id: item.eventId,
+    ...item,
+    _id: item._id,
   }))
 
   return (

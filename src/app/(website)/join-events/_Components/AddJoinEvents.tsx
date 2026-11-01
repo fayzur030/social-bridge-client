@@ -26,8 +26,7 @@ const AddJoinEvents = ({ eventDetails }: IDetailsEventProps) => {
     }
     setLoading(true)
     const joinUserData = {
-      eventId: eventDetails._id,
-      eventDetails: eventDetails,
+      ...eventDetails,
       participant: {
         email: user?.email,
         name: user?.name,
