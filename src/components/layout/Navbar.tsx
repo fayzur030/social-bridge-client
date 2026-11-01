@@ -59,7 +59,7 @@ const Navbar = () => {
 
   const navLinkClass = (active: boolean) =>
     cn(
-      'block rounded-lg px-4 py-3 text-sm font-medium transition-colors sm:px-2 sm:py-2 sm:text-xs lg:px-3 lg:text-sm',
+      'block rounded-lg px-4 text-sm font-medium transition-colors sm:px-2 sm:py-2 sm:text-xs lg:px-3 lg:text-sm',
       active
         ? 'bg-primary/10 text-primary sm:bg-transparent'
         : 'text-muted-foreground hover:bg-accent hover:text-primary sm:hover:bg-transparent'
@@ -172,7 +172,7 @@ const Navbar = () => {
                         href={href}
                         aria-current={isActive ? 'page' : undefined}
                         onClick={() => setOpen(false)}
-                        className={navLinkClass(isActive)}
+                        className={navLinkClass(isActive) }
                       >
                         {label}
                       </Link>

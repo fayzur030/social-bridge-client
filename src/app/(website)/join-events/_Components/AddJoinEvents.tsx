@@ -15,6 +15,7 @@ interface IDetailsEventProps {
 const AddJoinEvents = ({ eventDetails }: IDetailsEventProps) => {
   const [loading, setLoading] = useState(false)
   const [isJoined, setIsJoined] = useState(false)
+
   const { data: session } = authClient.useSession()
   const user = session?.user
 
@@ -25,8 +26,10 @@ const AddJoinEvents = ({ eventDetails }: IDetailsEventProps) => {
       return
     }
     setLoading(true)
+
     const joinUserData = {
       ...eventDetails,
+      eventId: eventDetails._id,
       participant: {
         email: user?.email,
         name: user?.name,
@@ -42,8 +45,15 @@ const AddJoinEvents = ({ eventDetails }: IDetailsEventProps) => {
         body: JSON.stringify(joinUserData),
       })
 
+      const data = await res.json()
+
       if (!res.ok) {
-        throw new Error('Failed to join event')
+        if (res.status === 409) {
+          toast.error('You have already joined this event!')
+          setIsJoined(true)
+          return
+        }
+        throw new Error(data.message || 'Failed to join event')
       }
 
       toast.success('You have successfully joined this event!')

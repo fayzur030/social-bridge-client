@@ -36,10 +36,10 @@ const getJoinEvent = async (): Promise<JoinEventType[]> => {
 
 const JoinEventPage = async () => {
   const joinUserData = await getJoinEvent()
-  const events = joinUserData.map((item) => ({
-    ...item,
-    _id: item._id,
-  }))
+  // const events = joinUserData.map((item) => ({
+  //   ...item,
+  //   _id: item._id,
+  // }))
 
   return (
     <section className='px-4 py-10 sm:px-6 lg:px-8'>
@@ -54,7 +54,7 @@ const JoinEventPage = async () => {
           </p>
         </div>
 
-        <EventCardGrid events={events} />
+        <EventCardGrid events={joinUserData} />
       </div>
     </section>
   )

@@ -176,6 +176,22 @@ const NavbarAuth = ({ mobile = false, onNavigate }: NavbarAuthProps) => {
             <CalendarPlus className='size-4 text-primary' />
             Create Event
           </Link>
+          <Link
+            href='/manage-events'
+            onClick={onNavigate}
+            className='flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent hover:text-primary'
+          >
+            <Settings className='size-4 text-[#047857]' />
+            Manage Events
+          </Link>
+          <Link
+            href='/join-events'
+            onClick={onNavigate}
+            className='flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent hover:text-primary'
+          >
+            <CircleCheck className='size-4 text-emerald-600' />
+            Join Event
+          </Link>
         </div>
       )}
 
