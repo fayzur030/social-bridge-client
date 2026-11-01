@@ -38,7 +38,7 @@ const JoinEventPage = async () => {
   const joinUserData = await getJoinEvent()
   const events = joinUserData.map((item) => ({
     ...item.eventDetails,
-    _id: item._id,
+    _id: item.eventId,
   }))
 
   return (
