@@ -18,6 +18,7 @@ import { useRouter } from 'next/navigation'
 import { toast } from 'sonner'
 import { IEvents } from '@/types/event.types'
 import { useState } from 'react'
+import { Spinner } from '@/components/ui/spinner'
 
 interface IEventProps {
   event: IEvents
@@ -97,7 +98,8 @@ export function DeleteAlert({ event }: IEventProps) {
           >
             {isLoading ? (
               <>
-                <Loader2 className='size-4 animate-spin' />
+                {/* <Loader2 className='size-4 animate-spin' /> */}
+                <Spinner />
                 Deleting...
               </>
             ) : (

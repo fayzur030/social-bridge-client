@@ -2,6 +2,7 @@ import { auth } from '@/lib/auth'
 import { headers } from 'next/headers'
 import EventCardGrid from '../upcoming-events/_Components/EventCardGrid'
 import { JoinEventType } from '@/types/joinEvent.type'
+import JoinEventBanner from './_Components/JoinEventBanner'
 
 const getJoinEvent = async (): Promise<JoinEventType[]> => {
   // Get current user session
@@ -41,9 +42,16 @@ const JoinEventPage = async () => {
   //   _id: item._id,
   // }))
 
+  //todo: Show events sorted by event date.
+
+  const sortedEvents = [...joinUserData].sort(
+    (a, b) => new Date(a.eventDate).getTime() - new Date(b.eventDate).getTime()
+  )
+
   return (
-    <section className='px-4 py-10 sm:px-6 lg:px-8'>
-      <div className='mx-auto max-w-7xl'>
+    <section className='px-4 sm:px-6 lg:px-8'>
+      <JoinEventBanner />
+      <div className='mx-auto max-w-7xl mt-10'>
         <div className='mb-8'>
           <h1 className='text-2xl font-bold text-slate-900 dark:text-white sm:text-3xl'>
             Joined Events
@@ -54,7 +62,7 @@ const JoinEventPage = async () => {
           </p>
         </div>
 
-        <EventCardGrid events={joinUserData} />
+        <EventCardGrid events={sortedEvents} />
       </div>
     </section>
   )

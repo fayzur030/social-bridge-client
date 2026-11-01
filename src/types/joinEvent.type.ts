@@ -1,8 +1,12 @@
 import { IEvents } from './event.types'
 export interface Participant {
-  email: string
   name: string
+  email: string
+  emailVerified: boolean
   image: string
+  createdAt: string
+  updatedAt: string
+  id: string
 }
 
 export interface JoinEventType extends IEvents {

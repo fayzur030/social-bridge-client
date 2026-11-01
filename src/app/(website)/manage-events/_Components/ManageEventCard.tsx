@@ -5,8 +5,9 @@ import { CalendarDays, Eye, MapPin, Sparkles } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { IEvents } from '@/types/event.types'
-import { DeleteAlert } from './DeleteAlert'
+
 import { EditModal } from './EditModal'
+import { DeleteAlert } from './DeleteAlert'
 
 interface IEventProps {
   event: IEvents

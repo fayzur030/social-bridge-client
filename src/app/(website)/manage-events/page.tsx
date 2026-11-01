@@ -31,6 +31,9 @@ const getManageEvents = async (): Promise<IEvents[]> => {
 
 const ManageEvents = async () => {
   const manageEvents = await getManageEvents()
+  const sortedManageEvents = [...manageEvents].sort((a, b) =>
+    b._id.localeCompare(a._id)
+  )
 
   return (
     <section className='px-4 py-10 sm:px-6 lg:px-8'>
@@ -48,14 +51,14 @@ const ManageEvents = async () => {
             </p>
           </div>
           <Link href={'/create-event'}>
-            <Button variant={'default'} className={`py-6 px-8`}>
-              <Plus /> Create Event
+            <Button variant={'default'} className={`py-6 px-8 text-[#F4FCF1]`}>
+              <Plus color='#F4FCF1' /> Create New Event
             </Button>
           </Link>
         </div>
         <Separator />
         <div className='mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3'>
-          {manageEvents.map((event) => (
+          {sortedManageEvents.map((event) => (
             <ManageEventCard key={event._id} event={event} />
           ))}
         </div>

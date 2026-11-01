@@ -83,11 +83,7 @@ const AddJoinEvents = ({ eventDetails }: IDetailsEventProps) => {
         const joinUserData = {
           ...eventDetails,
           eventId: eventDetails._id,
-          participant: {
-            email: user.email,
-            name: user.name,
-            image: user.image,
-          },
+          participant: { ...user },
         }
 
         const res = await fetch('http://localhost:5000/joined-events', {
