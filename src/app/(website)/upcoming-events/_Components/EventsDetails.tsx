@@ -10,7 +10,6 @@ interface IDetailsEventProps {
 }
 
 const EventsDetails = ({ eventDetails }: IDetailsEventProps) => {
-  console.log(eventDetails, 'Event Details')
   const dateValue = (eventDetails.eventDate ?? '').trim()
 
   const eventDate = /^\d{4}-\d{2}-\d{2}$/.test(dateValue)
