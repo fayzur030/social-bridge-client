@@ -25,6 +25,7 @@ import {
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { IEvents } from '@/types/event.types'
+import { getTokenFromClient } from '@/lib/getTokenFromClient'
 
 const eventCategories = [
   'Donation',
@@ -69,12 +70,14 @@ export function EditModal({ event }: IEventProps) {
     }
 
     try {
+      const jwtToken = await getTokenFromClient()
       const res = await fetch(
         `http://localhost:5000/update-manage-events/${event._id}`,
         {
           method: 'PATCH',
           headers: {
             'Content-Type': 'application/json',
+            Authorization: `Bearer ${jwtToken}`,
           },
           body: JSON.stringify(editData),
         }

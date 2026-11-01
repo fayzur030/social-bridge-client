@@ -19,6 +19,7 @@ import { toast } from 'sonner'
 import { IEvents } from '@/types/event.types'
 import { useState } from 'react'
 import { Spinner } from '@/components/ui/spinner'
+import { getTokenFromClient } from '@/lib/getTokenFromClient'
 
 interface IEventProps {
   event: IEvents
@@ -32,10 +33,14 @@ export function DeleteAlert({ event }: IEventProps) {
     setIsLoading(true)
 
     try {
+      const jwtToken = await getTokenFromClient()
       const res = await fetch(
         `http://localhost:5000/delete-manage-events/${id}`,
         {
           method: 'DELETE',
+          headers: {
+            Authorization: `Bearer ${jwtToken}`,
+          },
         }
       )
 
