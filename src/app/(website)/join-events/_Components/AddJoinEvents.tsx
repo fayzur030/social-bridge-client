@@ -2,6 +2,7 @@
 import { Button } from '@/components/ui/button'
 import { Spinner } from '@/components/ui/spinner'
 import { authClient } from '@/lib/auth-client'
+import { getTokenFromClient } from '@/lib/getTokenFromClient'
 import { IEvents } from '@/types/event.types'
 import { JoinEventType } from '@/types/joinEvent.type'
 import { ArrowUpRight, CheckCircle2, Mail, UserRound } from 'lucide-react'
@@ -60,6 +61,7 @@ const AddJoinEvents = ({ eventDetails }: IDetailsEventProps) => {
     setLoading(true)
 
     try {
+      const jwtToken = await getTokenFromClient()
       if (isJoined) {
         // Leave Event
 
@@ -67,6 +69,9 @@ const AddJoinEvents = ({ eventDetails }: IDetailsEventProps) => {
           `http://localhost:5000/leave-joined-events/${eventDetails._id}/${encodeURIComponent(user.email)}`,
           {
             method: 'DELETE',
+            headers: {
+              Authorization: `Bearer ${jwtToken}`,
+            },
           }
         )
 
@@ -90,6 +95,7 @@ const AddJoinEvents = ({ eventDetails }: IDetailsEventProps) => {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
+            Authorization: `Bearer ${jwtToken}`,
           },
           body: JSON.stringify(joinUserData),
         })
