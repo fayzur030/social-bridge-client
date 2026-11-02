@@ -8,28 +8,13 @@ import { authClient } from '@/lib/auth-client'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { getTokenFromClient } from '@/lib/getTokenFromClient'
+import { ICategory } from '@/types/category.type'
 
-const eventCategories = [
-  'Donation',
-  'Plantation',
-  'sports',
-  'Volunteer',
-  'Workshop',
-  'Cleanup',
-  'Blood Donation',
-  'Food Distribution',
-  'Education',
-  'Healthcare',
-  'Fundraising',
-  'Disaster Relief',
-  'Community Meetup',
-  'Animal Welfare',
-  'Awareness Campaign',
-  'Skill Development',
-  'Clothing Distribution',
-  'Environmental Protection',
-  'Charity',
-]
+//interface category
+
+interface CategoryProps {
+  category: ICategory[]
+}
 
 // todo: date validation
 const tomorrow = new Date()
@@ -39,7 +24,7 @@ const minDate = `${tomorrow.getFullYear()}-${String(
   tomorrow.getMonth() + 1
 ).padStart(2, '0')}-${String(tomorrow.getDate()).padStart(2, '0')}`
 
-const CreateEventForms = () => {
+const CreateEventForms = ({ category }: CategoryProps) => {
   const router = useRouter()
   const { data: session } = authClient.useSession()
   const user = session?.user
@@ -160,9 +145,9 @@ const CreateEventForms = () => {
                     name='eventType'
                     className='h-12 w-full appearance-none rounded-xl border border-input bg-background px-3 pr-10 text-base text-foreground shadow-sm outline-none transition focus:border-primary focus:ring-4 focus:ring-primary/10'
                   >
-                    {eventCategories.map((category) => (
-                      <option key={category} value={category}>
-                        {category}
+                    {category.map((category) => (
+                      <option key={category.slug} value={category.name}>
+                        {category.name}
                       </option>
                     ))}
                   </select>

@@ -43,10 +43,10 @@ const Features = () => {
       <div className='mx-auto max-w-7xl'>
         {/* Section Heading */}
         <div className='mx-auto max-w-2xl text-center'>
-          <span className='inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-2 text-xs font-semibold tracking-wider text-primary uppercase'>
+          {/* <span className='inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-2 text-xs font-semibold tracking-wider text-primary uppercase'>
             <span className='size-1.5 rounded-full bg-primary' />
             Why SocialBridge
-          </span>
+          </span> */}
 
           <h2 className='mt-5 font-heading text-3xl font-bold tracking-tight text-[#1E3A8A] sm:text-4xl lg:text-5xl dark:text-white'>
             Why SocialBridge?
