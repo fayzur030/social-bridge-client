@@ -1,8 +1,13 @@
 'use client'
+
+import { useState } from 'react'
+import { Search } from 'lucide-react'
+
+import { Input } from '@/components/ui/input'
 import { ICategory } from '@/types/category.type'
 import { IEvents } from '@/types/event.types'
+
 import EventCard from './EventCard'
-import { useState } from 'react'
 import CategoryItems from './CategoryItems'
 
 interface IUpcomingEventListProps {
@@ -12,22 +17,51 @@ interface IUpcomingEventListProps {
 
 const UpcomingEventList = ({ events, category }: IUpcomingEventListProps) => {
   const [selectedCategory, setSelectedCategory] = useState('all')
+  const [searchTerm, setSearchTerm] = useState('')
 
-  const filteredEvents =
-    selectedCategory === 'all'
-      ? events
-      : events.filter(
-          (event) =>
-            event.eventType.toLowerCase() === selectedCategory.toLowerCase()
-        )
+  const filteredEvents = events.filter((event) => {
+    const matchCategory =
+      selectedCategory === 'all' ||
+      event.eventType.toLowerCase() === selectedCategory.toLowerCase()
+
+    const matchesSearch = event.title
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase().trim())
+
+    return matchCategory && matchesSearch
+  })
+
   return (
-    <div>
-      <CategoryItems
-        category={category}
-        selectedCategory={selectedCategory}
-        setSelectedCategory={setSelectedCategory}
-      />
-      <section className='mx-auto grid max-w-7xl grid-cols-1 gap-5 px-4 py-10 sm:px-6 lg:grid-cols-3 lg:gap-6'>
+    <div className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-10'>
+      {/* Category and Search */}
+      <div className='flex flex-col gap-3 md:flex-row md:items-center md:justify-between'>
+        {/* Category */}
+        <div className='min-w-0 flex-1'>
+          <CategoryItems
+            category={category}
+            selectedCategory={selectedCategory}
+            setSelectedCategory={setSelectedCategory}
+          />
+        </div>
+
+        {/* Search Bar */}
+        <div className='w-full md:max-w-xs lg:max-w-sm md:shrink-0'>
+          <div className='relative'>
+            <Search className='absolute left-4 top-1/2 size-5 -translate-y-1/2 text-muted-foreground' />
+
+            <Input
+              type='search'
+              placeholder='Search events by title...'
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className='h-12 w-full rounded-xl bg-card pl-12'
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* Events */}
+      <section className='grid grid-cols-1 gap-5 py-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6'>
         {filteredEvents.length > 0 ? (
           filteredEvents.map((event) => (
             <EventCard key={event._id} event={event} />

@@ -12,12 +12,12 @@ const CategoryItems = ({
   setSelectedCategory,
 }: ICategoryProps) => {
   return (
-    <div className='mx-auto flex max-w-7xl flex-wrap gap-3 px-4 py-6'>
+    <div className='mx-auto flex max-w-7xl flex-nowrap gap-2 overflow-x-auto  py-3 scrollbar-none sm:gap-3'>
       <button
         onClick={() => setSelectedCategory('all')}
-        className={`rounded-full border px-5 py-2.5 text-sm font-medium transition-all ${
+        className={`shrink-0 whitespace-nowrap rounded-full border px-4 py-2 text-xs font-medium transition-all sm:px-5 sm:py-2.5 sm:text-sm ${
           selectedCategory === 'all'
-            ? 'border-brand-green bg-brand-green text-white'
+            ? 'border-blue-600 bg-primary text-white'
             : 'border-border bg-card text-muted-foreground hover:border-brand-green hover:text-brand-green'
         }`}
       >
@@ -28,10 +28,10 @@ const CategoryItems = ({
         <button
           key={item.slug}
           onClick={() => setSelectedCategory(item.name)}
-          className={`rounded-full border px-5 py-2.5 text-sm font-medium transition-all ${
+          className={`shrink-0 whitespace-nowrap rounded-full cursor-pointer border px-4 py-2 text-xs font-medium transition-all sm:px-5 sm:py-2.5 sm:text-sm ${
             selectedCategory === item.name
-              ? 'border-brand-green bg-brand-green text-white'
-              : 'border-border bg-card text-muted-foreground hover:border-brand-green hover:text-brand-green'
+              ? 'border-blue-600 bg-primary text-white'
+              : 'border-border bg-card text-muted-foreground hover:border-blue-600 hover:text-brand-green'
           }`}
         >
           {item.name}

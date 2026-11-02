@@ -10,14 +10,18 @@ const Footer = () => {
             <Link
               href='/'
               aria-label='SocialBridge home'
-              className='inline-flex items-center gap-2.5'
+              className='flex shrink-0 items-center gap-2'
             >
-              <span className='flex size-10 items-center justify-center rounded-xl bg-primary/10 text-primary'>
-                <UsersRound aria-hidden='true' className='size-5' />
-              </span>
-              <span className='font-heading text-lg font-bold tracking-tight'>
-                SocialBridge
-              </span>
+              <UsersRound
+                aria-hidden='true'
+                className='size-7 fill-primary/20 text-primary'
+                strokeWidth={2.5}
+              />
+
+              <h1 className='text-[24px] font-bold tracking-[-0.04em]'>
+                <span className='text-primary'>Social</span>
+                <span className='text-brand-amber'>Bridge</span>
+              </h1>
             </Link>
 
             <p className='mt-4 text-sm leading-6 text-muted-foreground'>
