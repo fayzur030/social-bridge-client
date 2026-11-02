@@ -33,14 +33,19 @@ const Banner = () => {
               href='/upcoming-events'
               className='inline-flex h-11 items-center justify-center rounded-xl bg-hero-accent px-6 text-sm font-semibold text-deep2 shadow-lg shadow-hero-accent/20 transition-all duration-300 hover:-translate-y-1 hover:bg-hero-accent/90 hover:shadow-xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hero-accent gap-0.5'
             >
-              Explore Events <ArrowRight />
+              Explore Events
+              <ArrowRight
+                aria-hidden='true'
+                data-icon='inline-end'
+                className='transition-transform duration-200 group-hover/button:translate-x-1'
+              />
             </Link>
 
             <Link
               href='/create-event'
               className='inline-flex h-11 items-center justify-center rounded-xl border border-hero-outline bg-white/40 px-6 text-sm font-semibold text-hero-copy backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:bg-white/70 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary dark:bg-white/5 dark:hover:bg-white/10'
             >
-              Host an Event
+              Create an Event
             </Link>
           </div>
 

@@ -197,11 +197,11 @@ const NavbarAuth = ({ mobile = false, onNavigate }: NavbarAuthProps) => {
 
       {user ? (
         <Button
-          variant='destructive'
+          variant='outline'
           size='lg'
           onClick={handleLogOut}
           className={cn(
-            'cursor-pointer',
+            'cursor-pointer border-red-500 text-red-500 hover:text-red-600',
             mobile ? 'w-full justify-center' : 'w-full md:w-auto'
           )}
         >
