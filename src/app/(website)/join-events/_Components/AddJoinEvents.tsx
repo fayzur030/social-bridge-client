@@ -27,8 +27,14 @@ const AddJoinEvents = ({ eventDetails }: IDetailsEventProps) => {
       if (!user?.email) return
 
       try {
+        const jwtToken = await getTokenFromClient()
         const res = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}/joined-events/${encodeURIComponent(user.email)}`
+          `${process.env.NEXT_PUBLIC_API_URL}/joined-events/${encodeURIComponent(user.email)}`,
+          {
+            headers: {
+              Authorization: `Bearer ${jwtToken}`,
+            },
+          }
         )
 
         if (!res.ok) {
