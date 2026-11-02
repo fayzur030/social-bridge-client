@@ -139,6 +139,7 @@ const CreateEventForms = () => {
               <Input
                 name='title'
                 type='text'
+                required
                 placeholder='Enter event title'
                 className='h-12 rounded-xl border-input bg-background px-3 text-foreground shadow-sm placeholder:text-muted-foreground focus-visible:border-primary focus-visible:ring-primary/20'
               />
@@ -155,6 +156,7 @@ const CreateEventForms = () => {
                   <select
                     aria-label='Event type'
                     defaultValue='Donation'
+                    required
                     name='eventType'
                     className='h-12 w-full appearance-none rounded-xl border border-input bg-background px-3 pr-10 text-base text-foreground shadow-sm outline-none transition focus:border-primary focus:ring-4 focus:ring-primary/10'
                   >
@@ -185,6 +187,7 @@ const CreateEventForms = () => {
                 <Input
                   name='eventDate'
                   type='date'
+                  required
                   min={minDate}
                   className='h-12 rounded-xl border-input bg-background px-3 pr-10 text-foreground shadow-sm focus-visible:border-primary focus-visible:ring-primary/20'
                 />
@@ -201,6 +204,7 @@ const CreateEventForms = () => {
                 <Input
                   type='text'
                   name='location'
+                  required
                   placeholder='Mohammadpur Town Hall, Dhaka'
                   className='h-12 rounded-xl border-input bg-background px-3 pl-10 text-foreground shadow-sm placeholder:text-muted-foreground'
                 />
@@ -219,6 +223,7 @@ const CreateEventForms = () => {
                 <Input
                   type='url'
                   name='thumbnail'
+                  required
                   placeholder='https://images.unsplash.com/photo-...'
                   className='h-12 rounded-xl border-input bg-background px-3 pl-10 text-foreground shadow-sm placeholder:text-muted-foreground'
                 />
@@ -240,6 +245,7 @@ const CreateEventForms = () => {
 
               <Textarea
                 name='description'
+                required
                 placeholder='Explain the purpose of the drive, volunteers required, items being distributed or tasks to complete.'
                 className='min-h-[120px] rounded-xl border-input bg-background px-3 py-3 text-foreground shadow-sm placeholder:text-muted-foreground focus-visible:border-primary focus-visible:ring-primary/20'
               />
@@ -276,6 +282,7 @@ const CreateEventForms = () => {
                   <Input
                     type='text'
                     name='tags'
+                    required
                     placeholder='Community, Relief, Donation'
                     className='h-12 rounded-xl border-input bg-background px-3 pl-10 text-foreground shadow-sm placeholder:text-muted-foreground'
                   />
