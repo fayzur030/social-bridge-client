@@ -1,88 +1,106 @@
-import Image from 'next/image'
 import Link from 'next/link'
-import { ArrowRight, Leaf } from 'lucide-react'
+import {
+  ArrowRight,
+  ArrowUpRight,
+  HeartHandshake,
+  Sparkles,
+} from 'lucide-react'
 
-import heroImage from '@/assets/hero.png'
+import { Button } from '@/components/ui/button'
 
 const Banner = () => {
   return (
-    <section
-      id='about'
-      className='relative isolate overflow-hidden border-b border-border bg-background text-foreground'
-    >
-      {/* Background Gradient */}
+    <section className='relative isolate flex min-h-[650px] items-center justify-center overflow-hidden border-b border-border bg-gradient-to-br from-[#EFF6FF] via-background to-[#ECFEFF] px-5 py-24 dark:from-[#172554] dark:via-background dark:to-[#083344] sm:px-8 lg:min-h-[700px]'>
+      {/* Background Decorations */}
       <div
         aria-hidden='true'
-        className='pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_78%_48%,rgba(73,177,47,0.15),transparent_38%),linear-gradient(105deg,var(--background)_0%,var(--background)_55%,var(--accent)_100%)]'
+        className='pointer-events-none absolute -left-40 -top-40 -z-10 size-[450px] rounded-full bg-primary/10 blur-[120px]'
       />
 
-      {/* Background Glow */}
       <div
         aria-hidden='true'
-        className='pointer-events-none absolute -right-32 bottom-[-18rem] size-[34rem] rounded-full bg-primary/15 blur-[100px]'
+        className='pointer-events-none absolute -bottom-40 -right-40 -z-10 size-[450px] rounded-full bg-accent/10 blur-[120px]'
       />
 
-      <div className='relative mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-8 px-6 py-10 sm:min-h-[280px] sm:grid-cols-[1fr_1fr] sm:gap-0 sm:py-7 lg:min-h-screen lg:px-8'>
-        {/* Content */}
-        <div className='relative z-10'>
-          {/* Badge */}
-          <span className='inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-3 py-1.5 text-[11px] font-medium leading-none text-primary'>
-            <Leaf className='size-3.5 shrink-0 fill-primary text-primary' />
-            Together for a Better Tomorrow
-          </span>
+      <div
+        aria-hidden='true'
+        className='pointer-events-none absolute left-1/2 top-1/2 -z-10 size-[550px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-primary/10'
+      />
 
-          {/* Heading */}
-          <h1 className='mt-3 text-[clamp(2.15rem,5.25vw,4rem)] leading-[1.02] font-extrabold tracking-[-0.045em] text-foreground'>
-            Join Events.
-            <br />
-            <span className='text-primary'>Create Impact.</span>
-          </h1>
+      <div
+        aria-hidden='true'
+        className='pointer-events-none absolute left-1/2 top-1/2 -z-10 size-[400px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-accent/10'
+      />
 
-          {/* Description */}
-          <p className='mt-3 max-w-[365px] text-[13px] leading-[1.45] text-muted-foreground sm:text-[13.5px]'>
-            SocialBridge connects people with meaningful events to build a more
-            inclusive, active and developed society.
-          </p>
-
-          {/* Buttons */}
-          <div className='mt-4 flex flex-wrap items-center gap-2'>
-            <Link
-              href='/upcoming-events'
-              className='inline-flex h-9 items-center justify-center gap-2 rounded-full bg-primary px-4 text-xs font-bold text-primary-foreground shadow-sm shadow-primary/20 transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background'
-            >
-              Explore Events
-              <ArrowRight className='size-4' />
-            </Link>
-
-            <Link
-              href='/create-event'
-              className='inline-flex h-9 items-center justify-center rounded-full border border-border bg-card/70 px-4 text-xs font-semibold text-foreground transition-colors hover:border-primary/50 hover:bg-accent hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background'
-            >
-              Create Event
-            </Link>
-          </div>
+      {/* Hero Content */}
+      <div className='mx-auto w-full max-w-4xl text-center'>
+        {/* Badge */}
+        <div className='mb-8 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-background/70 px-4 py-2 text-xs font-semibold tracking-[0.12em] text-primary shadow-sm backdrop-blur-md sm:text-sm'>
+          <Sparkles className='size-4' />
+          <span>BUILD STRONGER COMMUNITIES</span>
         </div>
 
-        {/* Hero Image */}
-        <div className='relative mx-auto h-56 w-full max-w-xl overflow-hidden rounded-[2rem] sm:absolute sm:inset-y-0 sm:right-0 sm:mx-0 sm:h-full sm:w-[53%] sm:max-w-none sm:rounded-none'>
-          <Image
-            src={heroImage}
-            alt='Volunteers planting a tree together'
-            priority
-            sizes='(min-width: 640px) 53vw, 100vw'
-            className='absolute inset-0 size-full scale-[1.25] object-cover object-[82%_75%]'
-          />
+        {/* Heading */}
+        <h1 className='font-heading text-4xl leading-[1.15] font-extrabold tracking-tight text-foreground sm:text-5xl md:text-6xl lg:text-7xl'>
+          Small Actions.
+          <span className='mt-3 block bg-gradient-to-r from-primary via-blue-500 to-accent bg-clip-text text-transparent'>
+            Meaningful Change.
+          </span>
+        </h1>
 
-          {/* Image Overlay */}
-          <div
-            aria-hidden='true'
-            className='absolute inset-0 bg-gradient-to-r from-background via-background/25 to-transparent sm:from-background sm:via-background/15'
-          />
+        {/* Description */}
+        <p className='mx-auto mt-7 max-w-2xl text-base leading-8 text-muted-foreground sm:text-lg'>
+          Connect with people who care, discover meaningful community events,
+          and turn your time and skills into a positive impact. Together, we can
+          build stronger communities and create a better tomorrow.
+        </p>
 
-          <div
-            aria-hidden='true'
-            className='absolute inset-0 bg-gradient-to-t from-background/30 via-transparent to-background/10'
-          />
+        {/* CTA Buttons */}
+        <div className='mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row'>
+          <Button
+            render={<Link href='/upcoming-events' />}
+            nativeButton={false}
+            size='lg'
+            className='group h-12 w-full rounded-full px-7 sm:w-auto'
+          >
+            Explore Events
+            <ArrowRight
+              aria-hidden='true'
+              data-icon='inline-end'
+              className='transition-transform duration-200 group-hover/button:translate-x-1'
+            />
+          </Button>
+
+          <Button
+            render={<Link href='/create-event' />}
+            nativeButton={false}
+            variant='outline'
+            size='lg'
+            className='h-12 w-full rounded-full px-7 sm:w-auto'
+          >
+            Create an Event
+            <ArrowUpRight
+              aria-hidden='true'
+              data-icon='inline-end'
+              className='size-4'
+            />
+          </Button>
+        </div>
+
+        {/* Bottom Highlight */}
+        <div className='mx-auto mt-16 flex max-w-md items-center justify-center gap-3 border-t border-border/70 pt-7'>
+          <div className='flex size-11 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary'>
+            <HeartHandshake className='size-5' />
+          </div>
+
+          <div className='text-left'>
+            <p className='text-sm font-semibold text-foreground'>
+              Good Things Happen Together.
+            </p>
+            <p className='mt-1 text-xs text-muted-foreground'>
+              Find your people. Find your next step.
+            </p>
+          </div>
         </div>
       </div>
     </section>

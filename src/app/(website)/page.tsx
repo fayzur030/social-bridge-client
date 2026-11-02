@@ -1,12 +1,19 @@
 import Banner from '@/components/home/Banner'
-import FeatureSection from '@/components/home/FeatureSection'
+import Features from '@/components/home/Features'
+import Gallery from '@/components/home/Gallery'
+import Newsletter from '@/components/home/Newsletter'
+import UpcomingEvents from '@/components/home/UpcomingEvents'
+import React from 'react'
 
 const Home = () => {
   return (
-    <>
+    <div>
       <Banner />
-      <FeatureSection />
-    </>
+      <Features />
+      <UpcomingEvents />
+      <Gallery />
+      <Newsletter />
+    </div>
   )
 }
 
