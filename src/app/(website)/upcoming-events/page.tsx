@@ -13,7 +13,9 @@ import EventCard from './_Components/EventCard'
 
 const getUpcomingEvents = async (): Promise<IEvents[]> => {
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/events`)
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/events`, {
+      cache: 'no-cache',
+    })
 
     if (!res.ok) {
       throw new Error('Fetch to failed upcoming events')
