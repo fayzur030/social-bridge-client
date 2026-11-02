@@ -20,7 +20,7 @@ const EventCardGrid = ({ events }: IEventGridProps) => {
   }
 
   return (
-    <div className='mx-auto grid max-w-7xl grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3'>
+    <div className='mx-auto grid max-w-7xl grid-cols-1 md:grid-cols-2 gap-6 sm:grid-cols-2 lg:grid-cols-3'>
       {events.map((event) => (
         <EventCard key={event._id} event={event} />
       ))}{' '}

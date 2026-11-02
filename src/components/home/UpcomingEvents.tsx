@@ -1,10 +1,11 @@
-import Image from 'next/image'
+// import Image from 'next/image'
 import Link from 'next/link'
-import { ArrowRight, CalendarDays, MapPin } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 
-import { Badge } from '@/components/ui/badge'
+// import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { IEvents } from '@/types/event.types'
+import EventCardGrid from '@/app/(website)/upcoming-events/_Components/EventCardGrid'
 
 // const demoEvents = [
 //   {
@@ -88,13 +89,13 @@ const getRecentEvents = async (): Promise<IEvents[]> => {
   return []
 }
 
-const formatEventDate = (date: string) => {
-  return new Date(date).toLocaleDateString('en-US', {
-    month: 'short',
-    day: 'numeric',
-    year: 'numeric',
-  })
-}
+// const formatEventDate = (date: string) => {
+//   return new Date(date).toLocaleDateString('en-US', {
+//     month: 'short',
+//     day: 'numeric',
+//     year: 'numeric',
+//   })
+// }
 
 const UpcomingEvents = async () => {
   const recentEvents = await getRecentEvents()
@@ -136,66 +137,14 @@ const UpcomingEvents = async () => {
         </div>
 
         {/* Event Cards */}
-        <div className='mt-10 grid gap-6 sm:grid-cols-2 lg:mt-12 lg:grid-cols-3'>
-          {recentEvents.map((event) => (
-            <article
-              key={event._id}
-              className='group overflow-hidden rounded-2xl border border-border/70 bg-card shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5'
-            >
-              {/* Thumbnail */}
-              <div className='relative aspect-[16/10] overflow-hidden bg-muted'>
-                <Image
-                  src={event.thumbnail}
-                  alt={event.title}
-                  fill
-                  sizes='(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw'
-                  className='object-cover transition-transform duration-700 group-hover:scale-110'
-                />
-
-                <div className='absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-black/10' />
-
-                <Badge className='absolute top-4 left-4 border border-white/20 bg-background/90 px-3 py-1 text-xs font-semibold text-foreground shadow-sm backdrop-blur-md'>
-                  {event.eventType}
-                </Badge>
-              </div>
-
-              {/* Content */}
-              <div className='p-5'>
-                <div className='flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-medium text-muted-foreground'>
-                  <span className='flex items-center gap-1.5'>
-                    <CalendarDays className='size-4 text-primary' />
-                    {formatEventDate(event.eventDate)}
-                  </span>
-
-                  <span className='flex min-w-0 items-center gap-1.5'>
-                    <MapPin className='size-4 shrink-0 text-primary' />
-                    <span className='truncate'>{event.location}</span>
-                  </span>
-                </div>
-
-                <h3 className='mt-4 line-clamp-1 font-heading text-lg font-bold tracking-tight text-card-foreground transition-colors duration-200 group-hover:text-primary'>
-                  {event.title}
-                </h3>
-
-                <p className='mt-2 line-clamp-2 text-sm leading-6 text-muted-foreground'>
-                  {event.description}
-                </p>
-
-                <div className='mt-5 flex items-center justify-between border-t border-border/70 pt-4'>
-                  <Link
-                    href={`/upcoming-events/${event._id}`}
-                    className='group/link inline-flex items-center gap-2 text-sm font-semibold text-primary transition-all duration-200 hover:gap-3'
-                  >
-                    View Details
-                    <ArrowRight className='size-4 transition-transform duration-200 group-hover/link:translate-x-1' />
-                  </Link>
-
-                  {/* <span className='size-2 rounded-full bg-primary/70 ring-4 ring-primary/10' /> */}
-                </div>
-              </div>
-            </article>
-          ))}
+        <div className='mt-10'>
+          <EventCardGrid events={recentEvents} />
         </div>
+        {/* <div className='mt-10 grid gap-6 sm:grid-cols-2 lg:mt-12 lg:grid-cols-3'>
+          {recentEvents.map((event) => (
+            <EventCardGrid key={event._id} events={event} />
+          ))}
+        </div> */}
       </div>
     </section>
   )
