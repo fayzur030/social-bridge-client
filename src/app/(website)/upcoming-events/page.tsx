@@ -1,6 +1,7 @@
 import { IEvents } from '@/types/event.types'
-import EventCard from './_Components/EventCard'
 import Banner from './_Components/Banner'
+import UpcomingEventList from './_Components/UpcomingEventList'
+import { getCategories } from '@/services/getCategory'
 
 const getUpcomingEvents = async (): Promise<IEvents[]> => {
   try {
@@ -23,23 +24,12 @@ const getUpcomingEvents = async (): Promise<IEvents[]> => {
 
 const UpcomingEvents = async () => {
   const events = await getUpcomingEvents()
-
+  const category = await getCategories()
   return (
     <>
       <Banner />
       {/* Upcoming Events */}
-      <section
-        aria-label='Upcoming events'
-        className='mx-auto grid max-w-7xl grid-cols-1 gap-5 px-4 py-10 sm:px-6 lg:grid-cols-3 lg:gap-6 lg:px-8'
-      >
-        {events.length ? (
-          events.map((event) => <EventCard key={event._id} event={event} />)
-        ) : (
-          <p className='col-span-full py-16 text-center text-sm text-muted-foreground'>
-            No upcoming events right now. Check back soon.
-          </p>
-        )}
-      </section>
+      <UpcomingEventList events={events} category={category} />
     </>
   )
 }

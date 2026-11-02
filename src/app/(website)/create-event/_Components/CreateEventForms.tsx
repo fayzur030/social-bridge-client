@@ -61,7 +61,7 @@ const CreateEventForms = ({ category }: CategoryProps) => {
       return toast.error(error)
     }
     //todo: form validate function end
-
+    
     const payload = {
       ...Object.fromEntries(formData.entries()),
       email: user?.email,
