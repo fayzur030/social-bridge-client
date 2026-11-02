@@ -26,33 +26,24 @@ import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { IEvents } from '@/types/event.types'
 import { getTokenFromClient } from '@/lib/getTokenFromClient'
-
-const eventCategories = [
-  'Donation',
-  'Plantation',
-  'Volunteer',
-  'Workshop',
-  'Cleanup',
-  'Blood Donation',
-  'Food Distribution',
-  'Education',
-  'Healthcare',
-  'Fundraising',
-  'Disaster Relief',
-  'Community Meetup',
-  'Animal Welfare',
-  'Awareness Campaign',
-  'Skill Development',
-  'Clothing Distribution',
-  'Environmental Protection',
-  'Charity',
-]
+import { validateEvent } from '@/lib/validations/event.validation'
+import { ICategory } from '@/types/category.type'
 
 interface IEventProps {
   event: IEvents
+  category: ICategory[]
 }
 
-export function EditModal({ event }: IEventProps) {
+type TformData = {
+  title: string
+  description: string
+  eventType: string
+  eventDate: string
+  thumbnail: string
+  location: string
+}
+
+export function EditModal({ event, category }: IEventProps) {
   const [open, setOpen] = useState(false)
   const [isSaving, setIsSaving] = useState(false)
   const router = useRouter()
@@ -62,6 +53,22 @@ export function EditModal({ event }: IEventProps) {
     setIsSaving(true)
 
     const formData = new FormData(e.currentTarget)
+    //todo: form validate function
+
+    const eventData = {
+      title: formData.get('title'),
+      description: formData.get('description'),
+      eventType: formData.get('eventType'),
+      eventDate: formData.get('eventDate'),
+      thumbnail: formData.get('thumbnail'),
+      location: formData.get('location'),
+    } as TformData
+
+    const error = validateEvent(eventData)
+    if (error) {
+      return toast.error(error)
+    }
+
     const editData = {
       ...Object.fromEntries(formData.entries()),
       email: event.email,
@@ -168,15 +175,12 @@ export function EditModal({ event }: IEventProps) {
                     name='eventType'
                     className='h-12 w-full appearance-none rounded-xl border border-input bg-background px-3 pr-10 text-base text-foreground shadow-sm outline-none transition focus:border-primary focus:ring-4 focus:ring-primary/10'
                   >
-                    {event.eventType &&
-                      !eventCategories.includes(event.eventType) && (
-                        <option value={event.eventType}>
-                          {event.eventType}
-                        </option>
-                      )}
-                    {eventCategories.map((category) => (
-                      <option key={category} value={category}>
-                        {category}
+                    {/* {event.eventType && !category.includes(event.eventType) && (
+                      <option value={event.eventType}>{event.eventType}</option>
+                    )} */}
+                    {category.map((category) => (
+                      <option key={category._id} value={category.name}>
+                        {category.name}
                       </option>
                     ))}
                   </select>

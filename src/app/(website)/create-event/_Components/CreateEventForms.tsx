@@ -46,6 +46,7 @@ const CreateEventForms = ({ category }: CategoryProps) => {
     const form = e.currentTarget
     const formData = new FormData(form)
 
+    //todo: form validate function start
     const eventData = {
       title: formData.get('title'),
       description: formData.get('description'),
@@ -59,6 +60,7 @@ const CreateEventForms = ({ category }: CategoryProps) => {
     if (error) {
       return toast.error(error)
     }
+    //todo: form validate function end
 
     const payload = {
       ...Object.fromEntries(formData.entries()),

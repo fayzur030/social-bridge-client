@@ -1,13 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import {
-  ArrowUpRight,
-  CalendarDays,
-  Eye,
-  MapPin,
-  Pencil,
-  Sparkles,
-} from 'lucide-react'
+import { CalendarDays, Eye, MapPin, Sparkles } from 'lucide-react'
 
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
@@ -15,12 +8,14 @@ import { IEvents } from '@/types/event.types'
 
 import { EditModal } from './EditModal'
 import { DeleteAlert } from './DeleteAlert'
+import { getCategories } from '@/services/getCategory'
 
 interface IEventProps {
   event: IEvents
 }
 
-const ManageEventCard = ({ event }: IEventProps) => {
+const ManageEventCard = async ({ event }: IEventProps) => {
+  const category = await getCategories()
   const dateValue = (event.eventDate ?? '').trim()
 
   const eventDate = /^\d{4}-\d{2}-\d{2}$/.test(dateValue)
@@ -45,7 +40,7 @@ const ManageEventCard = ({ event }: IEventProps) => {
 
   return (
     <article className='group flex h-full min-w-0 flex-col overflow-hidden rounded-2xl border border-border/80 bg-card shadow-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:border-primary/40 hover:bg-accent/20 hover:shadow-xl hover:shadow-primary/10 focus-within:ring-2 focus-within:ring-primary/30 motion-reduce:transition-none motion-reduce:hover:translate-y-0'>
-      <div className='relative aspect-[16/9] overflow-hidden bg-muted'>
+      <div className='relative aspect-video overflow-hidden bg-muted'>
         {event.thumbnail ? (
           <Image
             src={event.thumbnail}
@@ -132,7 +127,7 @@ const ManageEventCard = ({ event }: IEventProps) => {
                 View
               </Button>
             </Link>
-            <EditModal event={event} />
+            <EditModal event={event} category={category} />
             <DeleteAlert event={event} />
           </div>
         </div>
