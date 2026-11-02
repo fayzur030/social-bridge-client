@@ -83,9 +83,10 @@ const Navbar = () => {
             strokeWidth={2.5}
           />
 
-          <span className='text-[17px] font-bold tracking-[-0.04em] text-foreground'>
-            SocialBridge
-          </span>
+          <h1 className='text-[24px] font-bold tracking-[-0.04em]'>
+            <span className='text-primary'>Social</span>
+            <span className='text-brand-amber'>Bridge</span>
+          </h1>
         </Link>
 
         {/* Desktop Navigation */}
@@ -172,7 +173,7 @@ const Navbar = () => {
                         href={href}
                         aria-current={isActive ? 'page' : undefined}
                         onClick={() => setOpen(false)}
-                        className={navLinkClass(isActive) }
+                        className={navLinkClass(isActive)}
                       >
                         {label}
                       </Link>

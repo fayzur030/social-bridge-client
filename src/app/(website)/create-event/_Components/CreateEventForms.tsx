@@ -105,7 +105,7 @@ const CreateEventForms = () => {
         {/* Form Card */}
         <form
           onSubmit={handleCreateEvent}
-          className='rounded-[28px] border border-border bg-card p-5 shadow-[0_20px_60px_rgba(15,23,42,0.07)] sm:p-8'
+          className='rounded-[28px] border border-border bg-card p-5 shadow-xl shadow-foreground/5 sm:p-8'
         >
           {/* Header */}
           <div className='mb-8 flex items-start gap-4'>
@@ -296,7 +296,7 @@ const CreateEventForms = () => {
           {/* Publish Button */}
           <Button
             type='submit'
-            className='mt-7 h-12 w-full rounded-xl bg-primary text-base font-semibold text-primary-foreground shadow-[0_10px_24px_rgba(22,163,74,0.2)] transition-colors hover:bg-primary/90'
+            className='mt-7 h-12 w-full rounded-xl bg-primary text-base font-semibold text-primary-foreground shadow-lg shadow-primary/20 transition-colors hover:bg-primary-hover'
           >
             Publish Event
           </Button>

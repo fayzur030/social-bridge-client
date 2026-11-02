@@ -135,13 +135,13 @@ const AddJoinEvents = ({ eventDetails }: IDetailsEventProps) => {
     <div>
       <form
         onSubmit={handleJoinEvent}
-        className='h-fit rounded-2xl border border-slate-200 bg-slate-50/80 p-5 dark:border-slate-700 dark:bg-slate-800/50'
+        className='h-fit rounded-2xl border border-border bg-muted/80 p-5'
       >
-        <div className='flex items-center gap-2 text-sm font-semibold text-slate-900 dark:text-white'>
-          <CheckCircle2 aria-hidden='true' className='size-4 text-[#087F5B]' />
+        <div className='flex items-center gap-2 text-sm font-semibold text-foreground'>
+          <CheckCircle2 aria-hidden='true' className='size-4 text-brand-green' />
           Make a difference
         </div>
-        <p className='mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300'>
+        <p className='mt-2 text-sm leading-6 text-muted-foreground'>
           Take part in this community event and connect with people making a
           positive impact.
         </p>
@@ -171,18 +171,18 @@ const AddJoinEvents = ({ eventDetails }: IDetailsEventProps) => {
           )}
         </Button>
 
-        <div className='mt-5 border-t border-slate-200 pt-4 dark:border-slate-700'>
-          <p className='text-xs font-medium text-slate-500 dark:text-slate-400'>
+        <div className='mt-5 border-t border-border pt-4'>
+          <p className='text-xs font-medium text-muted-foreground'>
             Event type
           </p>
-          <p className='mt-1 text-sm font-medium text-slate-900 dark:text-slate-100'>
+          <p className='mt-1 text-sm font-medium text-foreground'>
             {eventDetails.eventType || 'Community event'}
           </p>
         </div>
 
         {eventDetails.email && (
-          <div className='mt-4 border-t border-slate-200 pt-4 dark:border-slate-700'>
-            <p className='mb-3 text-xs font-medium text-slate-500 dark:text-slate-400'>
+          <div className='mt-4 border-t border-border pt-4'>
+            <p className='mb-3 text-xs font-medium text-muted-foreground'>
               Organizer
             </p>
 
@@ -196,19 +196,19 @@ const AddJoinEvents = ({ eventDetails }: IDetailsEventProps) => {
                   className='size-12 rounded-full object-cover'
                 />
               ) : (
-                <div className='flex size-12 shrink-0 items-center justify-center rounded-full bg-[#087F5B]/10 text-[#087F5B]'>
+                <div className='flex size-12 shrink-0 items-center justify-center rounded-full bg-brand-green/10 text-brand-green'>
                   <UserRound className='size-6' />
                 </div>
               )}
 
               <div className='min-w-0'>
-                <h3 className='truncate text-sm font-semibold text-slate-900 dark:text-white'>
+                <h3 className='truncate text-sm font-semibold text-foreground'>
                   {eventDetails.name || 'Community Organizer'}
                 </h3>
 
                 <a
                   href={`mailto:${eventDetails.email}`}
-                  className='mt-1 inline-flex max-w-full items-center gap-2 text-sm font-medium text-[#087F5B] hover:text-[#066B4D]'
+                  className='mt-1 inline-flex max-w-full items-center gap-2 text-sm font-medium text-brand-green hover:text-brand-green-hover'
                 >
                   <Mail aria-hidden='true' className='size-4 shrink-0' />
                   <span className='truncate'>{eventDetails.email}</span>

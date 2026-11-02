@@ -1,105 +1,72 @@
+import Image from 'next/image'
 import Link from 'next/link'
-import {
-  ArrowRight,
-  ArrowUpRight,
-  HeartHandshake,
-  Sparkles,
-} from 'lucide-react'
 
-import { Button } from '@/components/ui/button'
+import heroImage from '@/assets/socia_hero.jpg'
+import { ArrowRight } from 'lucide-react'
 
 const Banner = () => {
   return (
-    <section className='relative isolate flex min-h-[650px] items-center justify-center overflow-hidden border-b border-border bg-gradient-to-br from-[#EFF6FF] via-background to-[#ECFEFF] px-5 py-24 dark:from-[#172554] dark:via-background dark:to-[#083344] sm:px-8 lg:min-h-[700px]'>
-      {/* Background Decorations */}
-      <div
-        aria-hidden='true'
-        className='pointer-events-none absolute -left-40 -top-40 -z-10 size-[450px] rounded-full bg-primary/10 blur-[120px]'
-      />
+    <section className='relative overflow-hidden bg-gradient-to-b from-blue-200 via-indigo-100 to-slate-50 px-5 py-16 transition-colors duration-300 dark:from-[#312E81] dark:via-[#172554] dark:to-[#0B1220] sm:px-8 sm:py-20 lg:px-10 lg:py-24'>
+      <div className='relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-12 md:grid-cols-2 lg:gap-16'>
+        {/* Left Side - Content */}
+        <div className='flex flex-col items-center text-center md:items-start md:text-left'>
+          {/* Badge */}
+          <p className='mb-5 w-fit rounded-full border border-hero-accent/40 bg-white/50 px-4 py-2 text-xs font-medium text-brand-amber backdrop-blur-sm dark:bg-white/5'>
+            Together we build better communities
+          </p>
 
-      <div
-        aria-hidden='true'
-        className='pointer-events-none absolute -bottom-40 -right-40 -z-10 size-[450px] rounded-full bg-accent/10 blur-[120px]'
-      />
+          {/* Heading */}
+          <h1 className='font-serif text-4xl leading-[1.1] font-bold text-slate-900 sm:text-5xl lg:text-6xl dark:text-white'>
+            <span className='block'>Small actions</span>
+            <span className='mt-2 block text-hero-accent'>Big change.</span>
+          </h1>
 
-      <div
-        aria-hidden='true'
-        className='pointer-events-none absolute left-1/2 top-1/2 -z-10 size-[550px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-primary/10'
-      />
+          {/* Description */}
+          <p className='mt-6 max-w-xl text-sm leading-7 text-slate-600 sm:text-base dark:text-slate-300'>
+            Join cleanups, tree plantations, blood drives and more. Organize or
+            join events that make your neighbourhood stronger.
+          </p>
 
-      <div
-        aria-hidden='true'
-        className='pointer-events-none absolute left-1/2 top-1/2 -z-10 size-[400px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-accent/10'
-      />
+          {/* Buttons */}
+          <div className='mt-8 flex flex-wrap items-center justify-center gap-4 md:justify-start'>
+            <Link
+              href='/upcoming-events'
+              className='inline-flex h-11 items-center justify-center rounded-xl bg-hero-accent px-6 text-sm font-semibold text-deep2 shadow-lg shadow-hero-accent/20 transition-all duration-300 hover:-translate-y-1 hover:bg-hero-accent/90 hover:shadow-xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hero-accent gap-0.5'
+            >
+              Explore Events <ArrowRight />
+            </Link>
 
-      {/* Hero Content */}
-      <div className='mx-auto w-full max-w-4xl text-center'>
-        {/* Badge */}
-        <div className='mb-8 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-background/70 px-4 py-2 text-xs font-semibold tracking-[0.12em] text-primary shadow-sm backdrop-blur-md sm:text-sm'>
-          <Sparkles className='size-4' />
-          <span>BUILD STRONGER COMMUNITIES</span>
-        </div>
-
-        {/* Heading */}
-        <h1 className='font-heading text-4xl leading-[1.15] font-extrabold tracking-tight text-foreground sm:text-5xl md:text-6xl lg:text-7xl'>
-          Small Actions.
-          <span className='mt-3 block bg-gradient-to-r from-primary via-blue-500 to-accent bg-clip-text text-transparent'>
-            Meaningful Change.
-          </span>
-        </h1>
-
-        {/* Description */}
-        <p className='mx-auto mt-7 max-w-2xl text-base leading-8 text-muted-foreground sm:text-lg'>
-          Connect with people who care, discover meaningful community events,
-          and turn your time and skills into a positive impact. Together, we can
-          build stronger communities and create a better tomorrow.
-        </p>
-
-        {/* CTA Buttons */}
-        <div className='mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row'>
-          <Button
-            render={<Link href='/upcoming-events' />}
-            nativeButton={false}
-            size='lg'
-            className='group h-12 w-full rounded-full px-7 sm:w-auto'
-          >
-            Explore Events
-            <ArrowRight
-              aria-hidden='true'
-              data-icon='inline-end'
-              className='transition-transform duration-200 group-hover/button:translate-x-1'
-            />
-          </Button>
-
-          <Button
-            render={<Link href='/create-event' />}
-            nativeButton={false}
-            variant='outline'
-            size='lg'
-            className='h-12 w-full rounded-full px-7 sm:w-auto'
-          >
-            Create an Event
-            <ArrowUpRight
-              aria-hidden='true'
-              data-icon='inline-end'
-              className='size-4'
-            />
-          </Button>
-        </div>
-
-        {/* Bottom Highlight */}
-        <div className='mx-auto mt-16 flex max-w-md items-center justify-center gap-3 border-t border-border/70 pt-7'>
-          <div className='flex size-11 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary'>
-            <HeartHandshake className='size-5' />
+            <Link
+              href='/create-event'
+              className='inline-flex h-11 items-center justify-center rounded-xl border border-hero-outline bg-white/40 px-6 text-sm font-semibold text-hero-copy backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:bg-white/70 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary dark:bg-white/5 dark:hover:bg-white/10'
+            >
+              Host an Event
+            </Link>
           </div>
 
-          <div className='text-left'>
-            <p className='text-sm font-semibold text-foreground'>
-              Good Things Happen Together.
-            </p>
-            <p className='mt-1 text-xs text-muted-foreground'>
-              Find your people. Find your next step.
-            </p>
+          {/* Bottom Text */}
+          <p className='mt-8 text-xs font-medium tracking-wide text-slate-500 dark:text-slate-400'>
+            Together, we can make every action count.
+          </p>
+        </div>
+
+        {/* Right Side - Image */}
+        <div className='relative mx-auto w-full max-w-[550px] md:ml-auto'>
+          {/* Image Glow */}
+          <div className='absolute -inset-3 rounded-[2rem] bg-gradient-to-br from-blue-500/30 via-purple-500/20 to-cyan-400/30 blur-2xl' />
+
+          <div className='relative aspect-[5/4] overflow-hidden rounded-2xl border border-white/50 bg-white/20 shadow-2xl shadow-blue-950/10 dark:border-white/10 dark:shadow-black/30'>
+            <Image
+              src={heroImage}
+              alt='People working together in community development events'
+              fill
+              priority
+              sizes='(max-width: 767px) 100vw, 50vw'
+              className='object-cover transition-transform duration-700 hover:scale-105'
+            />
+
+            {/* Image Overlay */}
+            <div className='absolute inset-0 bg-gradient-to-t from-slate-950/30 via-transparent to-transparent' />
           </div>
         </div>
       </div>

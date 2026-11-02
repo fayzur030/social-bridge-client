@@ -33,8 +33,8 @@ const ManageEventCard = ({ event }: IEventProps) => {
     .filter(Boolean)
 
   return (
-    <article className='group flex h-full min-w-0 flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-[#23AD56]/50 hover:shadow-lg dark:border-slate-700 dark:bg-slate-900'>
-      <div className='relative aspect-video overflow-hidden bg-slate-100 dark:bg-slate-800'>
+    <article className='group flex h-full min-w-0 flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-brand-green/50 hover:shadow-lg'>
+      <div className='relative aspect-video overflow-hidden bg-muted'>
         {event.thumbnail ? (
           <Image
             src={event.thumbnail}
@@ -45,15 +45,15 @@ const ManageEventCard = ({ event }: IEventProps) => {
             className='object-cover transition-transform duration-300 group-hover:scale-[1.03]'
           />
         ) : (
-          <div className='flex size-full items-center justify-center text-slate-400 dark:text-slate-500'>
+          <div className='flex size-full items-center justify-center text-muted-foreground'>
             <Sparkles aria-hidden='true' className='size-9' strokeWidth={1.5} />
           </div>
         )}
         <div className='absolute inset-0 bg-linear-to-t from-slate-950/40 via-transparent to-transparent' />
-        <div className='absolute left-3 top-3 inline-flex items-center gap-1.5 rounded-lg border border-white/70 bg-white/95 px-2.5 py-1.5 text-xs font-medium text-slate-700 shadow-sm dark:border-slate-700 dark:bg-slate-900/95 dark:text-slate-200'>
+        <div className='absolute left-3 top-3 inline-flex items-center gap-1.5 rounded-lg border border-border/70 bg-card/95 px-2.5 py-1.5 text-xs font-medium text-card-foreground shadow-sm'>
           <CalendarDays
             aria-hidden='true'
-            className='size-3.5 text-[#087F5B]'
+            className='size-3.5 text-brand-green'
           />
           {hasValidDate
             ? new Intl.DateTimeFormat('en-US', {
@@ -71,28 +71,28 @@ const ManageEventCard = ({ event }: IEventProps) => {
             className={
               event.eventType === 'Donation'
                 ? ''
-                : 'border-transparent bg-green-100 text-green-700 hover:bg-green-100 dark:bg-green-950 dark:text-green-400 dark:hover:bg-green-950'
+                : 'border-transparent bg-brand-green/10 text-brand-green hover:bg-brand-green/10'
             }
           >
             {event.eventType || 'Community event'}
           </Badge>
-          <span className='shrink-0 text-xs text-slate-500 dark:text-slate-400'>
+          <span className='shrink-0 text-xs text-muted-foreground'>
             {dateLabel}
           </span>
         </div>
 
-        <h2 className='mt-3 line-clamp-2 font-heading text-lg font-semibold leading-snug text-slate-900 dark:text-white'>
+        <h2 className='mt-3 line-clamp-2 font-heading text-lg font-semibold leading-snug text-card-foreground'>
           {event.title}
         </h2>
-        <p className='mt-2 line-clamp-2 min-h-10 text-sm leading-5 text-slate-600 dark:text-slate-300'>
+        <p className='mt-2 line-clamp-2 min-h-10 text-sm leading-5 text-muted-foreground'>
           {event.description ||
             'More information about this event coming soon.'}
         </p>
 
-        <div className='mt-3 flex items-center gap-2 text-sm text-slate-600 dark:text-slate-300'>
+        <div className='mt-3 flex items-center gap-2 text-sm text-muted-foreground'>
           <MapPin
             aria-hidden='true'
-            className='size-4 shrink-0 text-[#087F5B]'
+            className='size-4 shrink-0 text-brand-green'
           />
           <span className='truncate'>
             {event.location || 'Location to be announced'}
@@ -114,7 +114,7 @@ const ManageEventCard = ({ event }: IEventProps) => {
           </div>
         )}
 
-        <div className='mt-auto grid grid-cols-3 gap-2 border-t border-slate-100 pt-4 dark:border-slate-800'>
+        <div className='mt-auto grid grid-cols-3 gap-2 border-t border-border pt-4'>
           <Link href={`/upcoming-events/${event._id}`}>
             <Button variant='outline' size='sm' className='w-full mt-0.5'>
               <Eye aria-hidden='true' />

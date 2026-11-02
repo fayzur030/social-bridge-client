@@ -6,7 +6,7 @@ import { Input } from '@/components/ui/input'
 const Newsletter = () => {
   return (
     <section className=''>
-      <div className='relative overflow-hidden rounded-3xl border border-primary/15 bg-gradient-to-br from-[#EFF6FF] via-white to-[#ECFEFF] px-6 py-14 shadow-sm dark:border-white/10 dark:from-[#172554] dark:via-[#101C38] dark:to-[#083344] sm:px-12 sm:py-16 lg:px-20'>
+      <div className='relative overflow-hidden rounded-3xl border border-border bg-gradient-to-br from-background via-card to-accent px-6 py-14 shadow-sm sm:px-12 sm:py-16 lg:px-20'>
         {/* Background Decorations */}
         <div
           aria-hidden='true'
@@ -20,47 +20,47 @@ const Newsletter = () => {
 
         <div
           aria-hidden='true'
-          className='pointer-events-none absolute -right-10 -top-10 size-52 rounded-full border border-primary/10 dark:border-white/10'
+          className='pointer-events-none absolute -right-10 -top-10 size-52 rounded-full border border-primary/10'
         />
 
         {/* Content */}
         <div className='relative z-10 mx-auto max-w-2xl text-center'>
           {/* Icon */}
-          <div className='mx-auto flex size-14 items-center justify-center rounded-2xl border border-primary/15 bg-primary/10 text-primary shadow-sm dark:border-white/10 dark:bg-white/10 dark:text-cyan-300'>
+          <div className='mx-auto flex size-14 items-center justify-center rounded-2xl border border-primary/15 bg-primary/10 text-primary shadow-sm'>
             <Mail className='size-7' />
           </div>
 
           {/* Heading */}
-          <div className='mt-6 inline-flex items-center gap-2 text-xs font-semibold tracking-[0.15em] text-primary uppercase dark:text-cyan-300'>
+          <div className='mt-6 inline-flex items-center gap-2 text-xs font-semibold tracking-[0.15em] text-primary uppercase'>
             <Sparkles className='size-4' />
             Stay Connected
           </div>
 
-          <h2 className='mt-3 font-heading text-3xl leading-tight font-bold tracking-tight text-[#172554] dark:text-white sm:text-4xl lg:text-5xl'>
+          <h2 className='mt-3 font-heading text-3xl leading-tight font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl'>
             Be Part of Something
-            <span className='mt-2 block bg-gradient-to-r from-primary to-[#06B6D4] bg-clip-text text-transparent'>
+            <span className='mt-2 block bg-gradient-to-r from-primary to-brand-blue bg-clip-text text-transparent'>
               Meaningful.
             </span>
           </h2>
 
-          <p className='mx-auto mt-5 max-w-xl text-sm leading-7 text-slate-600 dark:text-slate-300 sm:text-base'>
+          <p className='mx-auto mt-5 max-w-xl text-sm leading-7 text-muted-foreground sm:text-base'>
             Stay inspired with the latest community events, volunteering
             opportunities, and stories of positive change. Let meaningful
             opportunities find their way to your inbox.
           </p>
 
           {/* Newsletter Form */}
-          <form className='mx-auto mt-9 flex max-w-lg flex-col gap-3 rounded-2xl border border-primary/10 bg-white/70 p-2 shadow-sm backdrop-blur-md dark:border-white/10 dark:bg-white/5 sm:flex-row sm:rounded-full'>
+          <form className='mx-auto mt-9 flex max-w-lg flex-col gap-3 rounded-2xl border border-border bg-card/70 p-2 shadow-sm backdrop-blur-md sm:flex-row sm:rounded-full'>
             <Input
               type='email'
               placeholder='Enter your email address'
               aria-label='Email address'
-              className='h-12 rounded-full border-slate-200 bg-white text-slate-900 placeholder:text-slate-400 focus-visible:ring-primary dark:border-slate-700 dark:bg-slate-900/80 dark:text-white dark:placeholder:text-slate-400'
+              className='h-12 rounded-full border-border bg-background text-foreground placeholder:text-muted-foreground focus-visible:ring-primary'
             />
 
             <Button
               type='submit'
-              className='h-12 shrink-0 rounded-full bg-primary px-6 font-semibold text-white hover:bg-primary/90'
+              className='h-12 shrink-0 rounded-full bg-primary px-6 font-semibold text-primary-foreground hover:bg-primary-hover'
             >
               Subscribe
               <ArrowRight
@@ -71,7 +71,7 @@ const Newsletter = () => {
             </Button>
           </form>
 
-          <p className='mt-4 text-xs text-slate-500 dark:text-slate-400'>
+          <p className='mt-4 text-xs text-muted-foreground'>
             No spam. Just meaningful updates and opportunities.
           </p>
         </div>

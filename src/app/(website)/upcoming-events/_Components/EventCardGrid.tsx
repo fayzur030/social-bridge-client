@@ -9,10 +9,10 @@ const EventCardGrid = ({ events }: IEventGridProps) => {
   if (!events.length) {
     return (
       <div className='py-16 text-center'>
-        <h3 className='text-lg font-semibold text-slate-800 dark:text-white'>
+        <h3 className='text-lg font-semibold text-foreground'>
           No events found
         </h3>
-        <p className='mt-2 text-sm text-slate-500 dark:text-slate-400'>
+        <p className='mt-2 text-sm text-muted-foreground'>
           Check back later for upcoming events.
         </p>
       </div>

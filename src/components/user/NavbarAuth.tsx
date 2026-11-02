@@ -131,7 +131,7 @@ const NavbarAuth = ({ mobile = false, onNavigate }: NavbarAuthProps) => {
                 render={<Link href='/manage-events' />}
                 className='cursor-pointer gap-2.5 rounded-lg px-2.5 py-2 text-sm text-popover-foreground focus:bg-accent focus:text-primary'
               >
-                <Settings className='size-4 text-[#047857]' />
+                <Settings className='size-4 text-brand-green' />
                 Manage Events
               </DropdownMenuItem>
 
@@ -181,7 +181,7 @@ const NavbarAuth = ({ mobile = false, onNavigate }: NavbarAuthProps) => {
             onClick={onNavigate}
             className='flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent hover:text-primary'
           >
-            <Settings className='size-4 text-[#047857]' />
+            <Settings className='size-4 text-brand-green' />
             Manage Events
           </Link>
           <Link
@@ -214,7 +214,7 @@ const NavbarAuth = ({ mobile = false, onNavigate }: NavbarAuthProps) => {
           onClick={onNavigate}
           className={cn(
             buttonVariants({ variant: 'default', size: 'lg' }),
-            'flex items-center gap-2',
+            'flex items-center gap-2 bg-primary font-medium text-primary-foreground transition-all duration-300 ease-out hover:bg-primary-hover hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/30 active:translate-y-0 active:scale-[0.97]',
             mobile && 'w-full justify-center'
           )}
         >

@@ -8,7 +8,7 @@ import {
   UsersRound,
 } from 'lucide-react'
 import Image from 'next/image'
-import heroImage from '@/assets/hero-Picsart-BackgroundRemover.png'
+import heroImage from '@/assets/hero.png'
 import EventCard from './_Components/EventCard'
 
 const getUpcomingEvents = async (): Promise<IEvents[]> => {
@@ -56,7 +56,7 @@ const UpcomingEvents = async () => {
 
             <h1 className='mt-5 max-w-2xl font-heading text-[clamp(2.5rem,5.2vw,4.25rem)] leading-[1.06] font-extrabold tracking-[-0.045em] text-foreground'>
               Discover &amp; Join{' '}
-              <span className='bg-linear-to-r from-[#23AD56] to-[#1C87ED] bg-clip-text text-transparent'>
+              <span className='bg-linear-to-r from-brand-green to-brand-blue bg-clip-text text-transparent'>
                 Upcoming Events
               </span>
             </h1>

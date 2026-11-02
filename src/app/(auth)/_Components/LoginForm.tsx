@@ -82,7 +82,7 @@ const LoginForm = () => {
     <main className='min-h-screen bg-background'>
       <div className='grid min-h-screen w-full overflow-hidden bg-card lg:grid-cols-2'>
         {/* Left Side - Image */}
-        <div className='relative hidden min-h-[650px] overflow-hidden bg-[#0B1020] lg:block'>
+        <div className='relative hidden min-h-[650px] overflow-hidden bg-deep2 lg:block'>
           <Image
             src={loginImage}
             alt='SocialBridge community illustration'
@@ -93,17 +93,17 @@ const LoginForm = () => {
           />
 
           {/* Image Overlay */}
-          <div className='absolute inset-0 bg-gradient-to-t from-[#0B1020]/90 via-[#0B1020]/30 to-transparent' />
+          <div className='absolute inset-0 bg-gradient-to-t from-deep2/90 via-deep2/30 to-transparent' />
 
           {/* Image Content */}
           <div className='absolute inset-0 flex flex-col  justify-center p-10 text-start text-white'>
-            <div className='mb-5 flex size-12 items-center justify-center rounded-2xl bg-gradient-to-br from-[#86EFAC] to-[#16A34A] shadow-lg shadow-green-900/30'>
+            <div className='mb-5 flex size-12 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-green-hover to-brand-green shadow-lg shadow-brand-green/25'>
               <HeartPlus className='size-6 text-white' />
             </div>
 
             <h2 className='max-w-md text-3xl leading-tight font-bold xl:text-4xl'>
               Together, We Can Make a{' '}
-              <span className='text-[#86EFAC]'>Difference.</span>
+              <span className='text-brand-green-hover'>Difference.</span>
             </h2>
 
             <p className='mt-4 max-w-md text-sm leading-7 text-white/75'>
@@ -119,7 +119,7 @@ const LoginForm = () => {
           <div className='w-full max-w-md'>
             {/* Heading */}
             <div className='mb-8 text-center'>
-              <div className='mx-auto mb-5 flex size-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#86EFAC] to-[#16A34A] shadow-[0_0_18px_rgba(22,163,74,0.25)]'>
+              <div className='mx-auto mb-5 flex size-11 items-center justify-center rounded-xl bg-gradient-to-br from-brand-green-hover to-brand-green shadow-lg shadow-brand-green/25'>
                 <HeartPlus className='size-5 text-white' strokeWidth={2.5} />
               </div>
 
@@ -189,7 +189,7 @@ const LoginForm = () => {
               <Button
                 type='submit'
                 disabled={loading}
-                className='h-11 w-full bg-gradient-to-r from-[#16A34A] to-[#047857] font-semibold text-white transition-all duration-300 hover:from-[#15803D] hover:to-[#065F46] hover:shadow-lg hover:shadow-primary/20 disabled:cursor-not-allowed disabled:opacity-70'
+                className='h-11 w-full bg-gradient-to-r from-primary to-primary-hover font-semibold text-primary-foreground transition-all duration-300 hover:from-primary-hover hover:to-primary hover:shadow-lg hover:shadow-primary/20 disabled:cursor-not-allowed disabled:opacity-70'
               >
                 {loading ? (
                   <>
@@ -255,7 +255,7 @@ const LoginForm = () => {
               Don&apos;t have an account?{' '}
               <Link
                 href='/register'
-                className='font-semibold text-primary transition-colors hover:text-[#047857] hover:underline'
+                className='font-semibold text-primary transition-colors hover:text-primary-hover hover:underline'
               >
                 Register here
               </Link>

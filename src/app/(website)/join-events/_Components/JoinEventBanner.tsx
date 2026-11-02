@@ -24,7 +24,7 @@ const JoinEventBanner = () => {
 
           <h1 className='mt-5 text-3xl leading-tight font-extrabold tracking-tight text-foreground sm:text-4xl lg:text-5xl'>
             Events You&apos;ve{' '}
-            <span className='bg-gradient-to-r from-[#23AD56] to-[#1C87ED] bg-clip-text text-transparent'>
+            <span className='bg-gradient-to-r from-brand-green to-brand-blue bg-clip-text text-transparent'>
               Joined
             </span>
           </h1>

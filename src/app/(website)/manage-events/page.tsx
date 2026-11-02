@@ -49,19 +49,19 @@ const ManageEvents = async () => {
       <div className='mx-auto max-w-7xl'>
         <div className='flex flex-col lg:flex-row justify-between items-start lg:items-center'>
           <div className='mb-8'>
-            <h1 className='text-2xl font-bold text-slate-900 dark:text-white sm:text-3xl'>
+            <h1 className='text-2xl font-bold text-foreground sm:text-3xl'>
               Manage My Events
             </h1>
 
-            <p className='mt-2 text-sm text-slate-500 dark:text-slate-400 max-w-xl'>
+            <p className='mt-2 max-w-xl text-sm text-muted-foreground'>
               Every great initiative starts with an idea. Manage the events you
               have created, make updates whenever needed, and continue bringing
               your community together for meaningful experiences.
             </p>
           </div>
           <Link href={'/create-event'}>
-            <Button variant={'default'} className={`py-6 px-8 text-[#F4FCF1]`}>
-              <Plus color='#F4FCF1' /> Create New Event
+            <Button variant='default' className='px-8 py-6'>
+              <Plus /> Create New Event
             </Button>
           </Link>
         </div>

@@ -61,11 +61,11 @@ const JoinEventPage = async () => {
       <JoinEventBanner />
       <div className='mx-auto max-w-7xl mt-10'>
         <div className='mb-8'>
-          <h1 className='text-2xl font-bold text-slate-900 dark:text-white sm:text-3xl'>
+          <h1 className='text-2xl font-bold text-foreground sm:text-3xl'>
             Joined Events
           </h1>
 
-          <p className='mt-2 text-sm text-slate-500 dark:text-slate-400'>
+          <p className='mt-2 text-sm text-muted-foreground'>
             Explore the community events you have joined.
           </p>
         </div>
