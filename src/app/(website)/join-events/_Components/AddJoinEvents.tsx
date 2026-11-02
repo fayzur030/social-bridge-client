@@ -28,7 +28,7 @@ const AddJoinEvents = ({ eventDetails }: IDetailsEventProps) => {
 
       try {
         const res = await fetch(
-          `http://localhost:5000/joined-events/${encodeURIComponent(user.email)}`
+          `${process.env.NEXT_PUBLIC_API_URL}/joined-events/${encodeURIComponent(user.email)}`
         )
 
         if (!res.ok) {
@@ -66,7 +66,7 @@ const AddJoinEvents = ({ eventDetails }: IDetailsEventProps) => {
         // Leave Event
 
         const res = await fetch(
-          `http://localhost:5000/leave-joined-events/${eventDetails._id}/${encodeURIComponent(user.email)}`,
+          `${process.env.NEXT_PUBLIC_API_URL}/leave-joined-events/${eventDetails._id}/${encodeURIComponent(user.email)}`,
           {
             method: 'DELETE',
             headers: {
@@ -91,14 +91,17 @@ const AddJoinEvents = ({ eventDetails }: IDetailsEventProps) => {
           participant: { ...user },
         }
 
-        const res = await fetch('http://localhost:5000/joined-events', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${jwtToken}`,
-          },
-          body: JSON.stringify(joinUserData),
-        })
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_API_URL}/joined-events`,
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${jwtToken}`,
+            },
+            body: JSON.stringify(joinUserData),
+          }
+        )
 
         if (res.status === 409) {
           setIsJoined(true)

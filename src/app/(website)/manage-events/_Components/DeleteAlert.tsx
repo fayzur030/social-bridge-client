@@ -35,7 +35,7 @@ export function DeleteAlert({ event }: IEventProps) {
     try {
       const jwtToken = await getTokenFromClient()
       const res = await fetch(
-        `http://localhost:5000/delete-manage-events/${id}`,
+        `${process.env.NEXT_PUBLIC_API_URL}/delete-manage-events/${id}`,
         {
           method: 'DELETE',
           headers: {

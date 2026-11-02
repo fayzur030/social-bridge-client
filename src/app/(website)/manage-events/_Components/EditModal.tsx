@@ -72,7 +72,7 @@ export function EditModal({ event }: IEventProps) {
     try {
       const jwtToken = await getTokenFromClient()
       const res = await fetch(
-        `http://localhost:5000/update-manage-events/${event._id}`,
+        `${process.env.NEXT_PUBLIC_API_URL}/update-manage-events/${event._id}`,
         {
           method: 'PATCH',
           headers: {

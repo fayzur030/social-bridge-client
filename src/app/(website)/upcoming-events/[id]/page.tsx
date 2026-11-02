@@ -2,7 +2,7 @@ import EventsDetails from '../_Components/EventsDetails'
 
 const getEventById = async (id: string) => {
   try {
-    const res = await fetch(`http://localhost:5000/events/${id}`)
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/events/${id}`)
     if (!res.ok) {
       throw new Error('Failed to fetch event')
     }

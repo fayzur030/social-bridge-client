@@ -19,7 +19,7 @@ const getManageEvents = async (): Promise<IEvents[]> => {
     const jwtToken = await getTokenFromServer()
 
     const res = await fetch(
-      `http://localhost:5000/manage-events/${user?.email}`,
+      `${process.env.NEXT_PUBLIC_API_URL}/manage-events/${user?.email}`,
       {
         cache: 'no-store',
         headers: {

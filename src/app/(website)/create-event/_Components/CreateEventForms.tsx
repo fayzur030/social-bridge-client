@@ -62,14 +62,17 @@ const CreateEventForms = () => {
       // todo : Get JWT token from Better Auth
       const jwtToken = await getTokenFromClient()
 
-      const res = await fetch('http://localhost:5000/create-events', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${jwtToken}`,
-        },
-        body: JSON.stringify(eventData),
-      })
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/create-events`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${jwtToken}`,
+          },
+          body: JSON.stringify(eventData),
+        }
+      )
 
       if (!res.ok) {
         throw new Error('Failed to create event')

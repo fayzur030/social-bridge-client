@@ -21,7 +21,7 @@ const getJoinEvent = async (): Promise<JoinEventType[]> => {
   try {
     const jwtToken = await getTokenFromServer()
     const res = await fetch(
-      `http://localhost:5000/joined-events/${encodeURIComponent(user.email)}`,
+      `${process.env.NEXT_PUBLIC_API_URL}/joined-events/${encodeURIComponent(user.email)}`,
       {
         cache: 'no-cache',
         headers: {
