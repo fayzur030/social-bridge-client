@@ -75,7 +75,7 @@ const CreateEventForms = ({ category }: CategoryProps) => {
 
   return (
     <div className='min-h-screen bg-background px-4 py-8 text-foreground sm:px-6 lg:px-8'>
-      <div className='mx-auto max-w-4xl'>
+      <div className='mx-auto max-w-3xl'>
         {/* Back Button */}
         <Link href={'/upcoming-events'}>
           <button
@@ -94,65 +94,60 @@ const CreateEventForms = ({ category }: CategoryProps) => {
         >
           {/* Header */}
           <div className='mb-8 flex items-start gap-4'>
-            <div className='flex size-11 shrink-0 items-center justify-center rounded-2xl bg-primary/10 text-primary'>
+            <div className='flex size-12 shrink-0 items-center justify-center rounded-2xl bg-primary/10 text-primary'>
               <Sparkles className='size-5' />
             </div>
 
             <div>
-              <p className='text-sm font-medium text-primary'>
-                Social Service Drive
-              </p>
-
-              <h1 className='mt-1 text-3xl font-bold tracking-tight text-foreground sm:text-4xl'>
-                Create a Community Event
+              <h1 className='mt-1 text-2xl font-bold tracking-tight text-foreground sm:text-3xl'>
+                Create Event
               </h1>
-
-              <p className='mt-2 max-w-2xl text-sm text-muted-foreground sm:text-base'>
-                Organize a local relief effort, environmental cleanup, or
-                community support drive.
-              </p>
             </div>
           </div>
 
-          <div className='space-y-5'>
+          <div className='space-y-6'>
             {/* Event Title */}
             <div className='space-y-2'>
-              <label className='text-sm font-medium text-foreground'>
-                Event Title
+              <label className='text-sm font-semibold text-foreground'>
+                Event Title <span className='text-destructive'>*</span>
               </label>
 
               <Input
                 name='title'
                 type='text'
                 required
-                placeholder='Enter event title'
-                className='h-12 rounded-xl border-input bg-background px-3 text-foreground shadow-sm placeholder:text-muted-foreground focus-visible:border-primary focus-visible:ring-primary/20'
+                placeholder='Enter your event title'
+                className='h-12 rounded-xl border-input bg-background px-4 text-foreground shadow-sm placeholder:text-muted-foreground focus-visible:border-primary focus-visible:ring-primary/20'
               />
             </div>
 
             {/* Event Type & Date */}
-            <div className='grid gap-5 md:grid-cols-2'>
+            <div className='grid gap-5 sm:grid-cols-2'>
               <div className='space-y-2'>
-                <label className='text-sm font-medium text-foreground'>
-                  Event Type
+                <label className='text-sm font-semibold text-foreground'>
+                  Event Type <span className='text-destructive'>*</span>
                 </label>
 
                 <div className='relative'>
                   <select
                     aria-label='Event type'
-                    defaultValue='Donation'
+                    defaultValue=''
                     required
                     name='eventType'
-                    className='h-12 w-full appearance-none rounded-xl border border-input bg-background px-3 pr-10 text-base text-foreground shadow-sm outline-none transition focus:border-primary focus:ring-4 focus:ring-primary/10'
+                    className='h-12 w-full appearance-none rounded-xl border border-input bg-background px-4 pr-10 text-sm text-foreground shadow-sm outline-none transition focus:border-primary focus:ring-4 focus:ring-primary/10'
                   >
-                    {category.map((category) => (
-                      <option key={category.slug} value={category.name}>
-                        {category.name}
+                    <option value='' disabled>
+                      Select Event Type
+                    </option>
+
+                    {category.map((item) => (
+                      <option key={item.slug} value={item.name}>
+                        {item.name}
                       </option>
                     ))}
                   </select>
 
-                  <div className='pointer-events-none absolute inset-y-0 right-3 flex items-center text-muted-foreground'>
+                  <div className='pointer-events-none absolute inset-y-0 right-4 flex items-center text-muted-foreground'>
                     <svg
                       viewBox='0 0 20 20'
                       fill='currentColor'
@@ -165,8 +160,8 @@ const CreateEventForms = ({ category }: CategoryProps) => {
               </div>
 
               <div className='space-y-2'>
-                <label className='text-sm font-medium text-foreground'>
-                  Event Date
+                <label className='text-sm font-semibold text-foreground'>
+                  Event Date <span className='text-destructive'>*</span>
                 </label>
 
                 <Input
@@ -174,72 +169,69 @@ const CreateEventForms = ({ category }: CategoryProps) => {
                   type='date'
                   required
                   min={minDate}
-                  className='h-12 rounded-xl border-input bg-background px-3 pr-10 text-foreground shadow-sm focus-visible:border-primary focus-visible:ring-primary/20'
+                  className='h-12 rounded-xl border-input bg-background px-4 text-sm text-foreground shadow-sm focus-visible:border-primary focus-visible:ring-primary/20'
                 />
               </div>
             </div>
 
-            {/* Location */}
-            <div className='space-y-2'>
-              <label className='text-sm font-medium text-foreground'>
-                Location / Venue
-              </label>
+            {/* Location & Thumbnail */}
+            <div className='grid gap-5 sm:grid-cols-2'>
+              <div className='space-y-2'>
+                <label className='text-sm font-semibold text-foreground'>
+                  Location / Venue <span className='text-destructive'>*</span>
+                </label>
 
-              <div className='relative'>
-                <Input
-                  type='text'
-                  name='location'
-                  required
-                  placeholder='Mohammadpur Town Hall, Dhaka'
-                  className='h-12 rounded-xl border-input bg-background px-3 pl-10 text-foreground shadow-sm placeholder:text-muted-foreground'
-                />
+                <div className='relative'>
+                  <Input
+                    type='text'
+                    name='location'
+                    required
+                    placeholder='Mohammadpur Town Hall, Dhaka'
+                    className='h-12 rounded-xl border-input bg-background pl-10 text-sm text-foreground shadow-sm placeholder:text-muted-foreground'
+                  />
 
-                <MapPin className='pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-primary' />
-              </div>
-            </div>
-
-            {/* Thumbnail Image */}
-            <div className='space-y-2'>
-              <label className='text-sm font-medium text-foreground'>
-                Thumbnail Image URL
-              </label>
-
-              <div className='relative'>
-                <Input
-                  type='url'
-                  name='thumbnail'
-                  required
-                  placeholder='https://images.unsplash.com/photo-...'
-                  className='h-12 rounded-xl border-input bg-background px-3 pl-10 text-foreground shadow-sm placeholder:text-muted-foreground'
-                />
-
-                <ImageIcon className='pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-primary' />
+                  <MapPin className='pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-primary' />
+                </div>
               </div>
 
-              <p className='text-xs text-muted-foreground'>
-                Quick photo preset: Winter Clothes • Banana Relief • Cleanup •
-                Tree Plantation
-              </p>
+              <div className='space-y-2'>
+                <label className='text-sm font-semibold text-foreground'>
+                  Thumbnail Image URL{' '}
+                  <span className='text-destructive'>*</span>
+                </label>
+
+                <div className='relative'>
+                  <Input
+                    type='url'
+                    name='thumbnail'
+                    required
+                    placeholder='https://example.com/image.jpg'
+                    className='h-12 rounded-xl border-input bg-background pl-10 text-sm text-foreground shadow-sm placeholder:text-muted-foreground'
+                  />
+
+                  <ImageIcon className='pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-primary' />
+                </div>
+              </div>
             </div>
 
             {/* Description */}
             <div className='space-y-2'>
-              <label className='text-sm font-medium text-foreground'>
-                Event Description
+              <label className='text-sm font-semibold text-foreground'>
+                Event Description <span className='text-destructive'>*</span>
               </label>
 
               <Textarea
                 name='description'
                 required
-                placeholder='Explain the purpose of the drive, volunteers required, items being distributed or tasks to complete.'
-                className='min-h-[120px] rounded-xl border-input bg-background px-3 py-3 text-foreground shadow-sm placeholder:text-muted-foreground focus-visible:border-primary focus-visible:ring-primary/20'
+                placeholder='Describe the purpose of your event, volunteer requirements, activities, and other important details...'
+                className='min-h-36 resize-y rounded-xl border-input bg-background px-4 py-3 text-sm leading-6 text-foreground shadow-sm placeholder:text-muted-foreground focus-visible:border-primary focus-visible:ring-primary/20'
               />
             </div>
 
             {/* Organizer Email & Tags */}
-            <div className='grid gap-5 md:grid-cols-2'>
+            <div className='grid gap-5 sm:grid-cols-2'>
               <div className='space-y-2'>
-                <label className='text-sm font-medium text-foreground'>
+                <label className='text-sm font-semibold text-foreground'>
                   Organizer Email
                 </label>
 
@@ -251,7 +243,7 @@ const CreateEventForms = ({ category }: CategoryProps) => {
                     readOnly
                     disabled
                     placeholder='organizer@example.com'
-                    className='h-12 rounded-xl border-input bg-background px-3 pl-10 text-foreground shadow-sm placeholder:text-muted-foreground'
+                    className='h-12 rounded-xl border-input bg-muted/50 pl-10 text-sm text-muted-foreground shadow-sm'
                   />
 
                   <Mail className='pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-primary' />
@@ -259,8 +251,8 @@ const CreateEventForms = ({ category }: CategoryProps) => {
               </div>
 
               <div className='space-y-2'>
-                <label className='text-sm font-medium text-foreground'>
-                  Event Tags
+                <label className='text-sm font-semibold text-foreground'>
+                  Event Tags <span className='text-destructive'>*</span>
                 </label>
 
                 <div className='relative'>
@@ -269,7 +261,7 @@ const CreateEventForms = ({ category }: CategoryProps) => {
                     name='tags'
                     required
                     placeholder='Community, Relief, Donation'
-                    className='h-12 rounded-xl border-input bg-background px-3 pl-10 text-foreground shadow-sm placeholder:text-muted-foreground'
+                    className='h-12 rounded-xl border-input bg-background pl-10 text-sm text-foreground shadow-sm placeholder:text-muted-foreground'
                   />
 
                   <Tag className='pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-primary' />
@@ -279,12 +271,15 @@ const CreateEventForms = ({ category }: CategoryProps) => {
           </div>
 
           {/* Publish Button */}
-          <Button
-            type='submit'
-            className='mt-7 h-12 w-full rounded-xl bg-primary text-base font-semibold text-primary-foreground shadow-lg shadow-primary/20 transition-colors hover:bg-primary-hover'
-          >
-            Publish Event
-          </Button>
+          <div className='mt-8'>
+            <Button
+              type='submit'
+              className='h-12 w-full rounded-xl bg-primary text-base font-semibold text-primary-foreground shadow-lg shadow-primary/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-primary-hover hover:shadow-primary/30'
+            >
+              <Sparkles className='mr-2 size-4' />
+              Create Event
+            </Button>
+          </div>
         </form>
       </div>
     </div>

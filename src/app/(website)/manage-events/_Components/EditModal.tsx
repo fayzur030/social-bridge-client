@@ -102,7 +102,11 @@ export function EditModal({ event }: IEventProps) {
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger
         render={
-          <Button variant='outline' size='sm' className='w-full mt-0.5'>
+          <Button
+            variant='outline'
+            size='lg'
+            className='w-full mt-0.5 text-[#6A67F9] hover:text-[#3936eb] cursor-pointer bg-[#EEF2FF]'
+          >
             <Pencil aria-hidden='true' />
             Edit
           </Button>

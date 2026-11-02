@@ -67,7 +67,7 @@ export function DeleteAlert({ event }: IEventProps) {
     <AlertDialog>
       <AlertDialogTrigger
         render={
-          <Button variant='destructive' disabled={isLoading}>
+          <Button variant='destructive' size={'lg'} disabled={isLoading} className={`cursor-pointer`}>
             <Trash2 aria-hidden='true' />
             Delete
           </Button>
