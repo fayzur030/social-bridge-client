@@ -9,11 +9,22 @@ import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { getTokenFromClient } from '@/lib/getTokenFromClient'
 import { ICategory } from '@/types/category.type'
+import { IData, validateEvent } from '@/lib/validations/event.validation'
 
 //interface category
-
 interface CategoryProps {
   category: ICategory[]
+}
+
+// type formData
+
+type TformData = {
+  title: string
+  description: string
+  eventType: string
+  eventDate: string
+  thumbnail: string
+  location: string
 }
 
 // todo: date validation
@@ -32,11 +43,24 @@ const CreateEventForms = ({ category }: CategoryProps) => {
   // todo: create event
   const handleCreateEvent = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-
     const form = e.currentTarget
     const formData = new FormData(form)
 
     const eventData = {
+      title: formData.get('title'),
+      description: formData.get('description'),
+      eventType: formData.get('eventType'),
+      eventDate: formData.get('eventDate'),
+      thumbnail: formData.get('thumbnail'),
+      location: formData.get('location'),
+    } as TformData
+
+    const error = validateEvent(eventData)
+    if (error) {
+      return toast.error(error)
+    }
+
+    const payload = {
       ...Object.fromEntries(formData.entries()),
       email: user?.email,
       name: user?.name,
@@ -56,7 +80,7 @@ const CreateEventForms = ({ category }: CategoryProps) => {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${jwtToken}`,
           },
-          body: JSON.stringify(eventData),
+          body: JSON.stringify(payload),
         }
       )
 
@@ -89,6 +113,7 @@ const CreateEventForms = ({ category }: CategoryProps) => {
 
         {/* Form Card */}
         <form
+          noValidate
           onSubmit={handleCreateEvent}
           className='rounded-[28px] border border-border bg-card p-5 shadow-xl shadow-foreground/5 sm:p-8'
         >
@@ -259,7 +284,6 @@ const CreateEventForms = ({ category }: CategoryProps) => {
                   <Input
                     type='text'
                     name='tags'
-                    required
                     placeholder='Community, Relief, Donation'
                     className='h-12 rounded-xl border-input bg-background pl-10 text-sm text-foreground shadow-sm placeholder:text-muted-foreground'
                   />
