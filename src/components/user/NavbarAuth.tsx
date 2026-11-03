@@ -79,6 +79,7 @@ const NavbarAuth = ({
           <DropdownMenu>
             <Tooltip>
               <TooltipTrigger
+                delay={10}
                 render={
                   <DropdownMenuTrigger
                     className='group flex items-center rounded-full border border-border bg-card transition-all duration-200 hover:border-primary/40 hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30'
