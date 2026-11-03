@@ -73,7 +73,7 @@ Create a `.env.local` file and configure the required environment variables.
 npm run dev
 ```
 
-Open http://localhost:3000 in your browser.
+<!-- Open http://localhost:3000 in your browser. -->
 
 ## 👨‍💻 Developer
 

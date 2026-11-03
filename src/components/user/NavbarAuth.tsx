@@ -10,6 +10,7 @@ import {
   LogIn,
   LogOut,
   Settings,
+  User2,
 } from 'lucide-react'
 import { authClient } from '@/lib/auth-client'
 import {
@@ -147,6 +148,13 @@ const NavbarAuth = ({
               >
                 <CircleCheck className='size-4 text-emerald-600' />
                 Joined Events
+              </DropdownMenuItem>
+              <DropdownMenuItem
+                render={<Link href='/profile' />}
+                className='cursor-pointer gap-2.5 rounded-lg px-2.5 py-2 text-sm text-popover-foreground focus:bg-accent focus:text-primary'
+              >
+                <User2 className='size-4 text-emerald-600' />
+                Profile
               </DropdownMenuItem>
 
               <Separator className='my-1.5' />
