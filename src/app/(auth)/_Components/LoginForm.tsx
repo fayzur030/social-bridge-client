@@ -21,6 +21,7 @@ import { toast } from 'sonner'
 import { Spinner } from '@/components/ui/spinner'
 import Image from 'next/image'
 import loginImage from '@/assets/login_left.png'
+import { validateLogin } from './ValidateLogin'
 
 type TUserDataLoginProps = {
   email: string
@@ -35,14 +36,22 @@ const LoginForm = () => {
   // Email and password login
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+
+    const formData = new FormData(e.currentTarget)
+
+    const userData = Object.fromEntries(
+      formData.entries()
+    ) as TUserDataLoginProps
+
+    const errorMessage = validateLogin(userData.email, userData.password)
+
+    if (errorMessage) {
+      return toast.error(errorMessage)
+    }
+
     setLoading(true)
 
     try {
-      const formData = new FormData(e.currentTarget)
-      const userData = Object.fromEntries(
-        formData.entries()
-      ) as TUserDataLoginProps
-
       const { data, error } = await authClient.signIn.email({
         email: userData.email,
         password: userData.password,
@@ -61,7 +70,6 @@ const LoginForm = () => {
       setLoading(false)
     }
   }
-
   // Google login
   const signInWithGoogle = async () => {
     try {
@@ -133,7 +141,7 @@ const LoginForm = () => {
             </div>
 
             {/* Login Form */}
-            <form className='space-y-5' onSubmit={onSubmit}>
+            <form className='space-y-5' onSubmit={onSubmit} noValidate>
               {/* Email */}
               <div className='space-y-2'>
                 <Label htmlFor='email'>Email</Label>

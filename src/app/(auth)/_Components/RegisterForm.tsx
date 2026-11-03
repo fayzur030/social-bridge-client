@@ -18,14 +18,12 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Spinner } from '@/components/ui/spinner'
-
-import { validateEmail } from './validateEmail'
-import { validatePassword } from './ValidatePassword'
 import { authClient } from '@/lib/auth-client'
 import { toast } from 'sonner'
 import { useRouter } from 'next/navigation'
 
 import signUpImage from '@/assets/signup.png'
+import { validateRegister } from './ValidateRegister'
 
 // User data type
 type TUserDataProps = {
@@ -46,16 +44,21 @@ const RegisterForm = () => {
   // Submit handler
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    const formData = new FormData(e.currentTarget)
+    const userData = Object.fromEntries(formData.entries()) as TUserDataProps
 
-    if (!validateEmail(email)) return
-    if (!validatePassword(password)) return
-
+    const errorMessage = validateRegister(
+      userData.name,
+      userData.email,
+      userData.password,
+      userData.image
+    )
+    if (errorMessage) {
+      return toast.error(errorMessage)
+    }
     setLoading(true)
 
     try {
-      const formData = new FormData(e.currentTarget)
-      const userData = Object.fromEntries(formData.entries()) as TUserDataProps
-
       const { error } = await authClient.signUp.email({
         name: userData.name,
         email: userData.email,
@@ -100,7 +103,8 @@ const RegisterForm = () => {
             </div>
 
             <h2 className='text-3xl leading-tight font-bold xl:text-4xl'>
-              Join Our <span className='text-brand-green-hover'>Community.</span>
+              Join Our{' '}
+              <span className='text-brand-green-hover'>Community.</span>
             </h2>
 
             <p className='mt-4 max-w-sm text-sm leading-7 text-white/75'>
@@ -128,7 +132,7 @@ const RegisterForm = () => {
             </div>
 
             {/* Register Form */}
-            <form className='space-y-5' onSubmit={onSubmit}>
+            <form className='space-y-5' onSubmit={onSubmit} noValidate>
               {/* Full Name */}
               <div className='space-y-2'>
                 <Label htmlFor='name'>Full Name</Label>
