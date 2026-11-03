@@ -6,6 +6,9 @@ import { getTokenFromServer } from '@/lib/getTokenFromServer'
 import CommonBanner from '../upcoming-events/_Components/CommonBanner'
 import ManageEventCardTable from './_Components/ManageEventCardTable'
 import { getCategories } from '@/services/getCategory'
+import { Card } from '@/components/ui/card'
+import { CalendarDays, CheckCircle2, Clock } from 'lucide-react'
+import StatCard from './_Components/StatCard'
 
 const getManageEvents = async (): Promise<IEvents[]> => {
   const session = await auth.api.getSession({
@@ -52,28 +55,11 @@ const ManageEvents = async () => {
         description='Manage your created events, make updates, and keep your community connected through meaningful experiences.'
       />
       <div className='mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8'>
-        {/* <div className='flex flex-col lg:flex-row justify-between items-start lg:items-center'>
-          <div className='mb-8'>
-            <h1 className='text-2xl font-bold text-foreground sm:text-3xl'>
-              Manage My Events
-            </h1>
-
-            <p className='mt-2 max-w-xl text-sm text-muted-foreground'>
-              Every great initiative starts with an idea. Manage the events you
-              have created, make updates whenever needed, and continue bringing
-              your community together for meaningful experiences.
-            </p>
-          </div>
-          <Link href={'/create-event'}>
-            <Button variant='default' className='px-8 py-6'>
-              <Plus /> Create New Event
-            </Button>
-          </Link>
-        </div> */}
+        <StatCard sortedManageEvents={sortedManageEvents} />
         {/* <Separator /> */}
-        <div className='mt-6 md:overflow-hidden md:rounded-xl md:border md:border-slate-200 md:bg-card md:shadow-sm md:dark:border-border'>
+        <div className='mt-10 md:overflow-hidden md:rounded-xl md:border md:border-slate-200 md:bg-card md:shadow-sm md:dark:border-border'>
           <div className='overflow-x-auto'>
-            <table className='w-full border-collapse text-left text-xs md:min-w-[640px]'>
+            <table className='w-full border-collapse text-left text-xs md:min-w-160'>
               <thead className='hidden bg-slate-100 text-[9px] font-semibold tracking-[0.08em] text-slate-600 dark:bg-muted dark:text-muted-foreground md:table-header-group'>
                 <tr>
                   <th

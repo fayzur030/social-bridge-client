@@ -49,7 +49,7 @@ const ManageEventCardTable = ({ event, category }: IEventProps) => {
           )}
           <div className='min-w-0 flex-1 '>
             <div className='flex flex-wrap items-center  gap-x-2 gap-y-1'>
-              <span className='font-semibold text-base md:text-lg text-slate-900 dark:text-foreground'>
+              <span className='font-semibold text-base md:text-sm  text-slate-900 dark:text-foreground'>
                 {event.title}
               </span>
               <span className='inline-flex whitespace-nowrap rounded-full bg-amber-400 px-2 py-0.5 text-[10px] font-medium leading-4 text-slate-950 md:hidden'>
@@ -70,15 +70,15 @@ const ManageEventCardTable = ({ event, category }: IEventProps) => {
           {event.eventType || 'Community'}
         </span>
       </td>
-      <td className='hidden whitespace-nowrap px-3 text-xs lg:text-base py-2 text-slate-700 dark:text-muted-foreground md:table-cell md:px-4'>
+      <td className='hidden whitespace-nowrap px-3 text-xs md:text-sm lg:text-base py-2 text-slate-700 dark:text-muted-foreground md:table-cell md:px-4'>
         {dateLabel}
       </td>
-      <td className='hidden px-3 py-2 text-slate-700  text-xs lg:text-base dark:text-muted-foreground md:table-cell md:px-4'>
+      <td className='hidden px-3 py-2 text-slate-700  text-xs md:text-sm  lg:text-base dark:text-muted-foreground md:table-cell md:px-4'>
         <span className='block max-w-36 truncate'>
           {event.location || 'Location to be announced'}
         </span>
       </td>
-      <td className='block px-3 pt-1 pb-3 md:table-cell md:px-4 text-xs lg:text-base md:py-2'>
+      <td className='block px-3 pt-1 pb-3 md:table-cell md:px-4 text-xs md:text-sm  lg:text-base md:py-2'>
         <div className='flex items-center gap-2 md:gap-1'>
           <EditModal event={event} category={category} compact />
           <DeleteAlert event={event} compact />
