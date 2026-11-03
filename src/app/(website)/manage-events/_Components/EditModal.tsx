@@ -50,7 +50,6 @@ export function EditModal({ event, category }: IEventProps) {
 
   const handleUpdateEvent = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    setIsSaving(true)
 
     const formData = new FormData(e.currentTarget)
     //todo: form validate function
@@ -68,6 +67,7 @@ export function EditModal({ event, category }: IEventProps) {
     if (error) {
       return toast.error(error)
     }
+    setIsSaving(true)
 
     const editData = {
       ...Object.fromEntries(formData.entries()),

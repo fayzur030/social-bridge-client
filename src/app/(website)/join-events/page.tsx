@@ -2,8 +2,9 @@ import { auth } from '@/lib/auth'
 import { headers } from 'next/headers'
 import EventCardGrid from '../upcoming-events/_Components/EventCardGrid'
 import { JoinEventType } from '@/types/joinEvent.type'
-import JoinEventBanner from './_Components/JoinEventBanner'
+
 import { getTokenFromServer } from '@/lib/getTokenFromServer'
+import JoinedEventBanner from './_Components/JoinedEventBanner'
 
 const getJoinEvent = async (): Promise<JoinEventType[]> => {
   // Get current user session
@@ -57,9 +58,9 @@ const JoinEventPage = async () => {
   )
 
   return (
-    <section className='px-4 sm:px-6 lg:px-8'>
-      <JoinEventBanner />
-      <div className='mx-auto max-w-7xl mt-10'>
+    <section className=''>
+      <JoinedEventBanner />
+      <div className='mx-auto max-w-7xl mt-10 px-4 sm:px-6 lg:px-8'>
         <div className='mb-8'>
           <h1 className='text-2xl font-bold text-foreground sm:text-3xl'>
             Joined Events
