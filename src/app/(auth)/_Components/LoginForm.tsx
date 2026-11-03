@@ -63,7 +63,7 @@ const LoginForm = () => {
       }
 
       toast.success(`Welcome back, ${data.user.name}!`)
-      router.push('/upcoming-events')
+      router.push('/')
     } catch {
       toast.error('Something went wrong!')
     } finally {
