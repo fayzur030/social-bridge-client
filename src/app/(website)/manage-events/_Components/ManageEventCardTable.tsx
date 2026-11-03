@@ -44,7 +44,7 @@ const ManageEventCardTable = ({ event, category }: IEventProps) => {
           ) : (
             <div
               aria-hidden='true'
-              className='size-16 shrink-0 rounded-xl bg-gradient-to-br from-blue-500 via-blue-800 to-slate-950 md:size-8 md:rounded-lg'
+              className='size-16 shrink-0 rounded-xl bg-linear-to-br from-blue-500 via-blue-800 to-slate-950 md:size-8 md:rounded-lg'
             />
           )}
           <div className='min-w-0 flex-1 '>

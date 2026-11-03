@@ -1,6 +1,6 @@
 'use client'
 
-import { Loader2, Trash2, Trash2Icon } from 'lucide-react'
+import { Trash2, Trash2Icon } from 'lucide-react'
 import {
   AlertDialog,
   AlertDialogAction,
@@ -28,6 +28,7 @@ interface IEventProps {
 
 export function DeleteAlert({ event, compact = false }: IEventProps) {
   const [isLoading, setIsLoading] = useState(false)
+  const [open, setOpen] = useState(false)
   const router = useRouter()
 
   const handleDeleteEvent = async (id: string) => {
@@ -50,6 +51,7 @@ export function DeleteAlert({ event, compact = false }: IEventProps) {
       }
 
       toast.success(`${event.title} deleted successfully`)
+      setOpen(false)
       router.refresh()
     } catch (error) {
       console.log(error)
@@ -65,7 +67,7 @@ export function DeleteAlert({ event, compact = false }: IEventProps) {
   }
 
   return (
-    <AlertDialog>
+    <AlertDialog open={open} onOpenChange={setOpen}>
       <AlertDialogTrigger
         render={
           <Button
