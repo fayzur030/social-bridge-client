@@ -30,15 +30,15 @@ const EventCard = ({ event }: IEventProps) => {
       }).format(eventDate)
     : 'Date to be announced'
 
-  const tags = (event.tags ?? '')
-    .split(',')
-    .map((tag) => tag.trim())
-    .filter(Boolean)
+  // const tags = (event.tags ?? '')
+  //   .split(',')
+  //   .map((tag) => tag.trim())
+  //   .filter(Boolean)
 
   return (
     <article className='group flex h-full min-w-0 flex-col overflow-hidden rounded-2xl border border-border/80 bg-card shadow-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:border-primary/40 hover:bg-accent/20 hover:shadow-xl hover:shadow-primary/10 focus-within:ring-2 focus-within:ring-primary/30 motion-reduce:transition-none motion-reduce:hover:translate-y-0'>
       {/* Thumbnail */}
-      <div className='relative aspect-[16/9] overflow-hidden bg-muted'>
+      <div className='relative aspect-video overflow-hidden bg-muted'>
         {event.thumbnail ? (
           <Image
             src={event.thumbnail}

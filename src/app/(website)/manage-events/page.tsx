@@ -12,7 +12,7 @@ import { CalendarDays, Plus } from 'lucide-react'
 import Link from 'next/link'
 import StatCard from './_Components/StatCard'
 
-const getManageEvents = async (): Promise<IEvents[]> => {
+export const getManageEvents = async (): Promise<IEvents[]> => {
   const session = await auth.api.getSession({
     headers: await headers(),
   })

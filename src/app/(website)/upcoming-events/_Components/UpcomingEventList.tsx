@@ -34,9 +34,9 @@ const UpcomingEventList = ({ events, category }: IUpcomingEventListProps) => {
   return (
     <div className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-10'>
       {/* Category and Search */}
-      <div className='flex flex-col gap-3 md:flex-row md:items-center md:justify-between'>
+      <div className='grid grid-cols-1 gap-3 xl:grid-cols-[minmax(0,1fr)_20rem] xl:items-center'>
         {/* Category */}
-        <div className='min-w-0 flex-1'>
+        <div className='min-w-0'>
           <CategoryItems
             category={category}
             selectedCategory={selectedCategory}
@@ -45,7 +45,7 @@ const UpcomingEventList = ({ events, category }: IUpcomingEventListProps) => {
         </div>
 
         {/* Search Bar */}
-        <div className='w-full md:max-w-xs lg:max-w-sm md:shrink-0'>
+        <div className='w-full min-w-0'>
           <div className='relative'>
             <Search className='absolute left-4 top-1/2 size-5 -translate-y-1/2 text-muted-foreground' />
 
@@ -63,9 +63,9 @@ const UpcomingEventList = ({ events, category }: IUpcomingEventListProps) => {
       {/* Events */}
       <section className='grid grid-cols-1 gap-5 py-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6'>
         {filteredEvents.length > 0 ? (
-          filteredEvents.map((event) => (
-            <EventCard key={event._id} event={event} />
-          ))
+          filteredEvents
+            .slice(0, 5)
+            .map((event) => <EventCard key={event._id} event={event} />)
         ) : (
           <div className='col-span-full py-16 text-center'>
             <h3 className='text-lg font-semibold text-foreground'>

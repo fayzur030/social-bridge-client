@@ -1,7 +1,13 @@
 import { auth } from '@/lib/auth'
 import { headers } from 'next/headers'
-import React from 'react'
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
+import { Button } from '../ui/button'
+import { ArrowRight, Calendar, Pencil } from 'lucide-react'
+import { Card, CardContent, CardHeader } from '../ui/card'
+import { getManageEvents } from '@/app/(website)/manage-events/page'
+import ManageEventCard from '@/components/user/ManageEventCard'
+import Link from 'next/link'
+import AccountInformation from './AccountInformation'
 
 const UserProfile = async () => {
   const session = await auth.api.getSession({
@@ -9,42 +15,107 @@ const UserProfile = async () => {
   })
 
   const user = session?.user
+
+  if (!user) return null
+
   const userJoinDate = Intl.DateTimeFormat('en-US', {
-    weekday: 'short',
     month: 'short',
-    day: 'numeric',
     year: 'numeric',
-  }).format(user?.createdAt)
+  }).format(new Date(user.createdAt))
+
+  const manageEventsCard = await getManageEvents()
+
   return (
-    <div>
+    <div className='min-h-screen pb-12'>
+      {/* Profile Header */}
       <div className='bg-[#1E3A8A] dark:bg-linear-to-r dark:from-[#1E3A8A] dark:via-[#172554] dark:to-[#312E81]'>
-        <div className='mx-auto max-w-7xl px-4 py-10 text-left sm:px-6 md:py-15 lg:px-8'>
-          <div className='flex flex-wrap items-center gap-4'>
-            <Avatar className='size-30 border-4 border-hero-accent'>
-              {user?.image && (
+        <div className='mx-auto flex max-w-7xl flex-col gap-6 px-4 py-10 sm:px-6 md:flex-row md:items-center md:justify-between md:py-14 lg:px-8'>
+          {/* User Information */}
+          <div className='flex flex-col items-center gap-5 text-center sm:flex-row sm:text-left'>
+            <Avatar className='size-24 shrink-0 border-4 border-hero-accent sm:size-28 md:size-32'>
+              {user.image && (
                 <AvatarImage
                   src={user.image}
                   alt={user.name || 'User avatar'}
                 />
               )}
+
               <AvatarFallback className='text-2xl font-semibold uppercase'>
-                {user?.name?.charAt(0) || user?.email?.charAt(0) || 'U'}
+                {user.name?.charAt(0) || user.email?.charAt(0) || 'U'}
               </AvatarFallback>
             </Avatar>
+
             <div>
-              <h1 className='text-xl font-bold tracking-tight text-white sm:text-2xl'>
-                {user?.name}
+              <h1 className='text-xl font-bold tracking-tight text-white sm:text-2xl md:text-3xl'>
+                {user.name}
               </h1>
-              <p className=' max-w-xl text-sm leading-7 text-white/80 sm:text-base'>
-                {user?.email}
+
+              <p className='mt-1 break-all text-sm leading-7 text-white/80 sm:text-base'>
+                {user.email}
               </p>
-              <p className=' w-fit mt-2 rounded-full border border-hero-accent/40 bg-hero-accent text-black dark:text-accent-foreground px-4 py-1 text-xs font-medium backdrop-blur-sm dark:bg-white/5'>
+
+              <p className='mx-auto mt-2 w-fit rounded-full border border-hero-accent/40 bg-hero-accent px-4 py-1 text-xs font-medium text-black dark:bg-white/5 dark:text-accent-foreground sm:mx-0'>
                 Member since {userJoinDate}
               </p>
             </div>
           </div>
-          {/* Edit button */}
+
+          {/* Edit Button */}
+          <Button
+            variant='outline'
+            className='w-full cursor-pointer bg-transparent px-7 py-5 text-white sm:w-fit'
+          >
+            <Pencil className='size-4' />
+            Edit Profile
+          </Button>
         </div>
+      </div>
+
+      {/* Profile Sections */}
+      <div className='mx-auto mt-8 grid max-w-7xl grid-cols-1 gap-5 px-4 sm:px-6 lg:mt-10 lg:grid-cols-2 lg:gap-6 lg:px-8'>
+        <AccountInformation user={user} />
+        {/* Created Events */}
+        <Card className='min-w-0'>
+          <CardHeader className='flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between'>
+            <div className='flex items-center gap-2'>
+              <Calendar className='size-5 shrink-0 text-accent-foreground' />
+
+              <h2 className='text-lg font-bold tracking-tight text-accent-foreground sm:text-xl'>
+                My Created Events
+              </h2>
+            </div>
+
+            <Link
+              href='/manage-events'
+              className='flex w-fit items-center gap-1 text-sm font-medium text-accent-foreground transition-colors hover:opacity-75'
+            >
+              View All
+              <ArrowRight className='size-4' />
+            </Link>
+          </CardHeader>
+
+          <CardContent>
+            {manageEventsCard.length > 0 ? (
+              <div className='grid grid-cols-1 gap-4 sm:grid-cols-2'>
+                {manageEventsCard.slice(0, 2).map((item) => (
+                  <ManageEventCard key={item._id} event={item} />
+                ))}
+              </div>
+            ) : (
+              <div className='rounded-xl border border-dashed p-8 text-center'>
+                <Calendar className='mx-auto mb-3 size-8 text-muted-foreground' />
+
+                <p className='text-sm text-muted-foreground'>
+                  You haven&apos;t created any events yet.
+                </p>
+
+                <Button className='mt-4' size='sm'>
+                  <Link href='/create-event'>Create Event</Link>
+                </Button>
+              </div>
+            )}
+          </CardContent>
+        </Card>
       </div>
     </div>
   )

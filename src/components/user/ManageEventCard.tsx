@@ -1,21 +1,15 @@
 import Image from 'next/image'
-import Link from 'next/link'
-import { CalendarDays, Eye, MapPin, Sparkles } from 'lucide-react'
+
+import { CalendarDays, MapPin, Sparkles } from 'lucide-react'
 
 import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
 import { IEvents } from '@/types/event.types'
-
-import { EditModal } from './EditModal'
-import { DeleteAlert } from './DeleteAlert'
-import { getCategories } from '@/services/getCategory'
 
 interface IEventProps {
   event: IEvents
 }
 
 const ManageEventCard = async ({ event }: IEventProps) => {
-  const category = await getCategories()
   const dateValue = (event.eventDate ?? '').trim()
 
   const eventDate = /^\d{4}-\d{2}-\d{2}$/.test(dateValue)
@@ -94,42 +88,6 @@ const ManageEventCard = async ({ event }: IEventProps) => {
           <span className='truncate'>
             {event.location || 'Location to be announced'}
           </span>
-        </div>
-
-        <p className='mt-2 line-clamp-2 text-sm leading-5 text-muted-foreground'>
-          {event.description ||
-            'More information about this event coming soon.'}
-        </p>
-
-        {tags.length > 0 && (
-          <div className='mt-3 flex flex-wrap gap-1.5'>
-            {tags.slice(0, 2).map((tag) => (
-              <Badge key={tag} variant='secondary' className='font-normal'>
-                {tag}
-              </Badge>
-            ))}
-            {tags.length > 2 && (
-              <Badge variant='outline' className='font-normal'>
-                +{tags.length - 2}
-              </Badge>
-            )}
-          </div>
-        )}
-
-        <div className='mt-auto pt-4'>
-          <div className='mt-2 grid grid-cols-4 gap-2'>
-            <Link
-              href={`/upcoming-events/${event._id}`}
-              className='flex items-center justify-center gap-2 col-span-2'
-            >
-              <Button variant='outline' className='w-full py-5 cursor-pointer'>
-                <Eye aria-hidden='true' className='size-4' />
-                View
-              </Button>
-            </Link>
-            <EditModal event={event} category={category} />
-            <DeleteAlert event={event} />
-          </div>
         </div>
       </div>
     </article>
