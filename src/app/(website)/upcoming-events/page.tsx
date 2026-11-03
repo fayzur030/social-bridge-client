@@ -1,5 +1,4 @@
 import { IEvents } from '@/types/event.types'
-import Banner from './_Components/Banner'
 import UpcomingEventList from './_Components/UpcomingEventList'
 import { getCategories } from '@/services/getCategory'
 import CommonBanner from './_Components/CommonBanner'
