@@ -6,17 +6,17 @@ import { ArrowRight } from 'lucide-react'
 
 const Banner = () => {
   return (
-    <section className='relative overflow-hidden bg-gradient-to-b from-blue-200 via-indigo-100 to-slate-50 px-5 py-16 transition-colors duration-300 dark:from-[#312E81] dark:via-[#172554] dark:to-[#0B1220] sm:px-8 sm:py-20 lg:px-10 lg:py-24'>
+    <section className='relative overflow-hidden bg-gradient-to-b from-blue-200 via-indigo-100 to-slate-50 px-3 py-16 transition-colors duration-300 dark:from-[#312E81] dark:via-[#172554] dark:to-[#0B1220] sm:px-8 sm:py-20 lg:px-10 lg:py-24'>
       <div className='relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-12 md:grid-cols-2 lg:gap-16'>
         {/* Left Side - Content */}
-        <div className='flex flex-col items-center text-center md:items-start md:text-left'>
+        <div className='flex flex-col items-center md:items-start md:text-left'>
           {/* Badge */}
           <p className='mb-5 w-fit rounded-full border border-hero-accent/40 bg-white/50 px-4 py-2 text-xs font-medium text-brand-amber backdrop-blur-sm dark:bg-white/5'>
             Together we build better communities
           </p>
 
           {/* Heading */}
-          <h1 className='font-serif text-4xl leading-[1.1] font-bold text-slate-900 sm:text-5xl lg:text-6xl dark:text-white'>
+          <h1 className='font-serif text-5xl leading-[1.1] font-bold text-slate-900 sm:text-5xl lg:text-6xl dark:text-white'>
             <span className='block'>Small actions</span>
             <span className='mt-2 block text-hero-accent'>Big change.</span>
           </h1>
@@ -28,22 +28,21 @@ const Banner = () => {
           </p>
 
           {/* Buttons */}
-          <div className='mt-8 flex flex-wrap items-center justify-center gap-4 md:justify-start'>
+          <div className='mt-8 flex flex-nowrap items-center justify-center gap-3 md:justify-start'>
             <Link
               href='/upcoming-events'
-              className='inline-flex h-11 items-center justify-center rounded-xl bg-hero-accent px-6 text-sm font-semibold text-deep2 shadow-lg shadow-hero-accent/20 transition-all duration-300 hover:-translate-y-1 hover:bg-hero-accent/90 hover:shadow-xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hero-accent gap-0.5'
+              className='group inline-flex h-11 shrink-0 items-center justify-center gap-1 rounded-xl bg-hero-accent px-4 text-xs font-semibold text-deep2 shadow-lg shadow-hero-accent/20 transition-all duration-300 hover:-translate-y-1 hover:bg-hero-accent/90 hover:shadow-xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hero-accent sm:px-6 sm:text-sm'
             >
               Explore Events
               <ArrowRight
                 aria-hidden='true'
-                data-icon='inline-end'
-                className='transition-transform duration-200 group-hover/button:translate-x-1'
+                className='size-4 transition-transform duration-200 group-hover:translate-x-1'
               />
             </Link>
 
             <Link
               href='/create-event'
-              className='inline-flex h-11 items-center justify-center rounded-xl border border-hero-outline bg-white/40 px-6 text-sm font-semibold text-hero-copy backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:bg-white/70 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary dark:bg-white/5 dark:hover:bg-white/10'
+              className='inline-flex h-11 shrink-0 items-center justify-center whitespace-nowrap rounded-xl border border-hero-outline bg-white/40 px-4 text-xs font-semibold text-hero-copy backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:bg-white/70 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary dark:bg-white/5 dark:hover:bg-white/10 sm:px-6 sm:text-sm'
             >
               Create an Event
             </Link>

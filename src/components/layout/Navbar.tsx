@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { Menu, Moon, Sun, UsersRound, X } from 'lucide-react'
+import { ArrowUpRight, Menu, Moon, Sun, UsersRound, X } from 'lucide-react'
 import { usePathname } from 'next/navigation'
 import { useTheme } from 'next-themes'
 
@@ -28,21 +28,6 @@ const links = [
     href: '/upcoming-events',
     matches: (pathname: string) => pathname.startsWith('/upcoming-events'),
   },
-  // {
-  //   label: 'About',
-  //   href: '/#about',
-  //   matches: () => false,
-  // },
-  // {
-  //   label: 'Impact',
-  //   href: '/#impact',
-  //   matches: () => false,
-  // },
-  // {
-  //   label: 'Contact',
-  //   href: '/#contact',
-  //   matches: () => false,
-  // },
 ]
 
 const Navbar = () => {
@@ -56,14 +41,6 @@ const Navbar = () => {
   const toggleTheme = () => {
     setTheme(isDarkMode ? 'light' : 'dark')
   }
-
-  const navLinkClass = (active: boolean) =>
-    cn(
-      'block rounded-lg px-4 text-sm font-medium transition-colors sm:px-2 sm:py-2 sm:text-xs lg:px-3 lg:text-sm',
-      active
-        ? 'bg-primary/10 text-primary sm:bg-transparent'
-        : 'text-muted-foreground hover:bg-accent hover:text-primary sm:hover:bg-transparent'
-    )
 
   return (
     <header className='sticky top-0 z-50 border-b border-border bg-background text-foreground'>
@@ -83,7 +60,7 @@ const Navbar = () => {
             strokeWidth={2.5}
           />
 
-          <h1 className='text-[24px] font-bold tracking-[-0.04em]'>
+          <h1 className='text-lg lg:text-[24px] font-bold tracking-[-0.04em]'>
             <span className='text-primary'>Social</span>
             <span className='text-brand-amber'>Bridge</span>
           </h1>
@@ -133,6 +110,11 @@ const Navbar = () => {
             <NavbarAuth />
           </div>
 
+          {/* Mobile User Avatar */}
+          <div className='sm:hidden'>
+            <NavbarAuth compact />
+          </div>
+
           {/* Mobile Navigation */}
           <div className='sm:hidden'>
             <Sheet open={open} onOpenChange={setOpen}>
@@ -148,7 +130,7 @@ const Navbar = () => {
 
               <SheetContent
                 side='right'
-                className='flex w-[min(20rem,calc(100vw-2rem))] flex-col border-border bg-background px-4 text-foreground'
+                className='flex max-h-dvh w-[min(20rem,calc(100vw-2rem))] flex-col overflow-y-auto overscroll-contain border-border bg-background px-4 text-foreground'
               >
                 {/* Mobile Logo */}
                 <SheetHeader className='border-b border-border pb-5 text-left'>
@@ -163,7 +145,7 @@ const Navbar = () => {
                 </SheetHeader>
 
                 {/* Mobile Links */}
-                <div className='flex flex-col gap-2'>
+                <div className='flex flex-col gap-2 px-1'>
                   {links.map(({ label, href, matches }) => {
                     const isActive = matches(pathname)
 
@@ -173,14 +155,24 @@ const Navbar = () => {
                         href={href}
                         aria-current={isActive ? 'page' : undefined}
                         onClick={() => setOpen(false)}
-                        className={navLinkClass(isActive)}
+                        className={`group flex items-center justify-between rounded-xl px-4 py-3.5 text-sm font-semibold transition-all duration-200 ${
+                          isActive
+                            ? 'bg-purple-600 text-white shadow-md shadow-purple-600/20'
+                            : 'text-foreground hover:bg-purple-50 hover:text-purple-700 dark:hover:bg-purple-500/10 dark:hover:text-purple-400'
+                        }`}
                       >
-                        {label}
+                        <span>{label}</span>
+
+                        <ArrowUpRight
+                          className={`size-4 transition-transform duration-200 ${
+                            isActive
+                              ? 'text-white'
+                              : 'text-muted-foreground group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-purple-600'
+                          }`}
+                        />
                       </Link>
                     )
                   })}
-
-                  <NavbarAuth mobile onNavigate={() => setOpen(false)} />
                 </div>
 
                 {/* Mobile Footer */}
