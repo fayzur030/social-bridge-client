@@ -75,7 +75,7 @@ const LoginForm = () => {
     try {
       const { error } = await authClient.signIn.social({
         provider: 'google',
-        callbackURL: '/upcoming-events?login=success',
+        callbackURL: '/',
       })
 
       if (error) {
