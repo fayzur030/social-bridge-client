@@ -4,7 +4,7 @@ import EventCardGrid from '../upcoming-events/_Components/EventCardGrid'
 import { JoinEventType } from '@/types/joinEvent.type'
 
 import { getTokenFromServer } from '@/lib/getTokenFromServer'
-import JoinedEventBanner from './_Components/JoinedEventBanner'
+import CommonBanner from '../upcoming-events/_Components/CommonBanner'
 
 const getJoinEvent = async (): Promise<JoinEventType[]> => {
   // Get current user session
@@ -58,8 +58,11 @@ const JoinEventPage = async () => {
   )
 
   return (
-    <section className=''>
-      <JoinedEventBanner />
+    <section>
+      <CommonBanner
+        title='Joined Events'
+        description='Discover opportunities to make a difference. Join events, connect with people, and create positive change together.'
+      />
       <div className='mx-auto max-w-7xl mt-10 px-4 sm:px-6 lg:px-8'>
         <div className='mb-8'>
           <h1 className='text-2xl font-bold text-foreground sm:text-3xl'>

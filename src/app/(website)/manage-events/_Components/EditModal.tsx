@@ -32,6 +32,7 @@ import { ICategory } from '@/types/category.type'
 interface IEventProps {
   event: IEvents
   category: ICategory[]
+  compact?: boolean
 }
 
 type TformData = {
@@ -43,7 +44,7 @@ type TformData = {
   location: string
 }
 
-export function EditModal({ event, category }: IEventProps) {
+export function EditModal({ event, category, compact = false }: IEventProps) {
   const [open, setOpen] = useState(false)
   const [isSaving, setIsSaving] = useState(false)
   const router = useRouter()
@@ -110,12 +111,16 @@ export function EditModal({ event, category }: IEventProps) {
       <DialogTrigger
         render={
           <Button
-            variant='outline'
-            size='lg'
-            className='w-full mt-0.5 text-[#6A67F9] hover:text-[#3936eb] cursor-pointer bg-[#EEF2FF]'
+            variant={compact ? 'default' : 'outline'}
+            size={compact ? 'default' : 'lg'}
+            className={
+              compact
+                ? 'h-10 flex-1 rounded-xl px-4 text-xs font-semibold md:h-7 md:flex-none md:rounded-md md:px-3 md:text-[10px] md:font-medium'
+                : 'w-full mt-0.5 text-[#6A67F9] hover:text-[#3936eb] cursor-pointer bg-[#EEF2FF]'
+            }
           >
-            <Pencil aria-hidden='true' />
-            Edit
+            {!compact && <Pencil aria-hidden='true' />}
+            {compact ? 'Edit' : 'Update'}
           </Button>
         }
       />

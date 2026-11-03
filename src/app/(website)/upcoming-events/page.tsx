@@ -2,6 +2,7 @@ import { IEvents } from '@/types/event.types'
 import Banner from './_Components/Banner'
 import UpcomingEventList from './_Components/UpcomingEventList'
 import { getCategories } from '@/services/getCategory'
+import CommonBanner from './_Components/CommonBanner'
 
 const getUpcomingEvents = async (): Promise<IEvents[]> => {
   try {
@@ -27,7 +28,12 @@ const UpcomingEvents = async () => {
   const category = await getCategories()
   return (
     <>
-      <Banner />
+      {/* <Banner /> */}
+      <CommonBanner
+        title='  Upcoming Events'
+        description='  Find a cause near you and join the next event. Make a difference by
+          connecting with your community.'
+      />
       {/* Upcoming Events */}
       <UpcomingEventList events={events} category={category} />
     </>

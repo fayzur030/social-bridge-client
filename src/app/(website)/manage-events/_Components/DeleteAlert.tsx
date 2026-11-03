@@ -23,9 +23,10 @@ import { getTokenFromClient } from '@/lib/getTokenFromClient'
 
 interface IEventProps {
   event: IEvents
+  compact?: boolean
 }
 
-export function DeleteAlert({ event }: IEventProps) {
+export function DeleteAlert({ event, compact = false }: IEventProps) {
   const [isLoading, setIsLoading] = useState(false)
   const router = useRouter()
 
@@ -67,8 +68,17 @@ export function DeleteAlert({ event }: IEventProps) {
     <AlertDialog>
       <AlertDialogTrigger
         render={
-          <Button variant='destructive' size={'lg'} disabled={isLoading} className={`cursor-pointer`}>
-            <Trash2 aria-hidden='true' />
+          <Button
+            variant={compact ? 'outline' : 'destructive'}
+            size={compact ? 'default' : 'lg'}
+            disabled={isLoading}
+            className={
+              compact
+                ? 'h-10 flex-1 rounded-xl border-red-400 px-4 text-xs font-semibold text-red-600 hover:bg-red-50 hover:text-red-700 dark:border-red-500 dark:text-red-400 dark:hover:bg-red-950/30 md:h-7 md:flex-none md:rounded-md md:px-3 md:text-[10px] md:font-medium'
+                : 'cursor-pointer'
+            }
+          >
+            {!compact && <Trash2 aria-hidden='true' />}
             Delete
           </Button>
         }
