@@ -27,7 +27,6 @@ const UpcomingEvents = async () => {
   const category = await getCategories()
   return (
     <>
-      {/* <Banner /> */}
       <CommonBanner
         title='  Upcoming Events'
         description='  Find a cause near you and join the next event. Make a difference by

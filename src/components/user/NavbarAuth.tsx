@@ -22,6 +22,7 @@ import { Avatar, AvatarBadge, AvatarFallback, AvatarImage } from '../ui/avatar'
 import { toast } from 'sonner'
 import { Tooltip, TooltipContent, TooltipTrigger } from '../ui/tooltip'
 import { useRouter } from 'next/navigation'
+import { Separator } from '../ui/separator'
 
 interface NavbarAuthProps {
   mobile?: boolean
@@ -147,18 +148,16 @@ const NavbarAuth = ({
                 <CircleCheck className='size-4 text-emerald-600' />
                 Joined Events
               </DropdownMenuItem>
-              <Button
-                variant='outline'
-                size='lg'
+
+              <Separator className='my-1.5' />
+
+              <DropdownMenuItem
                 onClick={handleLogOut}
-                className={cn(
-                  'cursor-pointer border-red-500 text-red-500 hover:text-red-600 mt-2 lg:mt-0',
-                  mobile ? 'w-full justify-center' : 'w-full md:w-auto'
-                )}
+                className='cursor-pointer gap-2.5 rounded-lg px-2.5 py-2 text-sm text-red-500 focus:bg-red-50 focus:text-red-600 dark:focus:bg-red-500/10'
               >
                 <LogOut className='size-4' />
-                Logout
-              </Button>
+                Log Out
+              </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
