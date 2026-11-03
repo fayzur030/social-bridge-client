@@ -124,7 +124,7 @@ export function EditModal({ event, category, compact = false }: IEventProps) {
           </Button>
         }
       />
-      <DialogContent className='max-h-[90vh] overflow-y-auto p-0 sm:max-w-4xl'>
+      <DialogContent className='max-h-[90vh] overflow-y-auto p-0 sm:max-w-3xl'>
         <form
           onSubmit={handleUpdateEvent}
           className=' border border-border bg-card p-5 text-foreground sm:p-8' //rounded-[28px]
@@ -134,15 +134,9 @@ export function EditModal({ event, category, compact = false }: IEventProps) {
               <Sparkles aria-hidden='true' className='size-5' />
             </div>
             <div>
-              <p className='text-sm font-medium text-primary'>
-                Social Service Drive
-              </p>
               <DialogTitle className='mt-1 text-3xl font-bold tracking-tight text-foreground sm:text-4xl'>
-                Edit Community Event
+                Edit Event
               </DialogTitle>
-              <DialogDescription className='mt-2 max-w-2xl text-sm text-muted-foreground sm:text-base'>
-                Update your event details and save your changes.
-              </DialogDescription>
             </div>
           </DialogHeader>
 
@@ -218,48 +212,50 @@ export function EditModal({ event, category, compact = false }: IEventProps) {
               </div>
             </div>
 
-            <div className='space-y-2'>
-              <label
-                htmlFor={`location-${event._id}`}
-                className='text-sm font-medium text-foreground'
-              >
-                Location / Venue
-              </label>
-              <div className='relative'>
-                <Input
-                  id={`location-${event._id}`}
-                  type='text'
-                  name='location'
-                  defaultValue={event.location}
-                  placeholder='Mohammadpur Town Hall, Dhaka'
-                  className='h-12 rounded-xl border-input bg-background px-3 pl-10 text-foreground shadow-sm placeholder:text-muted-foreground'
-                />
-                <MapPin className='pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-primary' />
+            <div className='grid grid-cols-1 lg:grid-cols-2 gap-5'>
+              <div className='space-y-2'>
+                <label
+                  htmlFor={`location-${event._id}`}
+                  className='text-sm font-medium text-foreground'
+                >
+                  Location / Venue
+                </label>
+                <div className='relative'>
+                  <Input
+                    id={`location-${event._id}`}
+                    type='text'
+                    name='location'
+                    defaultValue={event.location}
+                    placeholder='Mohammadpur Town Hall, Dhaka'
+                    className='h-12 rounded-xl border-input bg-background px-3 pl-10 text-foreground shadow-sm placeholder:text-muted-foreground'
+                  />
+                  <MapPin className='pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-primary' />
+                </div>
               </div>
-            </div>
 
-            <div className='space-y-2'>
-              <label
-                htmlFor={`thumbnail-${event._id}`}
-                className='text-sm font-medium text-foreground'
-              >
-                Thumbnail Image URL
-              </label>
-              <div className='relative'>
-                <Input
-                  id={`thumbnail-${event._id}`}
-                  type='url'
-                  name='thumbnail'
-                  defaultValue={event.thumbnail}
-                  placeholder='https://images.unsplash.com/photo-...'
-                  className='h-12 rounded-xl border-input bg-background px-3 pl-10 text-foreground shadow-sm placeholder:text-muted-foreground'
-                />
-                <ImageIcon className='pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-primary' />
+              <div className='space-y-2'>
+                <label
+                  htmlFor={`thumbnail-${event._id}`}
+                  className='text-sm font-medium text-foreground'
+                >
+                  Thumbnail Image URL
+                </label>
+                <div className='relative'>
+                  <Input
+                    id={`thumbnail-${event._id}`}
+                    type='url'
+                    name='thumbnail'
+                    defaultValue={event.thumbnail}
+                    placeholder='https://images.unsplash.com/photo-...'
+                    className='h-12 rounded-xl border-input bg-background px-3 pl-10 text-foreground shadow-sm placeholder:text-muted-foreground'
+                  />
+                  <ImageIcon className='pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-primary' />
+                </div>
+                {/* <p className='text-xs text-muted-foreground'>
+                  Quick photo preset: Winter Clothes • Banana Relief • Cleanup •
+                  Tree Plantation
+                </p> */}
               </div>
-              <p className='text-xs text-muted-foreground'>
-                Quick photo preset: Winter Clothes • Banana Relief • Cleanup •
-                Tree Plantation
-              </p>
             </div>
 
             <div className='space-y-2'>
