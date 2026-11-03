@@ -1,37 +1,87 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🌉 SocialBridge
 
-## Getting Started
+### Connect People. Create Impact. Build a Better Community.
 
-First, run the development server:
+**SocialBridge** is a community-driven social development events platform where people can discover, organize, and participate in meaningful social activities. It helps individuals connect with others and contribute to positive changes in society.
+
+🌐 **Live Website:** https://social-bridge-client.vercel.app
+
+## ✨ Key Features
+
+- **User Authentication:** Secure registration and login with email/password and Google authentication using Better Auth.
+- **Create Events:** Authenticated users can create social development events with titles, descriptions, categories, images, locations, and event dates.
+- **Explore Upcoming Events:** Browse upcoming social events with category filtering, search, and pagination.
+- **Event Details:** View detailed information about individual events before joining.
+- **Join Events:** Logged-in users can participate in events and manage their participation.
+- **Manage Events:** Event creators can update and delete their own events.
+- **Joined Events:** View all joined events and leave an event whenever needed.
+- **Protected Routes:** Secure private pages and API endpoints with authentication and JWT verification.
+- **Responsive Design:** Enjoy a consistent experience across desktop, tablet, and mobile devices.
+- **Modern UI:** Clean interface with reusable components, interactive elements, and light/dark theme support.
+
+## 🛠️ Technologies Used
+
+### Frontend
+
+- Next.js
+- React
+- TypeScript
+- Tailwind CSS
+- shadcn/ui
+- Lucide React
+- Sonner
+
+### Backend
+
+- Node.js
+- Express.js
+- MongoDB
+- JSON Web Token (JWT)
+- Better Auth
+- dotenv
+- CORS
+
+## 🚀 Getting Started
+
+To run the project locally:
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/fayzur030/social-bridge-client.git
+```
+
+### 2. Navigate to the Project Directory
+
+```bash
+cd social-bridge-client
+```
+
+### 3. Install Dependencies
+
+```bash
+npm install
+```
+
+### 4. Configure Environment Variables
+
+Create a `.env.local` file and configure the required environment variables.
+
+### 5. Run the Development Server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000 in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 👨‍💻 Developer
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+**Md. Fayzur Rahman**
 
-## Learn More
+- GitHub: [@fayzur030](https://github.com/fayzur030)
+- LinkedIn: [Md. Fayzur Rahman](https://www.linkedin.com/in/md-fayzur-rahman/)
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# impacthub-client
+⭐ If you find this project interesting, consider giving it a star!
