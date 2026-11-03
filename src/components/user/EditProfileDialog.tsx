@@ -69,14 +69,14 @@ export function EditProfile({ name, image }: UserUpdate) {
       <Button
         type='button'
         variant='outline'
-        className='w-full cursor-pointer bg-transparent px-7 py-5 text-white sm:w-fit'
+        className='w-fit mx-auto md:mx-0 cursor-pointer bg-transparent px-7 py-5 text-white sm:w-fit'
         onClick={() => setOpen(true)}
       >
         <Pencil className='size-4' />
         Edit Profile
       </Button>
 
-      <DialogContent className='sm:max-w-sm'>
+      <DialogContent className='sm:max-w-xl'>
         <form onSubmit={onSubmit}>
           <DialogHeader>
             <DialogTitle>Edit Profile</DialogTitle>
@@ -95,6 +95,7 @@ export function EditProfile({ name, image }: UserUpdate) {
                 value={nameValue}
                 onChange={(e) => setNameValue(e.target.value)}
                 required
+                className='h-12 rounded-xl border-input bg-background px-4 text-foreground shadow-sm placeholder:text-muted-foreground focus-visible:border-primary focus-visible:ring-primary/20'
               />
             </Field>
 
@@ -107,6 +108,7 @@ export function EditProfile({ name, image }: UserUpdate) {
                 onChange={(e) => setImageValue(e.target.value)}
                 type='url'
                 placeholder='https://example.com/photo.jpg'
+                className='h-12 rounded-xl border-input bg-background px-4 text-foreground shadow-sm placeholder:text-muted-foreground focus-visible:border-primary focus-visible:ring-primary/20'
               />
             </Field>
           </FieldGroup>
@@ -114,13 +116,18 @@ export function EditProfile({ name, image }: UserUpdate) {
           <DialogFooter>
             <DialogClose
               render={
-                <Button variant='outline' type='button' disabled={isSaving}>
+                <Button
+                  variant='outline'
+                  type='button'
+                  disabled={isSaving}
+                  className={`py-5`}
+                >
                   Cancel
                 </Button>
               }
             />
 
-            <Button type='submit' disabled={isSaving}>
+            <Button type='submit' disabled={isSaving} className={`py-5`}>
               {isSaving ? 'Saving...' : 'Save Changes'}
             </Button>
           </DialogFooter>
