@@ -8,6 +8,7 @@ import { getManageEvents } from '@/app/(website)/manage-events/page'
 import ManageEventCard from '@/components/user/ManageEventCard'
 import Link from 'next/link'
 import AccountInformation from './AccountInformation'
+import { EditProfile } from './EditProfileDialog'
 
 const UserProfile = async () => {
   const session = await auth.api.getSession({
@@ -59,15 +60,8 @@ const UserProfile = async () => {
               </p>
             </div>
           </div>
-
-          {/* Edit Button */}
-          <Button
-            variant='outline'
-            className='w-full cursor-pointer bg-transparent px-7 py-5 text-white sm:w-fit'
-          >
-            <Pencil className='size-4' />
-            Edit Profile
-          </Button>
+          {/* Edit Profile Dialog */}
+          <EditProfile name={user.name} image={user.image as string} />
         </div>
       </div>
 

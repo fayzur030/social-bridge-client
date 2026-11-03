@@ -63,9 +63,9 @@ const UpcomingEventList = ({ events, category }: IUpcomingEventListProps) => {
       {/* Events */}
       <section className='grid grid-cols-1 gap-5 py-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6'>
         {filteredEvents.length > 0 ? (
-          filteredEvents
-            .slice(0, 5)
-            .map((event) => <EventCard key={event._id} event={event} />)
+          filteredEvents.map((event) => (
+            <EventCard key={event._id} event={event} />
+          ))
         ) : (
           <div className='col-span-full py-16 text-center'>
             <h3 className='text-lg font-semibold text-foreground'>
