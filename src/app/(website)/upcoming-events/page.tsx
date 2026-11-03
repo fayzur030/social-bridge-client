@@ -6,7 +6,7 @@ import CommonBanner from './_Components/CommonBanner'
 const getUpcomingEvents = async (): Promise<IEvents[]> => {
   try {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/events`, {
-      cache: 'no-cache',
+      cache: 'no-store',
     })
 
     if (!res.ok) {

@@ -61,7 +61,7 @@ const CreateEventForms = ({ category }: CategoryProps) => {
       return toast.error(error)
     }
     //todo: form validate function end
-    
+
     const payload = {
       ...Object.fromEntries(formData.entries()),
       email: user?.email,
@@ -76,7 +76,7 @@ const CreateEventForms = ({ category }: CategoryProps) => {
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_API_URL}/create-events`,
         {
-          cache: 'no-cache',
+          cache: 'no-store',
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
