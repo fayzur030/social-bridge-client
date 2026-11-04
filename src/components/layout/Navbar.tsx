@@ -126,11 +126,6 @@ const Navbar = () => {
             <NavbarAuth />
           </div>
 
-          {/* Mobile User Avatar */}
-          <div className='sm:hidden'>
-            <NavbarAuth compact />
-          </div>
-
           {/* Mobile Navigation */}
           <div className='sm:hidden'>
             <Sheet open={open} onOpenChange={setOpen}>
@@ -159,6 +154,8 @@ const Navbar = () => {
                     <span className='text-lg font-bold'>SocialBridge</span>
                   </SheetTitle>
                 </SheetHeader>
+
+                <NavbarAuth mobile onNavigate={() => setOpen(false)} />
 
                 {/* Mobile Links */}
                 <div className='flex flex-col gap-2 px-1'>

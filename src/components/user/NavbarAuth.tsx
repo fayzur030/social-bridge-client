@@ -231,6 +231,16 @@ const NavbarAuth = ({
               </span>
               <span>Joined Events</span>
             </Link>
+            <Link
+              href='/profile'
+              onClick={onNavigate}
+              className='group flex items-center gap-3 rounded-xl px-3.5 py-3 text-sm font-medium text-foreground transition-all hover:bg-primary/10 hover:text-primary'
+            >
+              <span className='flex size-9 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground'>
+                <User2 className='size-4' />
+              </span>
+              <span>Profile</span>
+            </Link>
             <Button
               variant='outline'
               size='lg'
@@ -248,7 +258,7 @@ const NavbarAuth = ({
       )}
 
       {user ? (
-        !compact && (
+        !compact && !mobile && (
           <Button
             variant='outline'
             size='lg'
