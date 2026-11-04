@@ -254,7 +254,7 @@ const NavbarAuth = ({
             size='lg'
             onClick={handleLogOut}
             className={cn(
-              'cursor-pointer border-destructive text-destructive hover:bg-destructive/10 hover:text-destructive',
+              'cursor-pointer border-destructive text-destructive  hover:bg-destructive/10 hover:text-destructive',
               mobile ? 'w-full justify-center' : 'w-full md:w-auto'
             )}
           >

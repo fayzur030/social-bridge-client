@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { ArrowRight, Heart, UsersRound } from 'lucide-react'
-
+import heroIcon from '@/assets/heroIcon.svg'
+import Image from 'next/image'
 const Footer = () => {
   return (
     <footer className='border-t border-border bg-muted/40 text-foreground'>
@@ -12,11 +13,12 @@ const Footer = () => {
               aria-label='SocialBridge home'
               className='flex shrink-0 items-center gap-2'
             >
-              <UsersRound
+              {/* <UsersRound
                 aria-hidden='true'
                 className='size-7 fill-primary/20 text-primary'
                 strokeWidth={2.5}
-              />
+              /> */}
+              <Image src={heroIcon} alt='Social Bridge' className='size-11.5' />
 
               <h1 className='text-[24px] font-bold tracking-[-0.04em]'>
                 <span className='text-primary'>Social</span>

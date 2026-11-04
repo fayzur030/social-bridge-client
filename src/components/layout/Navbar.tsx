@@ -2,10 +2,18 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { ArrowUpRight, Menu, Moon, Sun, UsersRound, X } from 'lucide-react'
+import {
+  ArrowUpRight,
+  // HeartPlus,
+  Menu,
+  Moon,
+  Sun,
+  UsersRound,
+  X,
+} from 'lucide-react'
 import { usePathname } from 'next/navigation'
 import { useTheme } from 'next-themes'
-
+import heroIcon from '@/assets/heroIcon.svg'
 import { cn } from '@/lib/utils'
 import {
   Sheet,
@@ -16,6 +24,7 @@ import {
 } from '@/components/ui/sheet'
 
 import NavbarAuth from '../user/NavbarAuth'
+import Image from 'next/image'
 
 const links = [
   {
@@ -46,21 +55,28 @@ const Navbar = () => {
     <header className='sticky top-0 z-50 border-b border-border bg-background text-foreground'>
       <nav
         aria-label='Main navigation'
-        className='mx-auto flex h-15 w-full max-w-7xl items-center justify-between gap-3 px-4 sm:px-6 lg:px-8'
+        className='mx-auto flex h-15 w-full max-w-7xl items-center justify-between gap-2 px-3 sm:gap-3 sm:px-6 lg:px-8'
       >
         {/* Logo */}
         <Link
           href='/'
           aria-label='SocialBridge home'
-          className='flex shrink-0 items-center gap-2'
+          className='flex shrink-0 items-center gap-1.5 sm:gap-2.5'
         >
-          <UsersRound
-            aria-hidden='true'
-            className='size-7 fill-primary/20 text-primary'
-            strokeWidth={2.5}
+          {/* <div className='flex size-11 items-center justify-center rounded-xl bg-linear-to-br from-brand-green-hover to-brand-green shadow-md shadow-brand-green/20 transition-transform duration-300 group-hover:scale-105'>
+            <HeartPlus
+              aria-hidden='true'
+              className='size-5 text-primary-foreground dark:text-white'
+              strokeWidth={2.5}
+            />
+          </div> */}
+          <Image
+            src={heroIcon}
+            alt='Social Bridge'
+            className='size-9 sm:size-11.5'
           />
 
-          <h1 className='text-lg lg:text-[24px] font-bold tracking-[-0.04em]'>
+          <h1 className='text-base font-extrabold tracking-tight sm:text-xl'>
             <span className='text-primary'>Social</span>
             <span className='text-brand-amber'>Bridge</span>
           </h1>
@@ -90,13 +106,13 @@ const Navbar = () => {
         </div>
 
         {/* Right Actions */}
-        <div className='flex shrink-0 items-center gap-2 sm:gap-3'>
+        <div className='flex shrink-0 items-center gap-1 sm:gap-3'>
           {/* Theme Toggle */}
           <button
             type='button'
             aria-label='Toggle theme'
             onClick={toggleTheme}
-            className='flex size-9 items-center justify-center rounded-full border border-border text-foreground transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring'
+            className='flex size-8 items-center justify-center rounded-full border border-border text-foreground transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:size-9'
           >
             {isDarkMode ? (
               <Sun className='size-4' />
@@ -123,7 +139,7 @@ const Navbar = () => {
                 aria-label={
                   open ? 'Close navigation menu' : 'Open navigation menu'
                 }
-                className='flex size-9 items-center justify-center rounded-full border border-border text-foreground transition-colors hover:bg-accent hover:text-accent-foreground'
+                className='flex size-8 items-center justify-center rounded-full border border-border text-foreground transition-colors hover:bg-accent hover:text-accent-foreground sm:size-9'
               >
                 {open ? <X className='size-5' /> : <Menu className='size-5' />}
               </SheetTrigger>

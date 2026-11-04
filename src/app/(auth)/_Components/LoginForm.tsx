@@ -111,7 +111,7 @@ const LoginForm = () => {
 
             <h2 className='max-w-md text-3xl leading-tight font-bold xl:text-4xl'>
               Together, We Can Make a{' '}
-              <span className='text-brand-green-hover'>Difference.</span>
+              <span className='dark:text-brand-green-hover text-white'>Difference.</span>
             </h2>
 
             <p className='mt-4 max-w-md text-sm leading-7 text-image-overlay-foreground/75'>
