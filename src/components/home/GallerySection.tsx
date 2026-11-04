@@ -75,7 +75,7 @@ const images = [
 
 const GallerySection = () => {
   return (
-    <div className='px-4 sm:px-6 lg:px-0 max-w-7xl mx-auto'>
+    <div className='mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8'>
       {/* Section Heading */}
       <div className='mx-auto max-w-2xl text-center py-5'>
         <span className='inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-[10px] font-semibold tracking-[0.16em] text-primary uppercase sm:text-xs'>
@@ -94,7 +94,7 @@ const GallerySection = () => {
       </div>
 
       {/* Bento Grid */}
-      <section className='mx-auto mt-8 grid max-w-7xl auto-rows-32.5 grid-cols-2 gap-2.5 sm:mt-12 sm:auto-rows-45 sm:gap-3 md:grid-cols-4 md:auto-rows-47.5 md:gap-4 lg:auto-rows-57.5'>
+      <section className='mx-auto mt-8 grid auto-rows-32.5 grid-cols-2 gap-2.5 sm:mt-12 sm:auto-rows-45 sm:gap-3 md:grid-cols-4 md:auto-rows-47.5 md:gap-4 lg:auto-rows-57.5'>
         {images.map((image, index) => (
           <figure
             key={image.src}

@@ -41,26 +41,26 @@ const galleryItems = [
 
 const Gallery = () => {
   return (
-    <section className='py-16 sm:py-20 lg:py-24'>
-      <div className='mx-auto max-w-7xl px-6 sm:px-8 lg:px-10'>
+    <div className='mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8'>
+      <section className='py-14 sm:py-16 lg:py-24'>
         {/* Section Heading */}
         <div className='mx-auto max-w-2xl text-center'>
           <span className='text-xs font-semibold tracking-[0.16em] text-primary uppercase'>
             Moments That Matter
           </span>
 
-          <h2 className='mt-3 font-heading text-3xl font-bold tracking-tight text-foreground sm:text-4xl'>
+          <h2 className='mt-3 font-heading text-2xl font-bold tracking-tight text-foreground sm:text-3xl md:text-4xl'>
             Together, We Create Change
           </h2>
 
-          <p className='mt-4 text-base leading-7 text-muted-foreground'>
+          <p className='mx-auto mt-4 max-w-xl text-sm leading-6 text-muted-foreground sm:text-base sm:leading-7'>
             Every small contribution creates a meaningful story. Explore moments
             of kindness, teamwork, and positive community impact.
           </p>
         </div>
 
         {/* Gallery Grid */}
-        <div className='mt-10 grid auto-rows-[190px] grid-cols-1 gap-4 sm:grid-cols-2 md:auto-rows-[210px] md:grid-cols-3 lg:mt-12'>
+        <div className='mt-9 grid auto-rows-60 grid-cols-1 gap-4 sm:mt-12 sm:auto-rows-55 sm:grid-cols-2 md:auto-rows-60 md:grid-cols-3 lg:gap-5'>
           {galleryItems.map((item) => (
             <div
               key={item.id}
@@ -70,12 +70,12 @@ const Gallery = () => {
                 src={item.image}
                 alt={item.title}
                 fill
-                sizes='(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw'
+                sizes='(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw'
                 className='object-cover transition-transform duration-700 group-hover:scale-110'
               />
 
               {/* Image Overlay */}
-              <div className='absolute inset-0 bg-gradient-to-t from-deep2/80 via-deep2/10 to-transparent opacity-90 transition-opacity duration-300 group-hover:opacity-100' />
+              <div className='absolute inset-0 bg-linear-to-t from-deep2/80 via-deep2/10 to-transparent opacity-90 transition-opacity duration-300 group-hover:opacity-100' />
 
               {/* Content */}
               <div className='absolute inset-x-0 bottom-0 p-5 sm:p-6'>
@@ -92,12 +92,12 @@ const Gallery = () => {
         </div>
 
         {/* Bottom Message */}
-        <div className='mt-8 flex items-center justify-center gap-2 text-sm text-muted-foreground'>
-          <Images className='size-4 text-primary' />
+        <div className='mt-7 flex items-center justify-center gap-2 text-center text-xs text-muted-foreground sm:mt-8 sm:text-sm'>
+          <Images className='size-4 shrink-0 text-primary' />
           <span>Every picture tells a story of positive change.</span>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   )
 }
 

@@ -39,74 +39,66 @@ const features = [
 
 const Features = () => {
   return (
-    <section className='relative overflow-hidden px-5 py-16 sm:px-8 sm:py-20 lg:py-24'>
-      <div className='mx-auto max-w-7xl'>
-        {/* Section Heading */}
-        <div className='mx-auto max-w-2xl text-center'>
-          {/* <span className='inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-2 text-xs font-semibold tracking-wider text-primary uppercase'>
-            <span className='size-1.5 rounded-full bg-primary' />
-            Why SocialBridge
-          </span> */}
+    <div className='mx-auto max-w-7xl'>
+      <section className='relative overflow-hidden px-4 py-14 sm:px-6 sm:py-16 lg:px-8 lg:py-24'>
+        <div>
+          {/* Section Heading */}
+          <div className='mx-auto max-w-2xl text-center'>
+            <h2 className='font-heading text-2xl font-bold tracking-tight text-foreground sm:text-3xl md:text-4xl lg:text-5xl'>
+              Why SocialBridge?
+            </h2>
+          </div>
 
-          <h2 className='mt-5 font-heading text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl'>
-            Why SocialBridge?
-          </h2>
+          {/* Feature Cards */}
+          <div className='mt-9 grid grid-cols-1 gap-4 sm:mt-12 sm:grid-cols-2 sm:gap-5 lg:mt-16 lg:grid-cols-4 lg:gap-5'>
+            {features.map(({ icon: Icon, number, title, description }) => (
+              <article
+                key={number}
+                className='group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card p-5 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5 sm:p-6 lg:p-5 xl:p-6'
+              >
+                {/* Hover Background */}
+                <div className='pointer-events-none absolute -right-12 -top-12 size-32 rounded-full bg-primary/5 blur-3xl transition-all duration-500 group-hover:bg-primary/15' />
 
-          {/* <p className='mx-auto mt-5 max-w-xl text-sm leading-7 text-muted-foreground sm:text-base'>
-            Discover opportunities, connect with passionate people, and work
-            together to create a better community.
-          </p> */}
-        </div>
+                {/* Card Top */}
+                <div className='relative flex items-center justify-between'>
+                  <div className='flex size-11 items-center justify-center rounded-xl bg-primary/10 text-primary transition-all duration-300 group-hover:bg-primary group-hover:text-primary-foreground group-hover:shadow-lg group-hover:shadow-primary/20 sm:size-12'>
+                    <Icon
+                      aria-hidden='true'
+                      className='size-5 sm:size-6'
+                      strokeWidth={1.8}
+                    />
+                  </div>
 
-        {/* Feature Cards */}
-        <div className='mt-12 grid gap-5 sm:grid-cols-2 lg:mt-16 lg:grid-cols-4'>
-          {features.map(({ icon: Icon, number, title, description }) => (
-            <article
-              key={number}
-              className='group relative overflow-hidden rounded-2xl border border-border bg-card p-6 transition-all duration-300 hover:-translate-y-2 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5'
-            >
-              {/* Hover Background */}
-              <div className='pointer-events-none absolute -right-12 -top-12 size-32 rounded-full bg-primary/5 blur-3xl transition-all duration-500 group-hover:bg-primary/15' />
-
-              {/* Card Top */}
-              <div className='relative flex items-center justify-between'>
-                <div className='flex size-12 items-center justify-center rounded-xl bg-primary/10 text-primary transition-all duration-300 group-hover:bg-primary group-hover:text-primary-foreground group-hover:shadow-lg group-hover:shadow-primary/20'>
-                  <Icon
-                    aria-hidden='true'
-                    className='size-6'
-                    strokeWidth={1.8}
-                  />
+                  <span className='font-mono text-xs font-semibold text-muted-foreground/50 sm:text-sm'>
+                    {number}
+                  </span>
                 </div>
 
-                <span className='font-mono text-sm font-semibold text-muted-foreground/50'>
-                  {number}
-                </span>
-              </div>
+                {/* Card Content */}
+                <div className='relative mt-6 flex-1 sm:mt-8'>
+                  <h3 className='font-heading text-base font-bold leading-snug text-card-foreground transition-colors duration-300 group-hover:text-primary sm:text-lg'>
+                    {title}
+                  </h3>
 
-              {/* Card Content */}
-              <div className='relative mt-8'>
-                <h3 className='font-heading text-lg font-bold text-card-foreground transition-colors duration-300 group-hover:text-primary'>
-                  {title}
-                </h3>
+                  <p className='mt-3 text-[13px] leading-6 text-muted-foreground sm:text-sm sm:leading-7'>
+                    {description}
+                  </p>
+                </div>
 
-                <p className='mt-3 text-sm leading-7 text-muted-foreground'>
-                  {description}
-                </p>
-              </div>
+                {/* Bottom Decoration */}
+                {/* <div className='relative mt-6 flex items-center justify-between border-t border-border pt-4 sm:mt-7'>
+                  <span className='text-xs font-medium text-muted-foreground'>
+                    SocialBridge
+                  </span>
 
-              {/* Bottom Decoration */}
-              <div className='mt-7 flex items-center justify-between border-t border-border pt-4'>
-                <span className='text-xs font-medium text-muted-foreground'>
-                  SocialBridge
-                </span>
-
-                <ArrowUpRight className='size-4 text-muted-foreground transition-all duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-primary' />
-              </div>
-            </article>
-          ))}
+                  <ArrowUpRight className='size-4 text-muted-foreground transition-all duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-primary' />
+                </div> */}
+              </article>
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   )
 }
 

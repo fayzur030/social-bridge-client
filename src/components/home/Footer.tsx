@@ -4,7 +4,7 @@ import heroIcon from '@/assets/heroIcon.svg'
 import Image from 'next/image'
 const Footer = () => {
   return (
-    <footer className='border-t border-border bg-muted/40 text-foreground'>
+    <footer className='border-t border-border bg-muted/40 text-foreground mt-20'>
       <div className='mx-auto max-w-7xl px-6 pt-12 pb-6 sm:px-8 sm:pt-14 lg:px-10'>
         <div className='grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr] lg:gap-12'>
           <div className='max-w-sm'>

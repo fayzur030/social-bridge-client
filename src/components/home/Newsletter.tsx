@@ -19,7 +19,7 @@ const perks = [
 const Newsletter = () => {
   return (
     <section className='px-4 sm:px-6 lg:px-0 mt-20'>
-      <div className='relative isolate overflow-hidden rounded-4xl border border-border bg-linear-to-br from-background via-card to-accent/60 px-5 py-14 shadow-xl shadow-primary/5 sm:px-12 sm:py-20 lg:px-20'>
+      <div className='relative isolate overflow-hidden rounded-none border border-border bg-linear-to-br from-background via-card to-accent/60 px-5 py-14  sm:px-12 sm:py-20 lg:px-20'>
         <div
           aria-hidden='true'
           // className='pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(to_right,var(--border)_1px,transparent_1px),linear-gradient(to_bottom,var(--border)_1px,transparent_1px)] bg-size-[44px_44px] opacity-40 mask-[radial-gradient(ellipse_at_center,var(--foreground)_20%,transparent_72%)]'
@@ -32,21 +32,20 @@ const Newsletter = () => {
           {/* Eyebrow */}
           <div className='mt-6 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-3.5 py-1.5 text-[11px] font-semibold tracking-[0.15em] text-primary uppercase sm:text-xs'>
             <Sparkles className='size-3.5' />
-            Stay Connected
+            Community Updates
           </div>
 
           {/* Heading */}
-          <h2 className='mt-5 font-heading text-3xl leading-[1.1] font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl'>
-            Be Part of Something
+          <h2 className='mt-5 font-heading text-2xl leading-tight font-bold tracking-tight text-foreground sm:text-3xl lg:text-4xl'>
+            Stay Connected to
             <span className='mt-1 block bg-linear-to-r from-primary via-brand-blue to-primary bg-clip-text pb-1 text-transparent'>
-              Meaningful.
+              Your Community
             </span>
           </h2>
 
-          <p className='mx-auto mt-5 max-w-xl text-sm leading-7 text-muted-foreground sm:text-base'>
-            Stay inspired with the latest community events, volunteering
-            opportunities, and stories of positive change. Let meaningful
-            opportunities find their way to your inbox.
+          <p className='mx-auto mt-5 max-w-xl text-sm leading-6 text-muted-foreground sm:text-base sm:leading-7'>
+            Get community events, volunteer opportunities, and stories of local
+            impact delivered straight to your inbox.
           </p>
 
           {/* Form with gradient ring */}
@@ -60,7 +59,7 @@ const Newsletter = () => {
                 <Input
                   type='email'
                   required
-                  placeholder='Enter your email address'
+                  placeholder='Your email address'
                   aria-label='Email address'
                   className='h-12 rounded-full border-transparent bg-transparent pl-11 text-foreground shadow-none placeholder:text-muted-foreground focus-visible:ring-primary'
                 />
