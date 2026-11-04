@@ -95,7 +95,7 @@ const NavbarAuth = ({
                   <AvatarFallback className='bg-primary/10 text-xs font-semibold text-primary'>
                     {initials}
                   </AvatarFallback>
-                  <AvatarBadge className='border-2 border-background bg-emerald-500' />
+                  <AvatarBadge className='border-2 border-background bg-primary' />
                 </Avatar>
               </TooltipTrigger>
               <TooltipContent>{user.name ?? 'User'}</TooltipContent>
@@ -104,7 +104,7 @@ const NavbarAuth = ({
             <DropdownMenuContent
               align='end'
               sideOffset={10}
-              className='max-h-[calc(100dvh-2rem)] w-56 overscroll-contain rounded-xl border border-border bg-popover p-1.5 shadow-lg shadow-black/5'
+              className='max-h-[calc(100dvh-2rem)] w-56 overscroll-contain rounded-xl border border-border bg-popover p-1.5 shadow-lg shadow-foreground/5'
             >
               <div className='flex items-center gap-3 px-2.5 py-3'>
                 <Avatar className='size-10'>
@@ -147,14 +147,14 @@ const NavbarAuth = ({
                 render={<Link href='/join-events' />}
                 className='cursor-pointer gap-2.5 rounded-lg px-2.5 py-2 text-sm text-popover-foreground focus:bg-accent focus:text-primary'
               >
-                <CircleCheck className='size-4 text-emerald-600' />
+                <CircleCheck className='size-4 text-primary' />
                 Joined Events
               </DropdownMenuItem>
               <DropdownMenuItem
                 render={<Link href='/profile' />}
                 className='cursor-pointer gap-2.5 rounded-lg px-2.5 py-2 text-sm text-popover-foreground focus:bg-accent focus:text-primary'
               >
-                <User2 className='size-4 text-emerald-600' />
+                <User2 className='size-4 text-primary' />
                 Profile
               </DropdownMenuItem>
 
@@ -162,7 +162,7 @@ const NavbarAuth = ({
 
               <DropdownMenuItem
                 onClick={handleLogOut}
-                className='cursor-pointer gap-2.5 rounded-lg px-2.5 py-2 text-sm text-red-500 focus:bg-red-50 focus:text-red-600 dark:focus:bg-red-500/10'
+                className='cursor-pointer gap-2.5 rounded-lg px-2.5 py-2 text-sm text-destructive focus:bg-destructive/10 focus:text-destructive'
               >
                 <LogOut className='size-4' />
                 Log Out
@@ -175,7 +175,7 @@ const NavbarAuth = ({
       {mobile && !compact && user && (
         <div className='w-full border-b border-border pb-4'>
           {/* User Info */}
-          <div className='mb-3 flex items-center gap-3 rounded-xl bg-primary/5 p-3 dark:bg-primary/10'>
+          <div className='mb-3 flex items-center gap-3 rounded-xl bg-primary/5 p-3'>
             <Avatar className='size-11 border border-border ring-2 ring-background'>
               <AvatarImage
                 src={user.image ?? undefined}
@@ -184,7 +184,7 @@ const NavbarAuth = ({
               <AvatarFallback className='bg-primary/10 text-sm font-semibold text-primary'>
                 {initials}
               </AvatarFallback>
-              <AvatarBadge className='border-2 border-background bg-emerald-500' />
+              <AvatarBadge className='border-2 border-background bg-primary' />
             </Avatar>
 
             <div className='min-w-0 flex-1'>
@@ -204,7 +204,7 @@ const NavbarAuth = ({
               onClick={onNavigate}
               className='group flex items-center gap-3 rounded-xl px-3.5 py-3 text-sm font-medium text-foreground transition-all hover:bg-primary/10 hover:text-primary'
             >
-              <span className='flex size-9 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-white'>
+              <span className='flex size-9 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground'>
                 <CalendarPlus className='size-4' />
               </span>
               <span>Create Event</span>
@@ -215,7 +215,7 @@ const NavbarAuth = ({
               onClick={onNavigate}
               className='group flex items-center gap-3 rounded-xl px-3.5 py-3 text-sm font-medium text-foreground transition-all hover:bg-primary/10 hover:text-primary'
             >
-              <span className='flex size-9 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-white'>
+              <span className='flex size-9 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground'>
                 <Settings className='size-4' />
               </span>
               <span>Manage Events</span>
@@ -226,7 +226,7 @@ const NavbarAuth = ({
               onClick={onNavigate}
               className='group flex items-center gap-3 rounded-xl px-3.5 py-3 text-sm font-medium text-foreground transition-all hover:bg-primary/10 hover:text-primary'
             >
-              <span className='flex size-9 items-center justify-center rounded-lg bg-emerald-500/10 text-emerald-600 transition-colors group-hover:bg-emerald-600 group-hover:text-white'>
+              <span className='flex size-9 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground'>
                 <CircleCheck className='size-4' />
               </span>
               <span>Joined Events</span>
@@ -236,7 +236,7 @@ const NavbarAuth = ({
               size='lg'
               onClick={handleLogOut}
               className={cn(
-                'cursor-pointer border-red-500 text-red-500 hover:text-red-600',
+                'cursor-pointer border-destructive text-destructive hover:bg-destructive/10 hover:text-destructive',
                 mobile ? 'w-full justify-center' : 'w-full md:w-auto'
               )}
             >
@@ -254,7 +254,7 @@ const NavbarAuth = ({
             size='lg'
             onClick={handleLogOut}
             className={cn(
-              'cursor-pointer border-red-500 text-red-500 hover:text-red-600',
+              'cursor-pointer border-destructive text-destructive hover:bg-destructive/10 hover:text-destructive',
               mobile ? 'w-full justify-center' : 'w-full md:w-auto'
             )}
           >

@@ -29,7 +29,7 @@ const UserProfile = async () => {
   return (
     <div className='min-h-screen pb-12'>
       {/* Profile Header */}
-      <div className='bg-[#1E3A8A] dark:bg-linear-to-r dark:from-[#1E3A8A] dark:via-[#172554] dark:to-[#312E81]'>
+      <div className='bg-[image:var(--hero-background)]'>
         <div className='mx-auto flex max-w-7xl flex-col gap-6 px-4 py-10 sm:px-6 md:flex-row md:items-center md:justify-between md:py-14 lg:px-8'>
           {/* User Information */}
           <div className='flex flex-col items-center gap-5 text-center sm:flex-row sm:text-left'>
@@ -47,15 +47,15 @@ const UserProfile = async () => {
             </Avatar>
 
             <div>
-              <h1 className='text-xl font-bold tracking-tight text-white sm:text-2xl md:text-3xl'>
+              <h1 className='text-xl font-bold tracking-tight text-hero-copy sm:text-2xl md:text-3xl'>
                 {user.name}
               </h1>
 
-              <p className='mt-1 break-all text-sm leading-7 text-white/80 sm:text-base'>
+              <p className='mt-1 break-all text-sm leading-7 text-hero-muted sm:text-base'>
                 {user.email}
               </p>
 
-              <p className='mx-auto mt-2 w-fit rounded-full border border-hero-accent/40 bg-hero-accent px-4 py-1 text-xs font-medium text-black dark:bg-white/5 dark:text-accent-foreground sm:mx-0'>
+              <p className='mx-auto mt-2 w-fit rounded-full border border-hero-outline/40 bg-brand-amber/10 px-4 py-1 text-xs font-medium text-brand-amber sm:mx-0'>
                 Member since {userJoinDate}
               </p>
             </div>

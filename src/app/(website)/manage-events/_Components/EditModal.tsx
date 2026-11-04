@@ -116,7 +116,7 @@ export function EditModal({ event, category, compact = false }: IEventProps) {
             className={
               compact
                 ? 'h-10 flex-1 rounded-xl px-4 text-xs font-semibold md:h-7 md:flex-none md:rounded-md md:px-3 md:text-[10px] md:font-medium'
-                : 'w-full mt-0.5 text-[#6A67F9] hover:text-[#3936eb] cursor-pointer bg-[#EEF2FF]'
+                : 'w-full mt-0.5 text-primary hover:text-primary-hover cursor-pointer bg-primary/10'
             }
           >
             {!compact && <Pencil aria-hidden='true' />}

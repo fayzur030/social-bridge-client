@@ -97,9 +97,9 @@ const RegisterForm = () => {
           <div className='absolute inset-0 bg-gradient-to-t from-deep2/90 via-deep2/30 to-transparent' />
 
           {/* Image Content */}
-          <div className='absolute inset-0 flex flex-col items-center justify-center p-8 text-center text-white'>
+          <div className='absolute inset-0 flex flex-col items-center justify-center p-8 text-center text-image-overlay-foreground'>
             <div className='mb-5 flex size-12 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-green-hover to-brand-green shadow-lg shadow-brand-green/25'>
-              <HeartPlus className='size-6 text-white' />
+              <HeartPlus className='size-6 text-primary-foreground' />
             </div>
 
             <h2 className='text-3xl leading-tight font-bold xl:text-4xl'>
@@ -107,7 +107,7 @@ const RegisterForm = () => {
               <span className='text-brand-green-hover'>Community.</span>
             </h2>
 
-            <p className='mt-4 max-w-sm text-sm leading-7 text-white/75'>
+            <p className='mt-4 max-w-sm text-sm leading-7 text-image-overlay-foreground/75'>
               Create your account and connect with people who are passionate
               about making a positive impact in their communities.
             </p>
@@ -119,7 +119,7 @@ const RegisterForm = () => {
             {/* Heading */}
             <div className='mb-8 text-center'>
               <div className='mx-auto mb-5 flex size-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-brand-green-hover to-brand-green shadow-lg shadow-brand-green/25'>
-                <HeartPlus className='size-5 text-white' strokeWidth={2.5} />
+                <HeartPlus className='size-5 text-primary-foreground' strokeWidth={2.5} />
               </div>
 
               <h1 className='text-2xl font-bold tracking-tight sm:text-3xl'>

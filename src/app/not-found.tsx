@@ -3,7 +3,7 @@ import { ArrowLeft, ArrowRight, UsersRound } from 'lucide-react'
 
 export default function NotFound() {
   return (
-    <main className='relative flex flex-1 items-center justify-center overflow-hidden bg-gradient-to-br from-blue-50 via-background to-amber-50 px-5 py-20 dark:from-[#111b33] dark:via-background dark:to-[#1b1b2e] sm:px-8'>
+    <main className='relative flex flex-1 items-center justify-center overflow-hidden bg-[image:var(--hero-background)] px-5 py-20 sm:px-8'>
       <div
         aria-hidden='true'
         className='absolute -top-32 -right-24 size-80 rounded-full bg-primary/10 blur-3xl'

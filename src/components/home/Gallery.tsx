@@ -75,15 +75,15 @@ const Gallery = () => {
               />
 
               {/* Image Overlay */}
-              <div className='absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-90 transition-opacity duration-300 group-hover:opacity-100' />
+              <div className='absolute inset-0 bg-gradient-to-t from-deep2/80 via-deep2/10 to-transparent opacity-90 transition-opacity duration-300 group-hover:opacity-100' />
 
               {/* Content */}
               <div className='absolute inset-x-0 bottom-0 p-5 sm:p-6'>
-                <span className='text-xs font-medium tracking-wide text-white/75'>
+                <span className='text-xs font-medium tracking-wide text-image-overlay-foreground/75'>
                   {item.category}
                 </span>
 
-                <h3 className='mt-1 font-heading text-lg font-semibold text-white sm:text-xl'>
+                <h3 className='mt-1 font-heading text-lg font-semibold text-image-overlay-foreground sm:text-xl'>
                   {item.title}
                 </h3>
               </div>

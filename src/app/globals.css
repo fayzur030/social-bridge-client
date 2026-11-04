@@ -22,6 +22,7 @@
   --color-hero-muted: var(--hero-muted);
   --color-hero-outline: var(--hero-outline);
   --color-hero-accent: var(--hero-accent);
+  --color-image-overlay-foreground: var(--image-overlay-foreground);
   --color-brand-green: var(--brand-green);
   --color-brand-green-hover: var(--brand-green-hover);
   --color-brand-blue: var(--brand-blue);
@@ -59,23 +60,27 @@
 }
 
 :root {
-  --background: #f8fafc;
+  --background: #f7fafa;
   --foreground: #0f172a;
-  --deep2: #0b1730;
+  --deep2: #0f766e;
+
   --hero-background:
-    radial-gradient(circle at 85% 10%, rgb(251 191 36 / 16%), transparent 40%),
-    radial-gradient(circle at 10% 90%, rgb(37 99 235 / 12%), transparent 45%),
-    linear-gradient(120deg, #f8fafc, #eff6ff);
+    radial-gradient(circle at 85% 10%, rgb(251 113 133 / 14%), transparent 40%),
+    radial-gradient(circle at 10% 90%, rgb(15 118 110 / 12%), transparent 45%),
+    linear-gradient(120deg, #f7fafa, #eaf4f3);
+
   --hero-copy: #0f172a;
-  --hero-muted: #334155;
-  --hero-outline: rgb(37 99 235 / 40%);
-  /* --hero-accent: #b45309; */
-  --hero-accent: #fbbf24;
-  --primary-hover: #1d4ed8;
-  --brand-green: #087f5b;
-  --brand-green-hover: #066b4d;
-  --brand-blue: #1c87ed;
-  --brand-amber: #d97706;
+  --hero-muted: #526575;
+  --hero-outline: rgb(15 118 110 / 35%);
+  --hero-accent: #fb7185;
+  --image-overlay-foreground: #ffffff;
+
+  --primary-hover: #115e59;
+
+  --brand-green: #0f766e;
+  --brand-green-hover: #115e59;
+  --brand-blue: #0f766e;
+  --brand-amber: #fb7185;
 
   --card: #ffffff;
   --card-foreground: #0f172a;
@@ -83,99 +88,228 @@
   --popover: #ffffff;
   --popover-foreground: #0f172a;
 
-  --primary: #2563eb;
+  --primary: #0f766e;
   --primary-foreground: #ffffff;
 
-  --secondary: #f1f5f9;
-  --secondary-foreground: #1e3a8a;
+  --secondary: #e6f2f1;
+  --secondary-foreground: #134e4a;
 
-  --muted: #f1f5f9;
+  --muted: #edf3f3;
   --muted-foreground: #64748b;
 
-  --accent: #e0e9ff;
-  --accent-foreground: #1e3a8a;
+  --accent: #ffe4e8;
+  --accent-foreground: #9f1239;
 
-  --destructive: #c0392b;
+  --destructive: #dc2626;
 
-  --border: #e2e8f0;
-  --input: #cbd5e1;
-  --ring: #2563eb;
+  --border: #d9e5e5;
+  --input: #c8d8d9;
+  --ring: #0f766e;
 
-  --chart-1: #2563eb;
-  --chart-2: #1e3a8a;
-  --chart-3: #fbbf24;
-  --chart-4: #3b82f6;
-  --chart-5: #d97706;
+  --chart-1: #0f766e;
+  --chart-2: #fb7185;
+  --chart-3: #2dd4bf;
+  --chart-4: #134e4a;
+  --chart-5: #fda4af;
 
   --radius: 0.75rem;
 
-  --sidebar: #f1f5f9;
+  --sidebar: #edf3f3;
   --sidebar-foreground: #0f172a;
-  --sidebar-primary: #2563eb;
+  --sidebar-primary: #0f766e;
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #e0e9ff;
-  --sidebar-accent-foreground: #1e3a8a;
-  --sidebar-border: #e2e8f0;
-  --sidebar-ring: #2563eb;
+  --sidebar-accent: #e6f2f1;
+  --sidebar-accent-foreground: #134e4a;
+  --sidebar-border: #d9e5e5;
+  --sidebar-ring: #0f766e;
 }
 
 .dark {
-  --background: #0b1220;
-  --foreground: #f1f5f9;
-  --deep2: #0b1220;
+  --background: #08121a;
+  --foreground: #e5eef2;
+  --deep2: #0f1d28;
+
   --hero-background:
-    radial-gradient(circle at 85% 10%, rgb(251 191 36 / 22%), transparent 40%),
-    radial-gradient(circle at 10% 90%, rgb(37 99 235 / 45%), transparent 45%),
-    #0b1220;
-  --hero-copy: #ffffff;
-  --hero-muted: #eff6ff;
-  --hero-outline: rgb(147 197 253 / 50%);
-  --hero-accent: #fbbf24;
-  --primary-hover: #60a5fa;
-  --brand-green: #4ade80;
-  --brand-green-hover: #86efac;
-  --brand-blue: #60a5fa;
-  --brand-amber: #fbbf24;
+    radial-gradient(circle at 85% 10%, rgb(253 164 175 / 16%), transparent 40%),
+    radial-gradient(circle at 10% 90%, rgb(45 212 191 / 20%), transparent 45%),
+    #08121a;
 
-  --card: #111b33;
-  --card-foreground: #f1f5f9;
+  --hero-copy: #e5eef2;
+  --hero-muted: #a6bac5;
+  --hero-outline: rgb(45 212 191 / 45%);
+  --hero-accent: #fda4af;
+  --image-overlay-foreground: #ffffff;
 
-  --popover: #111b33;
-  --popover-foreground: #f1f5f9;
+  --primary-hover: #5eead4;
 
-  --primary: #3b82f6;
-  --primary-foreground: #0b1220;
+  --brand-green: #2dd4bf;
+  --brand-green-hover: #5eead4;
+  --brand-blue: #2dd4bf;
+  --brand-amber: #fda4af;
 
-  --secondary: #17223b;
-  --secondary-foreground: #f1f5f9;
+  --card: #0f1d28;
+  --card-foreground: #e5eef2;
 
-  --muted: #17223b;
-  --muted-foreground: #94a3b8;
+  --popover: #0f1d28;
+  --popover-foreground: #e5eef2;
 
-  --accent: #1e2a52;
-  --accent-foreground: #bfdbfe;
+  --primary: #2dd4bf;
+  --primary-foreground: #08121a;
+
+  --secondary: #162a35;
+  --secondary-foreground: #e5eef2;
+
+  --muted: #162a35;
+  --muted-foreground: #94aab5;
+
+  --accent: #3b2633;
+  --accent-foreground: #fda4af;
 
   --destructive: #f87171;
 
-  --border: rgb(255 255 255 / 10%);
-  --input: rgb(255 255 255 / 15%);
-  --ring: #3b82f6;
+  --border: #1e3341;
+  --input: #29414f;
+  --ring: #2dd4bf;
 
-  --chart-1: #3b82f6;
-  --chart-2: #60a5fa;
-  --chart-3: #fbbf24;
-  --chart-4: #93c5fd;
-  --chart-5: #f59e0b;
+  --chart-1: #2dd4bf;
+  --chart-2: #fda4af;
+  --chart-3: #5eead4;
+  --chart-4: #0f766e;
+  --chart-5: #fb7185;
 
-  --sidebar: #0f1830;
-  --sidebar-foreground: #f1f5f9;
-  --sidebar-primary: #3b82f6;
-  --sidebar-primary-foreground: #0b1220;
-  --sidebar-accent: #1e2a52;
-  --sidebar-accent-foreground: #bfdbfe;
-  --sidebar-border: rgb(255 255 255 / 10%);
-  --sidebar-ring: #3b82f6;
+  --sidebar: #0f1d28;
+  --sidebar-foreground: #e5eef2;
+  --sidebar-primary: #2dd4bf;
+  --sidebar-primary-foreground: #08121a;
+  --sidebar-accent: #162a35;
+  --sidebar-accent-foreground: #fda4af;
+  --sidebar-border: #1e3341;
+  --sidebar-ring: #2dd4bf;
 }
+
+/* :root {
+  --background: #f8faf7;
+  --foreground: #14221a;
+  --deep2: #166534;
+
+  --hero-background:
+    radial-gradient(circle at 85% 10%, rgb(202 138 4 / 12%), transparent 40%),
+    radial-gradient(circle at 10% 90%, rgb(22 101 52 / 12%), transparent 45%),
+    linear-gradient(120deg, #f8faf7, #edf5ec);
+
+  --hero-copy: #14221a;
+  --hero-muted: #647568;
+  --hero-outline: rgb(22 101 52 / 35%);
+  --hero-accent: #ca8a04;
+
+  --primary-hover: #14532d;
+  --brand-green: #166534;
+  --brand-green-hover: #14532d;
+  --brand-blue: #166534;
+  --brand-amber: #ca8a04;
+
+  --card: #ffffff;
+  --card-foreground: #14221a;
+
+  --popover: #ffffff;
+  --popover-foreground: #14221a;
+
+  --primary: #166534;
+  --primary-foreground: #ffffff;
+
+  --secondary: #eaf2e9;
+  --secondary-foreground: #14532d;
+
+  --muted: #eef3ec;
+  --muted-foreground: #647568;
+
+  --accent: #fef3c7;
+  --accent-foreground: #854d0e;
+
+  --destructive: #dc2626;
+
+  --border: #dde7dd;
+  --input: #c8d8c8;
+  --ring: #166534;
+
+  --chart-1: #166534;
+  --chart-2: #ca8a04;
+  --chart-3: #4ade80;
+  --chart-4: #14532d;
+  --chart-5: #facc15;
+
+  --radius: 0.75rem;
+
+  --sidebar: #eef3ec;
+  --sidebar-foreground: #14221a;
+  --sidebar-primary: #166534;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #eaf2e9;
+  --sidebar-accent-foreground: #14532d;
+  --sidebar-border: #dde7dd;
+  --sidebar-ring: #166534;
+}
+
+.dark {
+  --background: #09130e;
+  --foreground: #e4efe8;
+  --deep2: #102019;
+
+  --hero-background:
+    radial-gradient(circle at 85% 10%, rgb(250 204 21 / 12%), transparent 40%),
+    radial-gradient(circle at 10% 90%, rgb(74 222 128 / 16%), transparent 45%),
+    #09130e;
+
+  --hero-copy: #e4efe8;
+  --hero-muted: #a3b8a8;
+  --hero-outline: rgb(74 222 128 / 40%);
+  --hero-accent: #facc15;
+
+  --primary-hover: #86efac;
+  --brand-green: #4ade80;
+  --brand-green-hover: #86efac;
+  --brand-blue: #4ade80;
+  --brand-amber: #facc15;
+
+  --card: #102019;
+  --card-foreground: #e4efe8;
+
+  --popover: #102019;
+  --popover-foreground: #e4efe8;
+
+  --primary: #4ade80;
+  --primary-foreground: #09130e;
+
+  --secondary: #172c20;
+  --secondary-foreground: #e4efe8;
+
+  --muted: #172c20;
+  --muted-foreground: #a3b8a8;
+
+  --accent: #3a3518;
+  --accent-foreground: #facc15;
+
+  --destructive: #f87171;
+
+  --border: #1f3629;
+  --input: #304a38;
+  --ring: #4ade80;
+
+  --chart-1: #4ade80;
+  --chart-2: #facc15;
+  --chart-3: #86efac;
+  --chart-4: #166534;
+  --chart-5: #ca8a04;
+
+  --sidebar: #102019;
+  --sidebar-foreground: #e4efe8;
+  --sidebar-primary: #4ade80;
+  --sidebar-primary-foreground: #09130e;
+  --sidebar-accent: #172c20;
+  --sidebar-accent-foreground: #facc15;
+  --sidebar-border: #1f3629;
+  --sidebar-ring: #4ade80;
+} */
 
 @layer base {
   * {
@@ -190,16 +324,5 @@
 }
 
 .hero {
-  background:
-    radial-gradient(
-      circle at 85% 10%,
-      rgba(251, 191, 36, 0.22),
-      transparent 40%
-    ),
-    radial-gradient(
-      circle at 10% 90%,
-      rgba(37, 99, 235, 0.45),
-      transparent 45%
-    ),
-    var(--deep2);
+  background: var(--hero-background);
 }

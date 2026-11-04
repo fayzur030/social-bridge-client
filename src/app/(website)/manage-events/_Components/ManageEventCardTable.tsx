@@ -27,7 +27,7 @@ const ManageEventCardTable = ({ event, category }: IEventProps) => {
       }).format(eventDate)
 
   return (
-    <tr className='mx-3 mb-3 block overflow-hidden rounded-xl border border-slate-200 bg-card shadow-sm transition-colors hover:bg-slate-50/70 dark:border-border dark:hover:bg-muted/30 md:mx-0 md:mb-0 md:table-row md:overflow-visible md:rounded-none md:border-x-0 md:border-t md:border-b-0 md:shadow-none'>
+    <tr className='mx-3 mb-3 block overflow-hidden rounded-xl border border-border bg-card shadow-sm transition-colors hover:bg-muted/70 md:mx-0 md:mb-0 md:table-row md:overflow-visible md:rounded-none md:border-x-0 md:border-t md:border-b-0 md:shadow-none'>
       <td className='block px-3 pt-3 pb-2 md:table-cell md:px-4 md:py-2'>
         <div className='flex min-w-0 items-center gap-3 md:min-w-48 md:gap-2'>
           {event.thumbnail ? (
@@ -44,19 +44,19 @@ const ManageEventCardTable = ({ event, category }: IEventProps) => {
           ) : (
             <div
               aria-hidden='true'
-              className='size-16 shrink-0 rounded-xl bg-linear-to-br from-blue-500 via-blue-800 to-slate-950 md:size-8 md:rounded-lg'
+              className='size-16 shrink-0 rounded-xl bg-muted md:size-8 md:rounded-lg'
             />
           )}
           <div className='min-w-0 flex-1 '>
             <div className='flex flex-wrap items-center  gap-x-2 gap-y-1'>
-              <span className='font-semibold text-base md:text-sm  text-slate-900 dark:text-foreground'>
+              <span className='font-semibold text-base text-foreground md:text-sm'>
                 {event.title}
               </span>
-              <span className='inline-flex whitespace-nowrap rounded-full bg-amber-400 px-2 py-0.5 text-[10px] font-medium leading-4 text-slate-950 md:hidden'>
+              <span className='inline-flex whitespace-nowrap rounded-full bg-accent px-2 py-0.5 text-[10px] font-medium leading-4 text-accent-foreground md:hidden'>
                 {event.eventType || 'Community'}
               </span>
             </div>
-            <div className='mt-2 space-y-0.5 text-xs text-slate-500 md:hidden'>
+            <div className='mt-2 space-y-0.5 text-xs text-muted-foreground md:hidden'>
               <p className='truncate'>
                 • {event.location || 'Location to be announced'}
               </p>
@@ -66,14 +66,14 @@ const ManageEventCardTable = ({ event, category }: IEventProps) => {
         </div>
       </td>
       <td className='hidden px-3 py-8 md:table-cell md:px-4'>
-        <span className='inline-flex whitespace-nowrap rounded-full bg-amber-400 px-2 py-0.5 text-[10px] font-medium leading-4 text-slate-950'>
+        <span className='inline-flex whitespace-nowrap rounded-full bg-accent px-2 py-0.5 text-[10px] font-medium leading-4 text-accent-foreground'>
           {event.eventType || 'Community'}
         </span>
       </td>
-      <td className='hidden whitespace-nowrap px-3 text-xs md:text-sm lg:text-base py-2 text-slate-700 dark:text-muted-foreground md:table-cell md:px-4'>
+      <td className='hidden whitespace-nowrap px-3 text-xs md:text-sm lg:text-base py-2 text-muted-foreground md:table-cell md:px-4'>
         {dateLabel}
       </td>
-      <td className='hidden px-3 py-2 text-slate-700  text-xs md:text-sm  lg:text-base dark:text-muted-foreground md:table-cell md:px-4'>
+      <td className='hidden px-3 py-2 text-muted-foreground text-xs md:text-sm lg:text-base md:table-cell md:px-4'>
         <span className='block max-w-36 truncate'>
           {event.location || 'Location to be announced'}
         </span>

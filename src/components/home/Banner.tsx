@@ -6,23 +6,23 @@ import { ArrowRight } from 'lucide-react'
 
 const Banner = () => {
   return (
-    <section className='relative overflow-hidden bg-gradient-to-b from-blue-200 via-indigo-100 to-slate-50 px-3 py-16 transition-colors duration-300 dark:from-[#312E81] dark:via-[#172554] dark:to-[#0B1220] sm:px-8 sm:py-20 lg:px-10 lg:py-24'>
+    <section className='relative overflow-hidden bg-[image:var(--hero-background)] px-3 py-16 transition-colors duration-300 sm:px-8 sm:py-20 lg:px-10 lg:py-24'>
       <div className='relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-12 md:grid-cols-2 lg:gap-16'>
         {/* Left Side - Content */}
         <div className='flex flex-col items-center md:items-start md:text-left'>
           {/* Badge */}
-          <p className='mb-5 w-fit rounded-full border border-hero-accent/40 bg-white/50 px-4 py-2 text-xs font-medium text-brand-amber backdrop-blur-sm dark:bg-white/5'>
+          <p className='mb-5 w-fit rounded-full border border-hero-accent/40 bg-card/50 px-4 py-2 text-xs font-medium text-brand-amber backdrop-blur-sm'>
             Together we build better communities
           </p>
 
           {/* Heading */}
-          <h1 className='font-serif text-5xl leading-[1.1] font-bold text-slate-900 sm:text-5xl lg:text-6xl dark:text-white'>
+          <h1 className='font-serif text-5xl leading-[1.1] font-bold text-hero-copy sm:text-5xl lg:text-6xl'>
             <span className='block'>Small actions</span>
             <span className='mt-2 block text-hero-accent'>Big change.</span>
           </h1>
 
           {/* Description */}
-          <p className='mt-6 max-w-xl text-sm leading-7 text-slate-600 sm:text-base dark:text-slate-300'>
+          <p className='mt-6 max-w-xl text-sm leading-7 text-hero-muted sm:text-base'>
             Join cleanups, tree plantations, blood drives and more. Organize or
             join events that make your neighbourhood stronger.
           </p>
@@ -42,14 +42,14 @@ const Banner = () => {
 
             <Link
               href='/create-event'
-              className='inline-flex h-11 shrink-0 items-center justify-center whitespace-nowrap rounded-xl border border-hero-outline bg-white/40 px-4 text-xs font-semibold text-hero-copy backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:bg-white/70 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary dark:bg-white/5 dark:hover:bg-white/10 sm:px-6 sm:text-sm'
+              className='inline-flex h-11 shrink-0 items-center justify-center whitespace-nowrap rounded-xl border border-hero-outline bg-card/40 px-4 text-xs font-semibold text-hero-copy backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:bg-card/70 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring sm:px-6 sm:text-sm'
             >
               Create an Event
             </Link>
           </div>
 
           {/* Bottom Text */}
-          <p className='mt-8 text-xs font-medium tracking-wide text-slate-500 dark:text-slate-400'>
+          <p className='mt-8 text-xs font-medium tracking-wide text-hero-muted'>
             Together, we can make every action count.
           </p>
         </div>
@@ -57,9 +57,9 @@ const Banner = () => {
         {/* Right Side - Image */}
         <div className='relative mx-auto w-full max-w-[550px] md:ml-auto'>
           {/* Image Glow */}
-          <div className='absolute -inset-3 rounded-[2rem] bg-gradient-to-br from-blue-500/30 via-purple-500/20 to-cyan-400/30 blur-2xl' />
+          <div className='absolute -inset-3 rounded-[2rem] bg-gradient-to-br from-brand-green/30 via-brand-amber/20 to-brand-blue/30 blur-2xl' />
 
-          <div className='relative aspect-[5/4] overflow-hidden rounded-2xl border border-white/50 bg-white/20 shadow-2xl shadow-blue-950/10 dark:border-white/10 dark:shadow-black/30'>
+          <div className='relative aspect-[5/4] overflow-hidden rounded-2xl border border-border/50 bg-card/20 shadow-2xl shadow-primary/10'>
             <Image
               src={heroImage}
               alt='People working together in community development events'
@@ -70,7 +70,7 @@ const Banner = () => {
             />
 
             {/* Image Overlay */}
-            <div className='absolute inset-0 bg-gradient-to-t from-slate-950/30 via-transparent to-transparent' />
+            <div className='absolute inset-0 bg-gradient-to-t from-deep2/30 via-transparent to-transparent' />
           </div>
         </div>
       </div>

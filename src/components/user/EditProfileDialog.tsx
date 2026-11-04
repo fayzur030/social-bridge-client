@@ -69,7 +69,7 @@ export function EditProfile({ name, image }: UserUpdate) {
       <Button
         type='button'
         variant='outline'
-        className='w-fit mx-auto md:mx-0 cursor-pointer bg-transparent px-7 py-5 text-white sm:w-fit'
+        className='w-fit mx-auto md:mx-0 cursor-pointer bg-transparent px-7 py-5 text-foreground sm:w-fit'
         onClick={() => setOpen(true)}
       >
         <Pencil className='size-4' />

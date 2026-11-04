@@ -37,39 +37,39 @@ const AccountInformation = ({ user }: IAccountInformationProps) => {
       description: 'Your email address',
       value: user.emailVerified ? 'Verified' : 'Not Verified',
       icon: Mail,
-      color: 'text-green-600 bg-green-500/10',
+      color: 'text-primary bg-primary/10',
       badge: user.emailVerified
-        ? 'bg-green-500/10 text-green-600'
-        : 'bg-amber-500/10 text-amber-600',
+        ? 'bg-primary/10 text-primary'
+        : 'bg-destructive/10 text-destructive',
     },
     {
       title: 'Account Type',
       description: 'Your membership role',
       value: 'Community Member',
       icon: ShieldCheck,
-      color: 'text-blue-600 bg-blue-500/10',
+      color: 'text-secondary-foreground bg-secondary',
     },
     {
       title: 'Member Since',
       description: 'Account creation date',
       value: userJoinDate,
       icon: Calendar,
-      color: 'text-purple-600 bg-purple-500/10',
+      color: 'text-accent-foreground bg-accent',
     },
     {
       title: 'Last Updated',
       description: 'Profile last modified',
       value: lastUpdated,
       icon: Clock,
-      color: 'text-orange-600 bg-orange-500/10',
+      color: 'text-muted-foreground bg-muted',
     },
     {
       title: 'Account Status',
       description: 'Your account availability',
       value: 'Active',
       icon: CheckCircle2,
-      color: 'text-green-600 bg-green-500/10',
-      badge: 'bg-green-500/10 text-green-600',
+      color: 'text-primary bg-primary/10',
+      badge: 'bg-primary/10 text-primary',
     },
   ]
 
@@ -116,7 +116,7 @@ const AccountInformation = ({ user }: IAccountInformationProps) => {
               </div>
 
               {index !== information.length - 1 && (
-                <div className='mt-5 border-t' />
+                <div className='mt-5 border-t border-border' />
               )}
             </div>
           )

@@ -48,7 +48,7 @@ const Features = () => {
             Why SocialBridge
           </span> */}
 
-          <h2 className='mt-5 font-heading text-3xl font-bold tracking-tight text-[#1E3A8A] sm:text-4xl lg:text-5xl dark:text-white'>
+          <h2 className='mt-5 font-heading text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl'>
             Why SocialBridge?
           </h2>
 

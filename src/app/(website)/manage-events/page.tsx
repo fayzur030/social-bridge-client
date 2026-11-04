@@ -78,10 +78,10 @@ const ManageEvents = async () => {
             </Link>
           </Card>
         ) : (
-          <div className='mt-10 md:overflow-hidden md:rounded-xl md:border md:border-slate-200 md:bg-card md:shadow-sm md:dark:border-border'>
+          <div className='mt-10 md:overflow-hidden md:rounded-xl md:border md:border-border md:bg-card md:shadow-sm'>
             <div className='overflow-x-auto'>
               <table className='w-full border-collapse text-left text-xs md:min-w-160'>
-                <thead className='hidden bg-slate-100 text-[9px] font-semibold tracking-[0.08em] text-slate-600 dark:bg-muted dark:text-muted-foreground md:table-header-group'>
+                <thead className='hidden bg-muted text-[9px] font-semibold tracking-[0.08em] text-muted-foreground md:table-header-group'>
                   <tr>
                     <th
                       scope='col'

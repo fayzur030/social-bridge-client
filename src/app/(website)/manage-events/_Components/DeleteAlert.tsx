@@ -76,7 +76,7 @@ export function DeleteAlert({ event, compact = false }: IEventProps) {
             disabled={isLoading}
             className={
               compact
-                ? 'h-10 flex-1 rounded-xl border-red-400 px-4 text-xs font-semibold text-red-600 hover:bg-red-50 hover:text-red-700 dark:border-red-500 dark:text-red-400 dark:hover:bg-red-950/30 md:h-7 md:flex-none md:rounded-md md:px-3 md:text-[10px] md:font-medium'
+                ? 'h-10 flex-1 rounded-xl border-destructive px-4 text-xs font-semibold text-destructive hover:bg-destructive/10 hover:text-destructive md:h-7 md:flex-none md:rounded-md md:px-3 md:text-[10px] md:font-medium'
                 : 'cursor-pointer'
             }
           >
@@ -88,7 +88,7 @@ export function DeleteAlert({ event, compact = false }: IEventProps) {
 
       <AlertDialogContent size='md'>
         <AlertDialogHeader>
-          <AlertDialogMedia className='bg-destructive/10 text-destructive dark:bg-destructive/20 dark:text-destructive'>
+          <AlertDialogMedia className='bg-destructive/10 text-destructive'>
             <Trash2Icon />
           </AlertDialogMedia>
 

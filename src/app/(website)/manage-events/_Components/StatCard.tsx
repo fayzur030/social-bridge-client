@@ -24,7 +24,7 @@ const StatCard = ({ sortedManageEvents }: IStatsCardProps) => {
               </p>
             </div>
 
-            <div className='flex size-12 items-center justify-center rounded-xl bg-purple-100 text-purple-600 dark:bg-purple-500/15 dark:text-purple-400'>
+            <div className='flex size-12 items-center justify-center rounded-xl bg-primary/10 text-primary'>
               <CalendarDays className='size-6' />
             </div>
           </div>
@@ -48,7 +48,7 @@ const StatCard = ({ sortedManageEvents }: IStatsCardProps) => {
               </p>
             </div>
 
-            <div className='flex size-12 items-center justify-center rounded-xl bg-cyan-100 text-cyan-600 dark:bg-cyan-500/15 dark:text-cyan-400'>
+            <div className='flex size-12 items-center justify-center rounded-xl bg-secondary text-secondary-foreground'>
               <Clock className='size-6' />
             </div>
           </div>
@@ -72,7 +72,7 @@ const StatCard = ({ sortedManageEvents }: IStatsCardProps) => {
               </p>
             </div>
 
-            <div className='flex size-12 items-center justify-center rounded-xl bg-emerald-100 text-emerald-600 dark:bg-emerald-500/15 dark:text-emerald-400'>
+            <div className='flex size-12 items-center justify-center rounded-xl bg-accent text-accent-foreground'>
               <CheckCircle2 className='size-6' />
             </div>
           </div>

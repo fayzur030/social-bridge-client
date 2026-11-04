@@ -96,7 +96,7 @@ const Navbar = () => {
             type='button'
             aria-label='Toggle theme'
             onClick={toggleTheme}
-            className='flex size-9 items-center justify-center rounded-full border border-border text-foreground transition-colors hover:bg-accent hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary'
+            className='flex size-9 items-center justify-center rounded-full border border-border text-foreground transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring'
           >
             {isDarkMode ? (
               <Sun className='size-4' />
@@ -123,7 +123,7 @@ const Navbar = () => {
                 aria-label={
                   open ? 'Close navigation menu' : 'Open navigation menu'
                 }
-                className='flex size-9 items-center justify-center rounded-full border border-border text-foreground transition-colors hover:bg-accent hover:text-primary'
+                className='flex size-9 items-center justify-center rounded-full border border-border text-foreground transition-colors hover:bg-accent hover:text-accent-foreground'
               >
                 {open ? <X className='size-5' /> : <Menu className='size-5' />}
               </SheetTrigger>
@@ -157,8 +157,8 @@ const Navbar = () => {
                         onClick={() => setOpen(false)}
                         className={`group flex items-center justify-between rounded-xl px-4 py-3.5 text-sm font-semibold transition-all duration-200 ${
                           isActive
-                            ? 'bg-purple-600 text-white shadow-md shadow-purple-600/20'
-                            : 'text-foreground hover:bg-purple-50 hover:text-purple-700 dark:hover:bg-purple-500/10 dark:hover:text-purple-400'
+                            ? 'bg-primary text-primary-foreground shadow-md shadow-primary/20'
+                            : 'text-foreground hover:bg-accent hover:text-accent-foreground'
                         }`}
                       >
                         <span>{label}</span>
@@ -166,8 +166,8 @@ const Navbar = () => {
                         <ArrowUpRight
                           className={`size-4 transition-transform duration-200 ${
                             isActive
-                              ? 'text-white'
-                              : 'text-muted-foreground group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-purple-600'
+                              ? 'text-primary-foreground'
+                              : 'text-muted-foreground group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-primary'
                           }`}
                         />
                       </Link>

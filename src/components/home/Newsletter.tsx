@@ -10,12 +10,12 @@ const Newsletter = () => {
         {/* Background Decorations */}
         <div
           aria-hidden='true'
-          className='pointer-events-none absolute -right-20 -top-20 size-72 rounded-full bg-primary/10 blur-3xl dark:bg-primary/20'
+          className='pointer-events-none absolute -right-20 -top-20 size-72 rounded-full bg-primary/10 blur-3xl'
         />
 
         <div
           aria-hidden='true'
-          className='pointer-events-none absolute -bottom-32 -left-20 size-72 rounded-full bg-accent/10 blur-3xl dark:bg-accent/20'
+          className='pointer-events-none absolute -bottom-32 -left-20 size-72 rounded-full bg-accent/10 blur-3xl'
         />
 
         <div

@@ -63,7 +63,7 @@ const EventsDetails = ({ eventDetails }: IDetailsEventProps) => {
                 />
               </div>
             )}
-            <div className='absolute inset-0 bg-gradient-to-t from-slate-950/35 via-transparent to-transparent' />
+            <div className='absolute inset-0 bg-gradient-to-t from-deep2/35 via-transparent to-transparent' />
             <span className='absolute bottom-5 left-5 inline-flex items-center gap-2 rounded-full border border-border/40 bg-card/95 px-3 py-1.5 text-sm font-medium text-card-foreground shadow-sm'>
               <span className='size-2 rounded-full bg-brand-green' />
               {eventDetails.eventType || 'Community event'}
