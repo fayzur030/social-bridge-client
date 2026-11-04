@@ -12,8 +12,9 @@ import {
   Camera,
   ArrowLeft,
   HeartPlus,
+  Bridge,
 } from 'lucide-react'
-
+import heroIcon from '@/assets/heroIcon.svg'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
@@ -94,13 +95,23 @@ const RegisterForm = () => {
           />
 
           {/* Image Overlay */}
-          <div className='absolute inset-0 bg-gradient-to-t from-deep2/90 via-deep2/30 to-transparent' />
+          <div className='absolute inset-0 bg-linear-to-t from-deep2/90 via-deep2/30 to-transparent' />
 
           {/* Image Content */}
           <div className='absolute inset-0 flex flex-col items-center justify-center p-8 text-center text-image-overlay-foreground'>
             <div className='mb-5 flex size-12 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-green-hover to-brand-green shadow-lg shadow-brand-green/25'>
-              <HeartPlus className='size-6 text-primary-foreground' />
+              <Bridge
+                className='size-5 text-primary-foreground dark:text-white'
+                strokeWidth={2.5}
+              />
             </div>
+            {/* <div className='mx-auto flex items-center justify-center mb-4'>
+              <Image
+                src={heroIcon}
+                alt='Social Bridge'
+                className='size-9 sm:size-11.5'
+              />
+            </div> */}
 
             <h2 className='text-3xl leading-tight font-bold xl:text-4xl'>
               Join Our{' '}
@@ -114,13 +125,23 @@ const RegisterForm = () => {
           </div>
         </div>
         {/* Left Side - Register Form (8 Columns) */}
-        <div className='flex min-h-screen items-center justify-center px-5 py-10 sm:px-10 lg:col-span-7 lg:px-16'>
-          <div className='w-full max-w-xl'>
+        <div className='flex min-h-screen items-center justify-center px-4 py-8 sm:px-6 sm:py-10 lg:col-span-7 lg:px-16'>
+          <div className='w-full max-w-xl rounded-2xl lg:border-none md:border-none border border-border p-5 shadow-sm sm:p-8 lg:p-0 lg:shadow-none'>
             {/* Heading */}
             <div className='mb-8 text-center'>
               <div className='mx-auto mb-5 flex size-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-brand-green-hover to-brand-green shadow-lg shadow-brand-green/25'>
-                <HeartPlus className='size-5 text-primary-foreground' strokeWidth={2.5} />
+                <Bridge
+                  className='size-5 text-primary-foreground dark:text-white'
+                  strokeWidth={2.5}
+                />
               </div>
+              {/* <div className='mx-auto flex items-center justify-center mb-4'>
+                <Image
+                  src={heroIcon}
+                  alt='Social Bridge'
+                  className='size-9 sm:size-11.5'
+                />
+              </div> */}
 
               <h1 className='text-2xl font-bold tracking-tight sm:text-3xl'>
                 Create an Account

@@ -5,13 +5,14 @@ import { useState } from 'react'
 import {
   ArrowLeft,
   ArrowRight,
+  Bridge,
   Eye,
   EyeOff,
   HeartPlus,
   LockKeyhole,
   Mail,
 } from 'lucide-react'
-
+import heroIcon from '@/assets/heroIcon.svg'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
@@ -90,7 +91,7 @@ const LoginForm = () => {
     <main className='min-h-screen bg-background'>
       <div className='grid min-h-screen w-full overflow-hidden bg-card lg:grid-cols-2'>
         {/* Left Side - Image */}
-        <div className='relative hidden min-h-[650px] overflow-hidden bg-deep2 lg:block'>
+        <div className='relative hidden min-h-162.5 overflow-hidden bg-deep2 lg:block'>
           <Image
             src={loginImage}
             alt='SocialBridge community illustration'
@@ -101,17 +102,27 @@ const LoginForm = () => {
           />
 
           {/* Image Overlay */}
-          <div className='absolute inset-0 bg-gradient-to-t from-deep2/90 via-deep2/30 to-transparent' />
+          <div className='absolute inset-0 bg-linear-to-t from-deep2/90 via-deep2/30 to-transparent' />
 
           {/* Image Content */}
           <div className='absolute inset-0 flex flex-col justify-center p-10 text-start text-image-overlay-foreground'>
-            <div className='mb-5 flex size-12 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-green-hover to-brand-green shadow-lg shadow-brand-green/25'>
-              <HeartPlus className='size-6 text-primary-foreground' />
+            <div className='mb-5 flex size-12 items-center justify-center rounded-2xl bg-linear-to-br from-brand-green-hover to-brand-green shadow-lg shadow-brand-green/25'>
+              <Bridge
+                className='size-5 text-primary-foreground dark:text-white'
+                strokeWidth={2.5}
+              />
             </div>
+            {/* <Image
+              src={heroIcon}
+              alt='Social Bridge'
+              className='size-9 sm:size-11.5 mb-3'
+            /> */}
 
             <h2 className='max-w-md text-3xl leading-tight font-bold xl:text-4xl'>
               Together, We Can Make a{' '}
-              <span className='dark:text-brand-green-hover text-white'>Difference.</span>
+              <span className='dark:text-brand-green-hover text-white'>
+                Difference.
+              </span>
             </h2>
 
             <p className='mt-4 max-w-md text-sm leading-7 text-image-overlay-foreground/75'>
@@ -123,13 +134,23 @@ const LoginForm = () => {
         </div>
 
         {/* Right Side - Login Form */}
-        <div className='flex items-center justify-center p-6 sm:p-10 lg:p-12'>
-          <div className='w-full max-w-md'>
+        <div className='flex items-center justify-center p-4 sm:p-6 lg:p-12'>
+          <div className='w-full max-w-md rounded-2xl border border-border p-5 shadow-sm sm:p-8 lg:rounded-none lg:border-0 lg:p-0 lg:shadow-none'>
             {/* Heading */}
             <div className='mb-8 text-center'>
-              <div className='mx-auto mb-5 flex size-11 items-center justify-center rounded-xl bg-gradient-to-br from-brand-green-hover to-brand-green shadow-lg shadow-brand-green/25'>
-                <HeartPlus className='size-5 text-primary-foreground' strokeWidth={2.5} />
+              <div className='mx-auto mb-5 flex size-11 items-center justify-center rounded-xl bg-linear-to-br from-brand-green-hover to-brand-green shadow-lg shadow-brand-green/25'>
+                <Bridge
+                  className='size-5 text-primary-foreground dark:text-white'
+                  strokeWidth={2.5}
+                />
               </div>
+              {/* <div className='mx-auto flex items-center justify-center mb-4'>
+                <Image
+                  src={heroIcon}
+                  alt='Social Bridge'
+                  className='size-9 sm:size-11.5'
+                />
+              </div> */}
 
               <h1 className='text-2xl font-bold tracking-tight sm:text-3xl'>
                 Welcome Back!
@@ -197,7 +218,7 @@ const LoginForm = () => {
               <Button
                 type='submit'
                 disabled={loading}
-                className='h-11 w-full bg-gradient-to-r from-primary to-primary-hover font-semibold text-primary-foreground transition-all duration-300 hover:from-primary-hover hover:to-primary hover:shadow-lg hover:shadow-primary/20 disabled:cursor-not-allowed disabled:opacity-70'
+                className='h-11 w-full bg-linear-to-r from-primary to-primary-hover font-semibold text-primary-foreground transition-all duration-300 hover:from-primary-hover hover:to-primary hover:shadow-lg hover:shadow-primary/20 disabled:cursor-not-allowed disabled:opacity-70'
               >
                 {loading ? (
                   <>

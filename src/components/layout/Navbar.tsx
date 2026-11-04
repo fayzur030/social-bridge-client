@@ -4,6 +4,8 @@ import { useState } from 'react'
 import Link from 'next/link'
 import {
   ArrowUpRight,
+  Bridge,
+  HeartPlus,
   // HeartPlus,
   Menu,
   Moon,
@@ -63,18 +65,18 @@ const Navbar = () => {
           aria-label='SocialBridge home'
           className='flex shrink-0 items-center gap-1.5 sm:gap-2.5'
         >
-          {/* <div className='flex size-11 items-center justify-center rounded-xl bg-linear-to-br from-brand-green-hover to-brand-green shadow-md shadow-brand-green/20 transition-transform duration-300 group-hover:scale-105'>
-            <HeartPlus
+          <div className='flex size-10 items-center justify-center rounded-xl bg-linear-to-br from-brand-green-hover to-brand-green shadow-md shadow-brand-green/20 transition-transform duration-300 group-hover:scale-105'>
+            <Bridge
               aria-hidden='true'
               className='size-5 text-primary-foreground dark:text-white'
               strokeWidth={2.5}
             />
-          </div> */}
-          <Image
+          </div>
+          {/* <Image
             src={heroIcon}
             alt='Social Bridge'
             className='size-9 sm:size-11.5'
-          />
+          /> */}
 
           <h1 className='text-base font-extrabold tracking-tight sm:text-xl'>
             <span className='text-primary'>Social</span>
@@ -112,10 +114,10 @@ const Navbar = () => {
             type='button'
             aria-label='Toggle theme'
             onClick={toggleTheme}
-            className='flex size-8 items-center justify-center rounded-full border border-border text-foreground transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:size-9'
+            className='flex size-8 items-center cursor-pointer justify-center rounded-full border border-border text-foreground transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:size-9'
           >
             {isDarkMode ? (
-              <Sun className='size-4' />
+              <Sun className='size-4 text-yellow-500' />
             ) : (
               <Moon className='size-4' />
             )}
