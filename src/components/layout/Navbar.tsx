@@ -8,7 +8,7 @@ import {
   Menu,
   Moon,
   Sun,
-  UsersRound,
+  // UsersRound,
   X,
 } from 'lucide-react'
 import { usePathname } from 'next/navigation'
