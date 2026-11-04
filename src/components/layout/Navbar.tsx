@@ -146,9 +146,14 @@ const Navbar = () => {
                 {/* Mobile Logo */}
                 <SheetHeader className='border-b border-border pb-5 text-left'>
                   <SheetTitle className='flex items-center gap-2 text-foreground'>
-                    <UsersRound
+                    {/* <UsersRound
                       aria-hidden='true'
                       className='size-7 fill-primary/20 text-primary'
+                    /> */}
+                    <Image
+                      src={heroIcon}
+                      alt='Social Bridge'
+                      className='size-9 sm:size-11.5'
                     />
 
                     <span className='text-lg font-bold'>SocialBridge</span>
@@ -170,7 +175,7 @@ const Navbar = () => {
                         onClick={() => setOpen(false)}
                         className={`group flex items-center justify-between rounded-xl px-4 py-3.5 text-sm font-semibold transition-all duration-200 ${
                           isActive
-                            ? 'bg-primary text-primary-foreground shadow-md shadow-primary/20'
+                            ? 'text-primary'
                             : 'text-foreground hover:bg-accent hover:text-accent-foreground'
                         }`}
                       >
@@ -179,7 +184,7 @@ const Navbar = () => {
                         <ArrowUpRight
                           className={`size-4 transition-transform duration-200 ${
                             isActive
-                              ? 'text-primary-foreground'
+                              ? 'text-primary'
                               : 'text-muted-foreground group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-primary'
                           }`}
                         />
