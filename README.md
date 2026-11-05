@@ -23,7 +23,7 @@
 
 ### Frontend
 
-- Next.js
+- Next JS (App Router)
 - React
 - TypeScript
 - Tailwind CSS
@@ -36,8 +36,12 @@
 - Node.js
 - Express.js
 - MongoDB
+
+
+### Authentication & Authorization:
+- BetterAuth
+- MongoDB Adapter
 - JSON Web Token (JWT)
-- Better Auth
 - dotenv
 - CORS
 
